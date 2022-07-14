@@ -12,9 +12,6 @@ public class main {
 
     public static void main(String[] args) throws XMLStreamException, ParserConfigurationException, ParseException {
         // TODO Auto-generated method stubsss
-        //long lgwegw=Calendar.getInstance().getTimeInMillis();
-        //long bbeoe=lgwegw+(24*60*60*1000*2); tempo attuale + 2 giorni
-
 
         ArrayList <Utente> l=new ArrayList<Utente>();
         DatiUtenti x=new DatiUtenti(l);
@@ -45,7 +42,20 @@ public class main {
             sistema= XmlReader.readSis("sistema.xml");
         }
         if(!parametriFatti && acceduto instanceof Configuratore){
-            param=ParametriScambi.inserimentoParametri();
+            int sceltaPar=Utilita.leggiIntero("Non sono presenti parametri\n premere 1 per inserirli tramite l'applicazione\n premere 2 per inserirli tramite file xml",1,2);
+            if(sceltaPar==2){
+                String nomefilePar=Utilita.leggiStringaNonVuota("Inserire il percorso del file per esempio: C:\\Users\\apote\\Desktop\\testxml\\testing.xml\nInserisci il nome del file: ");
+                if(Utilita.fileExists(nomefilePar) && Utilita.isXmlFile(nomefilePar)){
+                    param=XmlReader.leggiParametri(nomefilePar);
+                }
+                else{
+                    System.out.println("File non esistente o di un formato sbagliato");
+                    param=ParametriScambi.inserimentoParametri();
+                }
+            }
+            else{
+                param=ParametriScambi.inserimentoParametri();
+            }
         }
         Configurazione conf=new Configurazione(sistema,param);
         ArrayList <Offerta> listaOff=new ArrayList<>();
@@ -53,12 +63,11 @@ public class main {
         if(fileOfferte.exists() && !fileOfferte.isDirectory()) {
             listaOff.addAll(XmlReader.leggiOfferte("offerte.xml").getListaOfferte());
         }
-        if(scambi!=null){
-            if(scambi.getScambi().size()>0)
-                scambi.controllaValiditaScambi(conf.getParametri());
-        }
         Offerte offerte=new Offerte(listaOff);
-        //PropostaIncontro p=PropostaIncontro.creaProposta(acceduto.getUsername(), conf.getParametri());
+        if(scambi!=null && offerte.getListaOfferte().size()!=0){
+            if(scambi.getScambi().size()>0)
+                scambi.controllaValiditaScambi(conf.getParametri(), offerte);
+        }
         if(acceduto instanceof Configuratore){
             String titolo="Benvenuto nel sistema di gestione baratti";
             String[] voci=new String[]{};
@@ -66,7 +75,6 @@ public class main {
             m.MenuConfiguratore(conf, offerte);
         }
         if(acceduto instanceof  Fruitore){
-           // Scambio scambio= Scambio.creaScambio(conf,offerte, (Fruitore) acceduto);
             String titolo="Benvenuto nel sistema di gestione baratti";
             String[] voci=new String[]{};
             Menu m=new Menu(titolo,voci);

@@ -65,8 +65,13 @@ public class Menu {
         this.setVoci(VOCI_Configuratore);
         do {
             if(conf.getSis().getListaGerarchie().size()==0){
-                risposta=1;
-                System.out.println("Il sistema non presenta alcuna gerarchia, inserisci una gerarchia, in futuro potrai aggiungerne altre");
+
+                int firstTime=Utilita.leggiIntero("Non è presente alcune gerarchia\n premere 1 per inserirla tramite l'applicazione\n premere 2 per accedere alle sezioni di inserimento di file xml",1,2);
+                if(firstTime==1)
+                    risposta=1;
+                else
+                    risposta=5;
+
             }
             else
                 risposta = this.scegli();
@@ -111,30 +116,7 @@ public class Menu {
                     offerte.stampaOfferteFoglia(conf);
                     break;
                 case 5:
-                    int sceltaXml=Utilita.leggiIntero("Attenzione inserire i dati da file xml può portare a errori consigliamo l'utilizzo dell'applicazione per l'inserimento di questi dati\n premere 1 se si vogliono inserire le gerarchie\n premere 2 per i paramentri di configurazione\n premere 0 per non inserire nessun file");
-                    switch(sceltaXml){
-                        case 1:
-                            String nomefileSis=Utilita.leggiStringaNonVuota("Inserire il percorso del file per esempio: C:\\Users\\apote\\Desktop\\testxml\\testing.xml\nInserisci il nome del file: ");
-                            if(Utilita.fileExists(nomefileSis) && Utilita.isXmlFile(nomefileSis)){
-                                conf.setSis(XmlReader.readSis(nomefileSis));
-                            }
-                            else{
-                                System.out.println("File non esistente o di un formato sbagliato");
-                            }
-                            break;
-                        case 2:
-                            String nomefilePar=Utilita.leggiStringaNonVuota("Inserire il percorso del file per esempio: C:\\Users\\apote\\Desktop\\testxml\\testing.xml\nInserisci il nome del file: ");
-                            if(Utilita.fileExists(nomefilePar) && Utilita.isXmlFile(nomefilePar)){
-                                conf.setParametri(XmlReader.leggiParametri(nomefilePar));
-                            }
-                            else{
-                                System.out.println("File non esistente o di un formato sbagliato");
-                            }
-                            break;
-                        case 0:
-                            System.out.println("Saggia selta");
-                            break;
-                    }
+                    Menu.menuXml(conf);
                     break;
                 default:
                     break;
@@ -248,6 +230,34 @@ public class Menu {
             }
         }while(rispostaFruitore !=0);
     }
+
+    public static void  menuXml(Configurazione c) throws XMLStreamException {
+        int sceltaXml=Utilita.leggiIntero("Attenzione inserire i dati da file xml può portare a errori consigliamo massima attenzione nella scrittura del file\n premere 1 per inserire le gerarchie\n premere 2 per inserire parametri di configurazione\n premere 0 per non inserire nessun file");
+        switch(sceltaXml){
+            case 1:
+                String nomefileSis=Utilita.leggiStringaNonVuota("Inserire il percorso del file per esempio: C:\\Users\\apote\\Desktop\\testxml\\testing.xml\nInserisci il nome del file: ");
+                if(Utilita.fileExists(nomefileSis) && Utilita.isXmlFile(nomefileSis)){
+                    c.setSis(XmlReader.readSis(nomefileSis));
+                }
+                else{
+                    System.out.println("File non esistente o di un formato sbagliato");
+                }
+                break;
+            case 2:
+                String nomefilePar=Utilita.leggiStringaNonVuota("Inserire il percorso del file per esempio: C:\\Users\\apote\\Desktop\\testxml\\testing.xml\nInserisci il nome del file: ");
+                if(Utilita.fileExists(nomefilePar) && Utilita.isXmlFile(nomefilePar)){
+                    c.setParametri(XmlReader.leggiParametri(nomefilePar));
+                }
+                else{
+                    System.out.println("File non esistente o di un formato sbagliato");
+                }
+                break;
+            case 0:
+                System.out.println("Saggia selta");
+                break;
+        }
+    }
+
 
 
     /**
