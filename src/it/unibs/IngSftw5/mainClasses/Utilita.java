@@ -1,6 +1,9 @@
 package it.unibs.IngSftw5.mainClasses;
 
 
+import it.unibs.IngSftw5.xmlUtilities.XmlReader;
+
+import java.io.File;
 import java.util.*;
 
 /**
@@ -191,5 +194,20 @@ public class Utilita {
         return  ((nuovo/(1000*60*60*24))-(old/(1000*60*60*24)));
     }
 
+    public static boolean fileExists(String filename){
+        boolean esiste=false;
+        File file=new File(filename);
+        if(file.exists() && !file.isDirectory()){
+            esiste=true;
+        }
+        return esiste;
+    }
+    public static boolean isXmlFile(String filename){
+        boolean isXml=false;
+        if(".xml".equals(filename.substring(filename.length()-4,filename.length()))){
+            isXml=true;
+        }
+        return isXml;
+    }
 }
 

@@ -18,9 +18,9 @@ public class main {
 
         ArrayList <Utente> l=new ArrayList<Utente>();
         DatiUtenti x=new DatiUtenti(l);
-        File fileUtenti = new File("listaUtenti.xml");
+        File fileUtenti = new File("Utenti.xml");
         if(fileUtenti.exists() && !fileUtenti.isDirectory()) {
-            x=XmlReader.leggiUtenti("listaUtenti.xml");
+            x=XmlReader.leggiUtenti("Utenti.xml");
         }
         File fileScambi=new File("scambi.xml");
         ArrayList<Scambio> ls=new ArrayList<>();
@@ -73,7 +73,7 @@ public class main {
             m.MenuFruitore(conf, (Fruitore) acceduto, offerte,scambi);
         }
         XmlWriter.scriviScambi(scambi,"scambi.xml");
-        System.out.println("\nFINE PROGRAMMA");
+
         if(offerte.getListaOfferte().size()!=0)
             XmlWriter.salvaOfferte(offerte, "offerte.xml");
 
@@ -82,5 +82,6 @@ public class main {
             XmlWriter.salvaSistema(conf.getSis(), "sistema.xml");
         }
         XmlWriter.utentiWrite(x, "listaUtenti.xml");
+        System.out.println("\nFINE PROGRAMMA");
     }
 }

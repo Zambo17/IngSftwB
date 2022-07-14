@@ -1,5 +1,7 @@
 package it.unibs.IngSftw5.mainClasses;
+import it.unibs.IngSftw5.xmlUtilities.*;
 
+import javax.xml.stream.XMLStreamException;
 
 /**
  * Classe per la gestione dei menu
@@ -11,7 +13,7 @@ public class Menu {
     final private static String CORNICE = "--------------------------------";
     final private static String VOCE_USCITA = "0\tEsci";
     final private static String RICHIESTA_INSERIMENTO = "Digita il numero dell'opzione desiderata : ";
-    final private static String[] VOCI_Configuratore = new String[]{"Inserimento nuova gerarchia","Visualizzazione delle gerarchie","Modifica dei parametri","Visualizza le offerte di una categoria"};
+    final private static String[] VOCI_Configuratore = new String[]{"Inserimento nuova gerarchia","Visualizzazione delle gerarchie","Modifica dei parametri","Visualizza le offerte di una categoria","Inserire dati tramite xml file"};
     public static final String[] VOCI_Fruitore = new String[]{"Visualizza le radici e i parametri di sistema","Pubblicazione prodotto","Modificare una offerta già esistente","visualizza le tue offerte","Visualizza le offerte di una categoria","Proporre uno scambio","Controllare gli scambi"};
     public static final int ZERO = 0;
     public static final int UNO = 1;
@@ -58,7 +60,7 @@ public class Menu {
      * Metodo per la gestione del menu del configuratore
      * @param conf la configurazione su cui opera il configuratore
      */
-    public void MenuConfiguratore(Configurazione conf, Offerte offerte){
+    public void MenuConfiguratore(Configurazione conf, Offerte offerte) throws XMLStreamException {
         int risposta=1;
         this.setVoci(VOCI_Configuratore);
         do {
@@ -107,6 +109,32 @@ public class Menu {
                     break;
                 case 4:
                     offerte.stampaOfferteFoglia(conf);
+                    break;
+                case 5:
+                    int sceltaXml=Utilita.leggiIntero("Attenzione inserire i dati da file xml può portare a errori consigliamo l'utilizzo dell'applicazione per l'inserimento di questi dati\n premere 1 se si vogliono inserire le gerarchie\n premere 2 per i paramentri di configurazione\n premere 0 per non inserire nessun file");
+                    switch(sceltaXml){
+                        case 1:
+                            String nomefileSis=Utilita.leggiStringaNonVuota("Inserire il percorso del file per esempio: C:\\Users\\apote\\Desktop\\testxml\\testing.xml\nInserisci il nome del file: ");
+                            if(Utilita.fileExists(nomefileSis) && Utilita.isXmlFile(nomefileSis)){
+                                conf.setSis(XmlReader.readSis(nomefileSis));
+                            }
+                            else{
+                                System.out.println("File non esistente o di un formato sbagliato");
+                            }
+                            break;
+                        case 2:
+                            String nomefilePar=Utilita.leggiStringaNonVuota("Inserire il percorso del file per esempio: C:\\Users\\apote\\Desktop\\testxml\\testing.xml\nInserisci il nome del file: ");
+                            if(Utilita.fileExists(nomefilePar) && Utilita.isXmlFile(nomefilePar)){
+                                conf.setParametri(XmlReader.leggiParametri(nomefilePar));
+                            }
+                            else{
+                                System.out.println("File non esistente o di un formato sbagliato");
+                            }
+                            break;
+                        case 0:
+                            System.out.println("Saggia selta");
+                            break;
+                    }
                     break;
                 default:
                     break;
