@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="IngSftw5:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/IngSftw5_jar</output-path>
+    <root id="archive" name="IngSftw5.jar">
+      <element id="module-output" name="IngSftw5" />
+    </root>
+  </artifact>
+</component>

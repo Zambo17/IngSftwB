@@ -13,7 +13,7 @@ public class Menu {
     final private static String CORNICE = "--------------------------------";
     final private static String VOCE_USCITA = "0\tEsci";
     final private static String RICHIESTA_INSERIMENTO = "Digita il numero dell'opzione desiderata : ";
-    final private static String[] VOCI_Configuratore = new String[]{"Inserimento nuova gerarchia","Visualizzazione delle gerarchie","Modifica dei parametri","Visualizza le offerte di una categoria","visualizzare le offerte in scambio o chiuse di una categoria","Inserire dati tramite xml file"};
+    final private static String[] VOCI_Configuratore = new String[]{"Inserimento nuova gerarchia","Visualizzazione delle gerarchie","Modifica dei parametri","Visualizza le offerte di una categoria","Visualizzare le offerte in scambio o chiuse di una categoria","Inserire dati tramite xml file"};
     public static final String[] VOCI_Fruitore = new String[]{"Visualizza le radici e i parametri di sistema","Pubblicazione prodotto","Modificare una offerta già esistente","visualizza le tue offerte","Visualizza le offerte di una categoria","Proporre uno scambio","Controllare gli scambi"};
     public static final int ZERO = 0;
     public static final int UNO = 1;
@@ -175,7 +175,7 @@ public class Menu {
                         }
                     }
                     else{
-                        System.out.println("non ci sono offerte ritirabili");
+                        System.out.println("Non ci sono offerte ritirabili");
                     }
 
                     break;
@@ -193,7 +193,7 @@ public class Menu {
                     }
                     break;
                 case 7:
-                    int sceltaFattiRicevuti=Utilita.leggiIntero("1 se vuoi vedere gli scambi che hai proposto\n0 se vuoi vedere quelli che ti sono stati proposti: ");
+                    int sceltaFattiRicevuti=Utilita.leggiIntero("Inserisci 1 se vuoi vedere gli scambi che hai proposto\n0 se vuoi vedere quelli che ti sono stati proposti: ");
                     if(sceltaFattiRicevuti==1){
                         ListaScambi fatti=listascambi.scambiOfferente(f);
                         if(fatti.getScambi().size()>0){
@@ -258,7 +258,7 @@ public class Menu {
                 }
                 break;
             case 0:
-                System.out.println("Saggia selta");
+                System.out.println("Caricamento da file annullato");
                 break;
         }
     }

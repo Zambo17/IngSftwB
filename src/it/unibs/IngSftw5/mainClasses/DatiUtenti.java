@@ -13,7 +13,7 @@ public class DatiUtenti {
     public static final String INSERISCI_PASSWORD = "Inserisci la tua password: ";
     public static final Utente CREDENZIALI_PREDEFINITE = new Configuratore("admin", "ezjt9917");
     public static final String NOME_NON_DISPONIBILE = "Questo nome utente non è disponibile";
-    public static final String NUOVA_PASSWORD = "Inserisci la tua nuova password";
+    public static final String NUOVA_PASSWORD = "Inserisci la tua nuova password:";
     private ArrayList<Utente> listaUtenti = new ArrayList<Utente>();
 
 
@@ -41,7 +41,7 @@ public class DatiUtenti {
         String password = null;
         if (scelta == 1) {
             do {
-                username = Utilita.leggiStringaNonVuota("Inserisci il nome con cui vuoi registrarti");
+                username = Utilita.leggiStringaNonVuota("Inserisci il nome con cui vuoi registrarti:");
                 if (this.checkName(username)) {
                     System.out.println(NOME_NON_DISPONIBILE);
                 }
@@ -56,7 +56,7 @@ public class DatiUtenti {
         if (this.checkConf(temp)) {
             String newUsername;
             do {
-                newUsername = Utilita.leggiStringaNonVuota("Inserisci il tuo nuovo nome utente");
+                newUsername = Utilita.leggiStringaNonVuota("Inserisci il tuo nuovo nome utente:");
                 if (this.checkName(newUsername) == true)
                     System.out.println(NOME_NON_DISPONIBILE);
             } while (this.checkName(newUsername) == true);
@@ -76,7 +76,7 @@ public class DatiUtenti {
                 if (this.checkConf(temp)) {
                     String newUsername;
                     do {
-                        newUsername = Utilita.leggiStringaNonVuota("Inserisci il tuo nuovo nome utente");
+                        newUsername = Utilita.leggiStringaNonVuota("Inserisci il tuo nuovo nome utente:");
                         if (this.checkName(newUsername) == true)
                             System.out.println(NOME_NON_DISPONIBILE);
                     } while (this.checkName(newUsername) == true);
