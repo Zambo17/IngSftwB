@@ -13,7 +13,7 @@ public class Menu {
     final private static String CORNICE = "--------------------------------";
     final private static String VOCE_USCITA = "0\tEsci";
     final private static String RICHIESTA_INSERIMENTO = "Digita il numero dell'opzione desiderata : ";
-    final private static String[] VOCI_Configuratore = new String[]{"Inserimento nuova gerarchia","Visualizzazione delle gerarchie","Modifica dei parametri","Visualizza le offerte di una categoria","Inserire dati tramite xml file"};
+    final private static String[] VOCI_Configuratore = new String[]{"Inserimento nuova gerarchia","Visualizzazione delle gerarchie","Modifica dei parametri","Visualizza le offerte di una categoria","visualizzare le offerte in scambio o chiuse di una categoria","Inserire dati tramite xml file"};
     public static final String[] VOCI_Fruitore = new String[]{"Visualizza le radici e i parametri di sistema","Pubblicazione prodotto","Modificare una offerta già esistente","visualizza le tue offerte","Visualizza le offerte di una categoria","Proporre uno scambio","Controllare gli scambi"};
     public static final int ZERO = 0;
     public static final int UNO = 1;
@@ -70,8 +70,7 @@ public class Menu {
                 if(firstTime==1)
                     risposta=1;
                 else
-                    risposta=5;
-
+                    risposta=6;
             }
             else
                 risposta = this.scegli();
@@ -116,6 +115,12 @@ public class Menu {
                     offerte.stampaOfferteFoglia(conf);
                     break;
                 case 5:
+                    Categoria [] foglia=conf.getSis().scegliFoglia();
+                    Offerte daVedere=offerte.offerteFoglia(foglia[0].getNome(),foglia[1].getNome());
+                    daVedere.offerteScambiate();
+                    System.out.println(daVedere.toStringOfferte());
+                    break;
+                case 6:
                     Menu.menuXml(conf);
                     break;
                 default:

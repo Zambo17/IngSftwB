@@ -125,6 +125,19 @@ public class Offerte {
         }
         return ret;
     }
+    /**
+     * Metodo che restituisce solo le offerte in scambio o chiuse
+     * @return la lista delle offerte in scambio o chiuse
+     */
+    public void offerteScambiate(){
+        ArrayList <Offerta> temp=new ArrayList<>();
+        for(Offerta o:this.listaOfferte){
+            if(o.getStatoAttuale()!=StatoOfferta.CHIUSA && o.getStatoAttuale()!=StatoOfferta.INSCAMBIO ){
+                temp.add(o);
+            }
+        }
+        this.listaOfferte.removeAll(temp);
+    }
 
     /**
      * stampa tutte le offerte relative ad una categoria foglia da selezionare
