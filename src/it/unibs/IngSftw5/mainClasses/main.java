@@ -18,9 +18,9 @@ public class main {
 
         ArrayList <Utente> l=new ArrayList<Utente>();
         DatiUtenti x=new DatiUtenti(l);
-        File fileUtenti = new File("Utenti.xml");
+        File fileUtenti = new File("listaUtenti.xml");
         if(fileUtenti.exists() && !fileUtenti.isDirectory()) {
-            x=XmlReader.leggiUtenti("Utenti.xml");
+            x=XmlReader.leggiUtenti("listaUtenti.xml");
         }
         File fileScambi=new File("scambi.xml");
         ArrayList<Scambio> ls=new ArrayList<>();
