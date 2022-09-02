@@ -1,7 +1,5 @@
-package it.unibs.IngSftw5.mainClasses;
+package it.unibs.IngSftwB.mainClasses;
 
-
-import it.unibs.IngSftw5.xmlUtilities.XmlReader;
 
 import java.io.File;
 import java.util.*;

@@ -1,4 +1,4 @@
-package it.unibs.IngSftw5.mainClasses;
+package it.unibs.IngSftwB.mainClasses;
 
 /**
  * Classe per la gestione di un'intervallo di orari

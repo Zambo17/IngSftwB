@@ -1,4 +1,4 @@
-package it.unibs.IngSftw5.mainClasses;
+package it.unibs.IngSftwB.mainClasses;
 
 /**
  * enum per la gestione degli stati dell'offerta

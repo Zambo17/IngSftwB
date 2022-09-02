@@ -1,4 +1,4 @@
-package it.unibs.IngSftw5.mainClasses;
+package it.unibs.IngSftwB.mainClasses;
 
 /**
  * Classe per la gestione della configurazione formata dal sistema e dai parametri di scambio

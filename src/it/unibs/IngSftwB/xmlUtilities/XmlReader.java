@@ -1,7 +1,7 @@
-package it.unibs.IngSftw5.xmlUtilities;
+package it.unibs.IngSftwB.xmlUtilities;
 
 
-import it.unibs.IngSftw5.mainClasses.*;
+import it.unibs.IngSftwB.mainClasses.*;
 
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;

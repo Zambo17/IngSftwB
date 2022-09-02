@@ -1,8 +1,8 @@
-package it.unibs.IngSftw5.xmlUtilities;
+package it.unibs.IngSftwB.xmlUtilities;
 
 
-import it.unibs.IngSftw5.mainClasses.*;
-import it.unibs.IngSftw5.mainClasses.ParametriScambi;
+import it.unibs.IngSftwB.mainClasses.*;
+import it.unibs.IngSftwB.mainClasses.ParametriScambi;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
