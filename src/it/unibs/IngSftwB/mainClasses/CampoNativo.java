@@ -1,5 +1,8 @@
 package it.unibs.IngSftwB.mainClasses;
 //v44444
+import it.unibs.IngSftwB.Controller.Messaggio;
+import it.unibs.IngSftwB.Controller.MessaggioCampoNativo;
+
 import java.util.ArrayList;
 
 /**
@@ -80,6 +83,10 @@ public class CampoNativo {
      */
     public boolean isObbligatoria() {
         return obbligatoria;
+    }
+
+    public Messaggio getCampoNativoDefinition(){
+        return new MessaggioCampoNativo(this.nomeCampo, this.obbligatoria);
     }
 
 
