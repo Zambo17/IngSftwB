@@ -1,5 +1,9 @@
 package it.unibs.IngSftwB.mainClasses;
 
+import it.unibs.IngSftwB.Controller.Messaggio;
+import it.unibs.IngSftwB.Controller.MessaggioIntervallo;
+import it.unibs.IngSftwB.Controller.MessaggioOrario;
+
 /**
  * Classe per la gestione di un orario
  * @author Jacopo Tedeschi,Enrico Zambelli
@@ -110,6 +114,10 @@ public class Orario {
      */
     public int getMinuti() {
         return minuti;
+    }
+
+    public Messaggio getOrarioDefinition(){
+        return new MessaggioOrario(this.ora,this.minuti);
     }
 
 }

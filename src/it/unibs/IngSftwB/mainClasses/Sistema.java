@@ -105,7 +105,7 @@ public class Sistema {
     public String visualizzaRadici(){
         StringBuffer str=new StringBuffer();
         if(this.getListaGerarchie().size()==0){
-            str.append("siamo spiacenti ma il configuratore non ha settato alcuna gerarchia per ora");
+            str.append("Siamo spiacenti ma il configuratore non ha settato alcuna gerarchia per ora");
         }
         else{
             if(this.getListaGerarchie().size()==1){

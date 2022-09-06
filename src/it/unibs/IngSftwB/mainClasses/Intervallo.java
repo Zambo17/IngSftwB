@@ -1,5 +1,8 @@
 package it.unibs.IngSftwB.mainClasses;
 
+import it.unibs.IngSftwB.Controller.Messaggio;
+import it.unibs.IngSftwB.Controller.MessaggioIntervallo;
+
 /**
  * Classe per la gestione di un'intervallo di orari
  *  @author Jacopo Tedeschi,Enrico Zambelli
@@ -79,5 +82,10 @@ public class Intervallo {
     public void setOre(Orario[] ore) {
         this.ore = ore;
     }
+
+    public Messaggio getIntervalloDefinition(){
+        return new MessaggioIntervallo(this.ore);
+    }
+
 }
 

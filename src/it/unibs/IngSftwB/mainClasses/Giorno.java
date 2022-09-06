@@ -5,13 +5,23 @@ package it.unibs.IngSftwB.mainClasses;
  *  @author Jacopo Tedeschi,Enrico Zambelli
  */
 public enum Giorno {
-    LUNEDI,
-    MARTEDI,
-    MERCOLEDI,
-    GIOVEDI,
-    VENERDI,
-    SABATO,
-    DOMENICA;
+    LUNEDI("Lunedi"),
+    MARTEDI("Martedi"),
+    MERCOLEDI("Mercoledi'"),
+    GIOVEDI("Giovedi'"),
+    VENERDI("Venerdi'"),
+    SABATO("Sabato"),
+    DOMENICA("Domenica");
+
+    private String nomeGiorno;
+
+    Giorno(String nomeGiorno) {
+        this.nomeGiorno=nomeGiorno;
+    }
+
+    public String getNomeGiorno() {
+        return this.nomeGiorno;
+    }
 
     /**
      * Metodo che restituisce la stringa corrispondente al giorno su cui viene invocata
