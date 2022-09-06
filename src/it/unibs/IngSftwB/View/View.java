@@ -57,15 +57,14 @@ public class View {
                 figliAlti.add(x);
             }
         }
-        /*
-        if(this.numFigli(this.radice)==0){
+
+        if(figliAlti.size()==0){
             s.append("Non ha sottocategorie");
         }
         else{
-            s.append("Le sottocategorie di "+this.radice.getNome()+ " sono: ");
+            s.append("Le sottocategorie di "+msg.getRadice().getNome()+ " sono: ");
         }
 
-         */
         for(Categoria x: figliAlti){
             s.append(x.getNome()+"   ");
         }
@@ -99,7 +98,7 @@ public class View {
         }while(!figliAlti.isEmpty());
         return s.toString();
     }
-
+    //da sistemare
     public String getSistemaDescription(MessaggioSistema msg){
         StringBuffer stb=new StringBuffer();
         if(msg.getListaGerarchie().isEmpty()){
@@ -109,7 +108,7 @@ public class View {
         int i=1;
         for(Gerarchia g : msg.getListaGerarchie()){
             stb.append("Gerarchia " + i +":\n");
-            stb.append(g.vediRamo()+"\n");
+            stb.append(this.getGerarchiaDescription(((MessaggioGerarchia) g.getGerarchiaDefinition()))+"\n");
             stb.append("\n");
             i++;
         }

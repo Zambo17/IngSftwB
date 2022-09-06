@@ -1,6 +1,9 @@
 package it.unibs.IngSftwB.mainClasses;
 
 
+import it.unibs.IngSftwB.Controller.Messaggio;
+import it.unibs.IngSftwB.Controller.MessaggioGerarchia;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -308,5 +311,9 @@ public class Gerarchia {
             }
         }
         return padri;
+    }
+
+    public Messaggio getGerarchiaDefinition(){
+        return new MessaggioGerarchia(this.ramo,this.radice);
     }
 }
