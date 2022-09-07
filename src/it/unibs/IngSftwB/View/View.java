@@ -1,14 +1,35 @@
 package it.unibs.IngSftwB.View;
 
 import it.unibs.IngSftwB.Controller.*;
-import it.unibs.IngSftwB.mainClasses.CampoNativo;
-import it.unibs.IngSftwB.mainClasses.Categoria;
-import it.unibs.IngSftwB.mainClasses.Gerarchia;
-import it.unibs.IngSftwB.mainClasses.Intervallo;
+import it.unibs.IngSftwB.mainClasses.*;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Function;
 
 public class View {
+
+    private Map<Class<? extends Messaggio>, Function<Messaggio, String>> conversioneMap = new HashMap<>();
+
+    public View() {
+        conversioneMap.put(MessaggioCampoNativo.class, (e) -> this.getCampoDescription((MessaggioCampoNativo) e));
+        conversioneMap.put(MessaggioCategoria.class, (e) -> this.getCategoriaDescription((MessaggioCategoria) e));
+        conversioneMap.put(MessaggioGerarchia.class, (e) -> this.getGerarchiaDescription((MessaggioGerarchia) e));
+        conversioneMap.put(MessaggioSistema.class, (e) -> this.getSistemaDescription((MessaggioSistema) e));
+        conversioneMap.put(MessaggioIntervallo.class, (e) -> this.getIntervalloDescription((MessaggioIntervallo) e));
+        conversioneMap.put(MessaggioOrario.class, (e) -> this.getOrarioDescription((MessaggioOrario) e));
+        conversioneMap.put(MessaggioParametri.class, (e) -> this.getParametriDescription((MessaggioParametri) e));
+        conversioneMap.put(MessaggioOfferta.class, (e) -> this.getOffertaDescription((MessaggioOfferta) e));
+        conversioneMap.put(MessaggioOfferte.class, (e) -> this.getOfferteDescription((MessaggioOfferte) e));
+        conversioneMap.put(MessaggioIncontro.class, (e) -> this.getIncontroDescription((MessaggioIncontro) e));
+        conversioneMap.put(MessaggioScambio.class, (e) -> this.getScambioDescription((MessaggioScambio) e));
+        conversioneMap.put(MessaggioErrore.class, (e) -> ((MessaggioErrore) e).getMessage());
+        conversioneMap.put(MessaggioGenerale.class, (e) -> ((MessaggioGenerale) e).getMessage());
+        conversioneMap.put(MessaggioAlternativa.class, (e) -> ((MessaggioAlternativa) e).getMessage());
+        //conversioneMap.put(CustomMessage.class, (e) -> ((CustomMessage) e).getMessage());
+    }
 
     private void printText(String text) {
         System.out.println(text);
@@ -16,6 +37,10 @@ public class View {
 
     public void notify(String text) {
         this.printText(text);
+    }
+
+    public void notify(@NotNull Messaggio m) {
+        this.notify(this.conversioneMap.get(m.getClass()).apply(m));
     }
 
     public String getCampoDescription(MessaggioCampoNativo msg){
@@ -142,9 +167,6 @@ public class View {
         return sb.toString();
     }
 
-    public String getGiornoDescription(MessaggioGiorno msg){
-       return msg.getNomeGiorno();
-    }
 
     public String getParametriDescription(MessaggioParametri msg){
         StringBuffer stb = new StringBuffer();
@@ -172,6 +194,57 @@ public class View {
         stb.append("\nScadenza: " + msg.getScadenza());
         return stb.toString();
     }
+
+    public String getOffertaDescription(MessaggioOfferta msg){
+        StringBuffer stb = new StringBuffer();
+        stb.append(" Categoria: " + msg.getNomeCategoria() +"\n");
+        for(CampoNativo c: msg.getCompliazioni().keySet()){
+            stb.append("\t"+c.getNomeCampo() + ": " + msg.getCompliazioni().get(c) + "\n");
+        }
+        stb.append("\tStato dell'offerta: " + msg.getStatoAttuale().getState());
+
+        return stb.toString();
+    }
+
+    public String getOffertaAutoreDescription (MessaggioOfferta msg){
+        StringBuffer stb=new StringBuffer();
+        stb.append(this.getOffertaDescription(msg));
+        stb.append("\n\tAutore offerta: " + msg.getNomeFruitore()+"\n");
+        return stb.toString();
+    }
+
+    public String getOfferteDescription(MessaggioOfferte msg){
+        StringBuffer s=new StringBuffer();
+        int count=0;
+        if(msg.getListaOfferte().size()==0){
+            s.append("Non ci sono offerte");
+        }
+        else{
+            for(Offerta o:msg.getListaOfferte()){
+                s.append("\n"+count +") " );
+                s.append(this.getOffertaDescription((MessaggioOfferta) o.getOffertaDefinition()));
+                count++;
+            }
+        }
+
+        return s.toString();
+    }
+
+    public String getIncontroDescription(MessaggioIncontro msg){
+            StringBuffer sb=new StringBuffer();
+            sb.append("\nIl luogo proposto è: "+ msg.getLuogo()+ " alle ore: "+this.getOrarioDescription((MessaggioOrario) msg.getOra().getOrarioDefinition())+"\nIn data: "+ msg.getData());
+            return sb.toString();
+    }
+
+    public String getScambioDescription(MessaggioScambio msg){
+        StringBuffer sb=new StringBuffer();
+        sb.append("Offerta offerente: \n");
+        sb.append(this.getOffertaAutoreDescription((MessaggioOfferta) msg.getOfferente().getOffertaDefinition()));
+        sb.append("\n\tOfferta con cui si vorrebbe effettuare lo scambio:\n");
+        sb.append(this.getOffertaAutoreDescription((MessaggioOfferta) msg.getRicevente().getOffertaDefinition()));
+        return sb.toString();
+    }
+
 
 
 

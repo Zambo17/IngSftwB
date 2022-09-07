@@ -84,7 +84,7 @@ public class Scambio {
                 }
                 else{
                     System.out.println("Ti è stato proposto di scambiare questa offerta:\n"+this.offerente.toStringOfferta()+"\nCon questa tua offerta: \n"+ricevente.toStringOfferta());
-                    int rispondi=Utilita.leggiIntero("Scrivi 1 se vuoi risponeder a questa offerta, 0 altrimenti",0,1);
+                    int rispondi=Utilita.leggiIntero("Scrivi 1 se vuoi rispondere a questa offerta, 0 altrimenti",0,1);
                     if(rispondi==1){
                         PropostaIncontro nuovaPropposta=PropostaIncontro.creaProposta(f.getUsername(),ps);
                         this.cambiaProposta(nuovaPropposta);
@@ -165,9 +165,9 @@ public class Scambio {
     public String vediOfferteScambio(){
         StringBuffer sb=new StringBuffer();
         sb.append("Offerta offerente: \n");
-        sb.append(offerente.toStringOfferta());
+        sb.append(offerente.toStringOffertaConAutore());
         sb.append("\n\tOfferta con cui si vorrebbe effettuare lo scambio:\n");
-        sb.append(ricevente.toStringOfferta());
+        sb.append(ricevente.toStringOffertaConAutore());
         return sb.toString();
     }
 }

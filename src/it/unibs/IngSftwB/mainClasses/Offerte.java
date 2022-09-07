@@ -10,7 +10,7 @@ public class Offerte {
     private ArrayList<Offerta> listaOfferte= new ArrayList<Offerta>();
 
     /**
-     * costruttore della calsse
+     * costruttore della classe
      * @param _offerteAccoppiate arraylist delle offerte
      */
     public Offerte(ArrayList<Offerta> _offerteAccoppiate) {
@@ -152,7 +152,7 @@ public class Offerte {
                 System.out.println(tosee.toStringOfferte());
             }
             else{
-                System.out.println("non ci sono offerte aperte realtive a questa categoria");
+                System.out.println("Non ci sono offerte aperte relative a questa categoria");
             }
         }
         else{
@@ -163,7 +163,7 @@ public class Offerte {
     /**
      * metodo che restituisce le offerte con l'offerta daScambiare può proporre uno scambio
      * @param daScambiare offerta di cui si vogliono le possibili offerte con cui scambiarla
-     * @return le offerte  con cui si può fare lo scambio
+     * @return le offerte con cui si può fare lo scambio
      */
     public Offerte offerteScambiabili(Offerta daScambiare){
         ArrayList <Offerta> offerteScambiabili=new ArrayList<Offerta>();

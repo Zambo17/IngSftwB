@@ -5,12 +5,22 @@ package it.unibs.IngSftwB.mainClasses;
  * @ author Jacopo Tedeschi, Enrico Zambelli
  */
 public enum StatoOfferta {
-    RITIRATA,
-    ACCOPPIATA,
-    SELEZIONATA,
-    INSCAMBIO,
-    CHIUSA,
-    APERTA;
+    RITIRATA("aperta"),
+    ACCOPPIATA("accoppiata"),
+    SELEZIONATA("selezionata"),
+    INSCAMBIO("in scambio"),
+    CHIUSA("chiusa"),
+    APERTA("aperta");
+
+    private String stato;
+
+    StatoOfferta(String stato) {
+        this.stato=stato;
+    }
+
+    public String getState() {
+        return stato;
+    }
 
     /**
      * metodo che restituisce la stringa che descrive lo stato

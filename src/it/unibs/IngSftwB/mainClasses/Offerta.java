@@ -1,5 +1,8 @@
 package it.unibs.IngSftwB.mainClasses;
 
+import it.unibs.IngSftwB.Controller.Messaggio;
+import it.unibs.IngSftwB.Controller.MessaggioOfferta;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -182,6 +185,10 @@ public class Offerta {
      */
     public String getNomeFruitore() {
         return nomeFruitore;
+    }
+
+    public Messaggio getOffertaDefinition(){
+        return new MessaggioOfferta(this.nomeCategoria,this.compliazioni,this.statoAttuale,this.nomeFruitore,this.nomeRadice);
     }
 
 }

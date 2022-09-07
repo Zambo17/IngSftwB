@@ -6,13 +6,11 @@ import java.util.ArrayList;
 
 public class MessaggioCategoria implements Messaggio {
 
-    private MessaggioCampoNativo msg;
     private String nome;
     private String descrizione;
     private ArrayList<CampoNativo> campiNativi= new ArrayList <CampoNativo>();
 
-    public MessaggioCategoria(String _nome, String _descrizione, ArrayList <CampoNativo> _campiNativi, MessaggioCampoNativo msg) {
-        this.msg=msg;
+    public MessaggioCategoria(String _nome, String _descrizione, ArrayList <CampoNativo> _campiNativi) {
         this.nome=_nome;
         this.descrizione=_descrizione;
         this.campiNativi=_campiNativi;
@@ -30,8 +28,5 @@ public class MessaggioCategoria implements Messaggio {
         return campiNativi;
     }
 
-    public MessaggioCampoNativo getMsg() {
-        return msg;
-    }
 
 }

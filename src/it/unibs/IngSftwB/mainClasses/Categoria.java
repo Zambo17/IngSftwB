@@ -1,6 +1,9 @@
 package it.unibs.IngSftwB.mainClasses;
 
 
+import it.unibs.IngSftwB.Controller.Messaggio;
+import it.unibs.IngSftwB.Controller.MessaggioCategoria;
+
 import java.util.ArrayList;
 
 /**
@@ -99,6 +102,10 @@ public class Categoria {
      */
     public String getDescrizione() {
         return descrizione;
+    }
+
+    public Messaggio getCategoriaDefinition(){
+        return new MessaggioCategoria(this.nome,this.descrizione,this.campiNativi);
     }
 }
 
