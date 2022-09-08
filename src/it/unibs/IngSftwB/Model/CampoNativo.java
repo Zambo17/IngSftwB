@@ -1,4 +1,4 @@
-package it.unibs.IngSftwB.mainClasses;
+package it.unibs.IngSftwB.Model;
 //v44444
 import it.unibs.IngSftwB.Controller.Messaggio;
 import it.unibs.IngSftwB.Controller.MessaggioCampoNativo;

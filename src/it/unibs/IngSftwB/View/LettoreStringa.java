@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class LettoreStringa {
 
-    public static String leggiStringaNonVuota(MessaggioStampabile messaggio) {
+    public String leggiStringaNonVuota(MessaggioStampabile messaggio) {
         boolean finito = false;
         String lettura = null;
         Scanner lettore = new Scanner(System.in);

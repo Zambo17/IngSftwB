@@ -1,6 +1,6 @@
 package it.unibs.IngSftwB.Controller;
 
-import it.unibs.IngSftwB.mainClasses.CampoNativo;
+import it.unibs.IngSftwB.Model.CampoNativo;
 
 import java.util.ArrayList;
 

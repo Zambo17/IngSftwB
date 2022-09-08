@@ -1,7 +1,6 @@
-package it.unibs.IngSftwB.mainClasses;
+package it.unibs.IngSftwB.Model;
 
 import it.unibs.IngSftwB.Controller.Messaggio;
-import it.unibs.IngSftwB.Controller.MessaggioIntervallo;
 import it.unibs.IngSftwB.Controller.MessaggioOrario;
 
 /**

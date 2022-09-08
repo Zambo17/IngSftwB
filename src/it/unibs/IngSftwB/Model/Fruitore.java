@@ -1,4 +1,4 @@
-package it.unibs.IngSftwB.mainClasses;
+package it.unibs.IngSftwB.Model;
 
 /**
  * Classe per la gestione del fruitore

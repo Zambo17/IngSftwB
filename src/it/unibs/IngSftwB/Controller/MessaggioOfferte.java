@@ -1,6 +1,6 @@
 package it.unibs.IngSftwB.Controller;
 
-import it.unibs.IngSftwB.mainClasses.Offerta;
+import it.unibs.IngSftwB.Model.Offerta;
 
 import java.util.ArrayList;
 

@@ -1,6 +1,6 @@
 package it.unibs.IngSftwB.Controller;
 
-import it.unibs.IngSftwB.mainClasses.Orario;
+import it.unibs.IngSftwB.Model.Orario;
 
 public class MessaggioIncontro implements Messaggio {
 

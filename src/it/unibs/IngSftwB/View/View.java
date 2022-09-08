@@ -1,7 +1,7 @@
 package it.unibs.IngSftwB.View;
 
 import it.unibs.IngSftwB.Controller.*;
-import it.unibs.IngSftwB.mainClasses.*;
+import it.unibs.IngSftwB.Model.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -127,7 +127,7 @@ public class View {
     public String getSistemaDescription(MessaggioSistema msg){
         StringBuffer stb=new StringBuffer();
         if(msg.getListaGerarchie().isEmpty()){
-            stb.append("Il sistema non ha alcuna gerarchia");
+            stb.append(MessaggioErrore.NO_GERARCHIE.getMessage());
             return stb.toString();
         }
         int i=1;
@@ -217,7 +217,7 @@ public class View {
         StringBuffer s=new StringBuffer();
         int count=0;
         if(msg.getListaOfferte().size()==0){
-            s.append("Non ci sono offerte");
+            s.append(MessaggioErrore.NO_OFFERTE.getMessage());
         }
         else{
             for(Offerta o:msg.getListaOfferte()){

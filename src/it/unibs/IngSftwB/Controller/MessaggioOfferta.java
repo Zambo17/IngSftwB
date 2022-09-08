@@ -1,9 +1,8 @@
 package it.unibs.IngSftwB.Controller;
 
-import it.unibs.IngSftwB.mainClasses.CampoNativo;
-import it.unibs.IngSftwB.mainClasses.StatoOfferta;
+import it.unibs.IngSftwB.Model.CampoNativo;
+import it.unibs.IngSftwB.Model.StatoOfferta;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MessaggioOfferta implements Messaggio{

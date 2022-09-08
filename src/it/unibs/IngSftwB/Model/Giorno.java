@@ -1,4 +1,4 @@
-package it.unibs.IngSftwB.mainClasses;
+package it.unibs.IngSftwB.Model;
 
 /**
  * Classe enum per la gestione dei giorni

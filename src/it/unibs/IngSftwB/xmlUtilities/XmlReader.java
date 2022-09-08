@@ -1,7 +1,7 @@
 package it.unibs.IngSftwB.xmlUtilities;
 
 
-import it.unibs.IngSftwB.mainClasses.*;
+import it.unibs.IngSftwB.Model.*;
 
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;

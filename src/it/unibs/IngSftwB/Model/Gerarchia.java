@@ -1,4 +1,4 @@
-package it.unibs.IngSftwB.mainClasses;
+package it.unibs.IngSftwB.Model;
 
 
 import it.unibs.IngSftwB.Controller.Messaggio;

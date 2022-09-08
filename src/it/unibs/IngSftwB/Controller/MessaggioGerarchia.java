@@ -1,9 +1,8 @@
 package it.unibs.IngSftwB.Controller;
 
-import it.unibs.IngSftwB.mainClasses.Categoria;
+import it.unibs.IngSftwB.Model.Categoria;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class MessaggioGerarchia implements Messaggio{
 

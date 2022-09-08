@@ -1,7 +1,7 @@
 package it.unibs.IngSftwB.Controller;
 
-import it.unibs.IngSftwB.mainClasses.Giorno;
-import it.unibs.IngSftwB.mainClasses.Intervallo;
+import it.unibs.IngSftwB.Model.Giorno;
+import it.unibs.IngSftwB.Model.Intervallo;
 
 import java.util.ArrayList;
 
