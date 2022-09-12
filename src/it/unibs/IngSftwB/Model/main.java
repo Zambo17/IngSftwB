@@ -17,13 +17,13 @@ public class main {
         DatiUtenti x=new DatiUtenti(l);
         File fileUtenti = new File("listaUtenti.xml");
         if(fileUtenti.exists() && !fileUtenti.isDirectory()) {
-            x=XmlReader.leggiUtenti("listaUtenti.xml");
+            x= XmlRead.leggiUtenti("listaUtenti.xml");
         }
         File fileScambi=new File("scambi.xml");
         ArrayList<Scambio> ls=new ArrayList<>();
         ListaScambi scambi=new ListaScambi(ls);
         if(fileScambi.exists() && !fileScambi.isDirectory()){
-           scambi=XmlReader.leggiScambi("scambi.xml");
+           scambi= XmlRead.leggiScambi("scambi.xml");
         }
         Utente acceduto=x.menuAccesso();
         ArrayList <Gerarchia> gs=new ArrayList<>();
@@ -32,21 +32,21 @@ public class main {
         File fileParametri=new File("parametriSalvati.xml");
         boolean parametriFatti=true;
         if(fileParametri.exists() && !fileParametri.isDirectory()){
-            param=XmlReader.leggiParametri("parametriSalvati.xml");
+            param= XmlRead.leggiParametri("parametriSalvati.xml");
         }
         else{
             parametriFatti=false;
         }
         File fileSistema = new File("sistema.xml");
         if(fileSistema.exists() && !fileSistema.isDirectory()) {
-            sistema= XmlReader.readSis("sistema.xml");
+            sistema= XmlRead.readSis("sistema.xml");
         }
         if(!parametriFatti && acceduto instanceof Configuratore){
             int sceltaPar=Utilita.leggiIntero("Non sono presenti parametri\n premere 1 per inserirli tramite l'applicazione\n premere 2 per inserirli tramite file xml",1,2);
             if(sceltaPar==2){
                 String nomefilePar=Utilita.leggiStringaNonVuota("Inserire il percorso del file per esempio: C:\\Users\\apote\\Desktop\\testxml\\testing.xml\nInserisci il nome del file: ");
                 if(Utilita.fileExists(nomefilePar) && Utilita.isXmlFile(nomefilePar)){
-                    param=XmlReader.leggiParametri(nomefilePar);
+                    param= XmlRead.leggiParametri(nomefilePar);
                 }
                 else{
                     System.out.println("File non esistente o di un formato sbagliato");
@@ -61,7 +61,7 @@ public class main {
         ArrayList <Offerta> listaOff=new ArrayList<>();
         File fileOfferte = new File("offerte.xml");
         if(fileOfferte.exists() && !fileOfferte.isDirectory()) {
-            listaOff.addAll(XmlReader.leggiOfferte("offerte.xml").getListaOfferte());
+            listaOff.addAll(XmlRead.leggiOfferte("offerte.xml").getListaOfferte());
         }
         Offerte offerte=new Offerte(listaOff);
         if(scambi!=null && offerte.getListaOfferte().size()!=0){

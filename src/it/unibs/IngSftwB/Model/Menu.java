@@ -1,5 +1,4 @@
 package it.unibs.IngSftwB.Model;
-import it.unibs.IngSftwB.xmlUtilities.*;
 
 import javax.xml.stream.XMLStreamException;
 
@@ -242,7 +241,7 @@ public class Menu {
             case 1:
                 String nomefileSis=Utilita.leggiStringaNonVuota("Inserire il percorso del file per esempio: C:\\Users\\apote\\Desktop\\testxml\\testing.xml\nInserisci il nome del file: ");
                 if(Utilita.fileExists(nomefileSis) && Utilita.isXmlFile(nomefileSis)){
-                    c.setSis(XmlReader.readSis(nomefileSis));
+                    c.setSis(XmlRead.readSis(nomefileSis));
                 }
                 else{
                     System.out.println("File non esistente o di un formato sbagliato");
@@ -251,7 +250,7 @@ public class Menu {
             case 2:
                 String nomefilePar=Utilita.leggiStringaNonVuota("Inserire il percorso del file per esempio: C:\\Users\\apote\\Desktop\\testxml\\testing.xml\nInserisci il nome del file: ");
                 if(Utilita.fileExists(nomefilePar) && Utilita.isXmlFile(nomefilePar)){
-                    c.setParametri(XmlReader.leggiParametri(nomefilePar));
+                    c.setParametri(XmlRead.leggiParametri(nomefilePar));
                 }
                 else{
                     System.out.println("File non esistente o di un formato sbagliato");

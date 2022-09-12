@@ -22,7 +22,4 @@ public class MessaggioGerarchia implements Messaggio{
         return radice;
     }
 
-
-
-
 }
