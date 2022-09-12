@@ -3,10 +3,10 @@ package it.unibs.IngSftwB.View;
 import it.unibs.IngSftwB.Controller.*;
 import it.unibs.IngSftwB.Model.*;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 
@@ -32,16 +32,38 @@ public class View {
         //conversioneMap.put(CustomMessage.class, (e) -> ((CustomMessage) e).getMessage());
     }
 
-    private void printText(String text) {
+
+
+    private void stampaTesto(String text) {
         System.out.println(text);
     }
 
-    public void notify(String text) {
-        this.printText(text);
+    public void notifica(String text) {
+        this.stampaTesto(text);
     }
 
-    public void notify(@NotNull Messaggio m) {
-        this.notify(this.conversioneMap.get(m.getClass()).apply(m));
+    public void notifica(@NotNull Messaggio m) {
+        this.notifica(this.conversioneMap.get(m.getClass()).apply(m));
+    }
+
+    public <T> void stampaLista (@NotNull List<T> lista, Function<T, Messaggio> function){
+        lista.forEach(e -> this.notifica(function == null ? new MessaggioCustom(e.toString()) : function.apply(e)));
+    }
+
+    public <T> T scegli(Messaggio messaggio, @NotNull List<T> opzioni, Function<T, String> funzione) {
+        this.notifica(messaggio);
+        return this.scegli(opzioni, funzione);
+    }
+
+    public <T> T scegli(@NotNull List<T> opzioni, Function<T, String> funzione) {
+        int i = 0;
+        for (T o : opzioni)
+            this.notifica(i++ + ") " + (funzione == null ? o.toString() : funzione.apply(o)));
+
+        int input = -1;
+        LettoreIntero lettoreIntero = new LettoreIntero();
+        input = lettoreIntero.leggiIntero(MessaggioGenerale.SELEZIONA_INDICE,0,opzioni.size());
+        return opzioni.get(input);
     }
 
     public String getCampoDescription(MessaggioCampoNativo msg){

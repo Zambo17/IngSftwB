@@ -168,7 +168,7 @@ public class DatiUtenti {
     }
 
     /**
-     * Metodo per làaggiunta di un configuratore alla lista degli utenti
+     * Metodo per l'aggiunta di un configuratore alla lista degli utenti
      *
      * @param name     username dell'utente
      * @param password password dell'utente
