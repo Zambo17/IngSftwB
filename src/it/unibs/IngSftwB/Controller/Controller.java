@@ -1,5 +1,6 @@
 package it.unibs.IngSftwB.Controller;
 
+import it.unibs.IngSftwB.Model.Applicazione;
 import it.unibs.IngSftwB.View.LettoreIntero;
 import it.unibs.IngSftwB.View.LettoreStringa;
 import it.unibs.IngSftwB.View.View;
@@ -11,10 +12,12 @@ import java.util.function.Function;
 public class Controller {
 
     private View view;
-    /**
-     * private Applicazione app;
-     */
 
+    private Applicazione app;
+
+    public Applicazione getApp() {
+        return app;
+    }
 
     public View getView() {
         return view;

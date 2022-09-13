@@ -21,7 +21,7 @@ public class Utente {
     }
 
     /**
-     * Metodo che verifica se due utenti hanno lo stesso nome utente o la stessa password
+     * Metodo che verifica se due utenti hanno lo stesso nome utente e la stessa password
      * @param u1 primo utente del confronto
      * @param u2 secondo utente del confronto
      * @return
