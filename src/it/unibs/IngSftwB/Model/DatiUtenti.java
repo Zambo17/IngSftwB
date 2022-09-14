@@ -136,7 +136,7 @@ public class DatiUtenti {
     /**
      * Metodo per il controllo delle credenziali predefinite
      *
-     * @param u utente del quale si vuole verificare l'inseriemnto delle credenziali predefinite
+     * @param u utente del quale si vuole verificare l'inserimento delle credenziali predefinite
      * @return true se le credenziali predefinite sono corrette,false altrimenti
      */
     public boolean checkConf(Utente u) {
@@ -168,7 +168,7 @@ public class DatiUtenti {
     }
 
     /**
-     * Metodo per làaggiunta di un configuratore alla lista degli utenti
+     * Metodo per l'aggiunta di un configuratore alla lista degli utenti
      *
      * @param name     username dell'utente
      * @param password password dell'utente

@@ -97,6 +97,7 @@ public class Sistema {
         return radici;
     }
 
+    //Da spostare nella view
 
     /**
      * Metodo per la visualizzazione delle radici del sistema
