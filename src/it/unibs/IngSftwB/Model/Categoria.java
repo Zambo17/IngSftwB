@@ -104,6 +104,16 @@ public class Categoria {
         return descrizione;
     }
 
+    public static ArrayList<CampoNativo> generaCampiIniziali(){
+        CampoNativo stato_di_conservazione=new CampoNativo("Stato di conservazione",true);
+        CampoNativo descrizione_libera=new CampoNativo("Descrizione libera",false);
+        ArrayList <CampoNativo> campiIniziali=new ArrayList<>();
+        campiIniziali.add(stato_di_conservazione);
+        campiIniziali.add(descrizione_libera);
+
+        return campiIniziali;
+    }
+
     public Messaggio getCategoriaDefinition(){
         return new MessaggioCategoria(this.nome,this.descrizione,this.campiNativi);
     }

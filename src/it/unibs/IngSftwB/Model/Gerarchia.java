@@ -55,7 +55,6 @@ public class Gerarchia {
      * @return finale la gerarchia creata
      */
     public static Gerarchia creaRamo(String nomeRadice){
-        HashMap<Categoria, Categoria> links=new HashMap<Categoria,Categoria>();
         System.out.println("Inserisci i dati della gerarchia radice");
         CampoNativo primo=new CampoNativo("Stato di conservazione",true);
         CampoNativo primos=new CampoNativo("Descrizione libera",false);
@@ -180,6 +179,7 @@ public class Gerarchia {
         }
         return s.toString();
     }
+
 
     /**
      * Metodo per impostare il valore della radice
@@ -311,6 +311,14 @@ public class Gerarchia {
             }
         }
         return padri;
+    }
+
+    public ArrayList<String> listaNomi(){
+        ArrayList<String> s=new ArrayList<>();
+        for(Categoria x: this.ramo.keySet()){
+            s.add(x.getNome());
+        }
+        return s;
     }
 
     public Messaggio getGerarchiaDefinition(){

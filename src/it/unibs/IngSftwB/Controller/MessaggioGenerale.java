@@ -10,7 +10,11 @@ public enum MessaggioGenerale implements MessaggioStampabile {
     ACCESSO_CORRETTO("Accesso eseguito con successo"),
     CREDENZIALI_ERRATE("Le credenziali inserite non sono corrette, hai in totale tre tentativi"),
     ACCESSO_FALLITO("Accesso fallito chiudere il programma"),
-
+    NOME_CAMPO("Inserisci nome campo: "),
+    CAMPO_GIA_PRESENTE("Il nome inserito non è valido, inserire un nuovo nome:"),
+    DESCRIZIONE_CATEGORIA("Inserisci la descrizione della categoria:"),
+    NOME_RADICE("Inserisci il nome della radice della gerarchia:"),
+    NOME_CATEGORIA_PRESENTE("Questo nome è già presente"),
     INSERISCI_NOME("Inserisci il tuo nome: ");
 
 
