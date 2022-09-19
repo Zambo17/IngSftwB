@@ -1,6 +1,10 @@
 package it.unibs.IngSftwB.Model;
 
 
+import it.unibs.IngSftwB.Controller.Messaggio;
+import it.unibs.IngSftwB.Controller.MessaggioCategoria;
+import it.unibs.IngSftwB.Controller.MessaggioSistema;
+
 import java.util.ArrayList;
 
 /**
@@ -171,6 +175,10 @@ public class Sistema {
                 isFoglia=true;
         }
         return isFoglia;
+    }
+
+    public Messaggio getSistemaDefinition(){
+        return new MessaggioSistema(this.listaGerarchie);
     }
 
 }

@@ -28,6 +28,7 @@ public class Controller {
         this.view.notifica(messaggio);
     }
 
+
     public <T> void comunicaListaAllaView(List<T> toPrint, Function<T, Messaggio> toApply) {
         this.view.stampaLista(toPrint, toApply);
     }
@@ -50,7 +51,7 @@ public class Controller {
         do {
             username = this.richiediStringaView(MessaggioGenerale.NUOVO_USERNAME);
             if (this.getApp().getDatiUtenti().checkName(username)) {
-                this.comunicaAllaView(MessaggioGenerale.NOME_NON_DISPONIBILE);
+                this.comunicaAllaView(MessaggioErrore.NOME_NON_DISPONIBILE);
             }
         } while (this.getApp().getDatiUtenti().checkName(username));
 
@@ -84,11 +85,11 @@ public class Controller {
                 return temp;
             }
             else {
-                controller.comunicaAllaView(MessaggioGenerale.CREDENZIALI_ERRATE);
+                controller.comunicaAllaView(MessaggioErrore.CREDENZIALI_ERRATE);
             }
         }
 
-        controller.comunicaAllaView(MessaggioGenerale.ACCESSO_FALLITO);
+        controller.comunicaAllaView(MessaggioErrore.ACCESSO_FALLITO);
         return null;
     }
 
@@ -104,3 +105,4 @@ public class Controller {
 
 
 }
+

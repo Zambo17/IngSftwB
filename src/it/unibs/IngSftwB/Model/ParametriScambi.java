@@ -1,6 +1,10 @@
 package it.unibs.IngSftwB.Model;
 
 
+import it.unibs.IngSftwB.Controller.Messaggio;
+import it.unibs.IngSftwB.Controller.MessaggioCategoria;
+import it.unibs.IngSftwB.Controller.MessaggioParametri;
+
 import java.util.ArrayList;
 
 /**
@@ -388,6 +392,54 @@ public class ParametriScambi {
                 this.addScadenza();
                 break;
         }
+    }
+
+    public Messaggio getParametriDefinition(){
+        return new MessaggioParametri(this.piazza,this.luoghi,this.giorni,this.intervalli,this.scadenza);
+    }
+
+
+    public  void addIntervalloNuovo() {
+        boolean intervalloValido = false;
+        Orario inizio;
+        Orario fine;
+        Intervallo intervallo = null;
+        do {
+            Orario[] orari = new Orario[2];
+            boolean finito = false;
+            do {
+                int ora = Utilita.leggiIntero("Inserisci l'ora dell'inizio dell'intervallo(compresa tra 0 e 24):");
+                int minuti = Utilita.leggiIntero("Inserisci i minuti dell'inizio dell'intervallo(0 oppure 30):");
+                inizio = new Orario(ora, minuti);
+                if (inizio.orarioValido()) {
+                    finito = true;
+                } else {
+                    System.out.println("L'orario inserito non è valido");
+                }
+            } while (!finito);
+            finito = false;
+            do {
+                int ora = Utilita.leggiIntero("Inserisci l'ora della fine dell'intervallo(compresa tra 0 e 24):");
+                int minuti = Utilita.leggiIntero("Inserisci i minuti della fine dell'intervallo(0 oppure 30):");
+                fine = new Orario(ora, minuti);
+                if (fine.orarioValido()) {
+                    finito = true;
+                } else {
+                    System.out.println("L'orario inserito non è valido");
+                }
+            } while (!finito);
+            orari[0] = inizio;
+            orari[1] = fine;
+            intervallo = Intervallo.creaIntervallo(orari);
+            if (!intervallo.intervalloValido()) {
+                System.out.println("L'intervallo inserito non è valido");
+
+            } else {
+                intervalloValido = true;
+            }
+        } while (!intervalloValido);
+        this.intervalli.add(intervallo);
+
     }
 
 

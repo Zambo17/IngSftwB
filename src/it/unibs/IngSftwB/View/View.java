@@ -50,6 +50,8 @@ public class View {
         lista.forEach(e -> this.notifica(function == null ? new MessaggioCustom(e.toString()) : function.apply(e)));
     }
 
+
+
     public <T> T scegli(Messaggio messaggio, @NotNull List<T> opzioni, Function<T, String> funzione) {
         this.notifica(messaggio);
         return this.scegli(opzioni, funzione);
@@ -146,6 +148,10 @@ public class View {
         }while(!figliAlti.isEmpty());
         return s.toString();
     }
+
+    public void stampaCategoriaDescription(MessaggioCategoria msg){
+        this.notifica(this.getCategoriaDescription(msg));
+    }
     //da sistemare
     public String getSistemaDescription(MessaggioSistema msg){
         StringBuffer stb=new StringBuffer();
@@ -161,6 +167,10 @@ public class View {
             i++;
         }
         return stb.toString();
+    }
+
+    public void stampaSistemaDescription(MessaggioSistema msg){
+        this.notifica(this.getSistemaDescription(msg));
     }
 
     public String getOrarioDescription(MessaggioOrario msg){
@@ -216,6 +226,10 @@ public class View {
 
         stb.append("\nScadenza: " + msg.getScadenza());
         return stb.toString();
+    }
+
+    public void stampaParametriDescription(MessaggioParametri msg){
+        this.notifica(this.getParametriDescription(msg));
     }
 
     public String getOffertaDescription(MessaggioOfferta msg){

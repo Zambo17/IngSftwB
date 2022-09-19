@@ -1,9 +1,6 @@
 package it.unibs.IngSftwB.Controller.AzioniConfiguratore;
 
-import it.unibs.IngSftwB.Controller.AzioneUtente;
-import it.unibs.IngSftwB.Controller.Controller;
-import it.unibs.IngSftwB.Controller.MessaggioAlternativa;
-import it.unibs.IngSftwB.Controller.MessaggioGenerale;
+import it.unibs.IngSftwB.Controller.*;
 import it.unibs.IngSftwB.Model.*;
 
 import java.util.ArrayList;
@@ -11,7 +8,7 @@ import java.util.ArrayList;
 public class InserisciGerarchia implements AzioneUtente {
 
     public void eseguiAzione(Controller controller, Utente utente){
-        /*
+
         Applicazione app=controller.getApp();
 
         String nomeRadice;
@@ -22,7 +19,7 @@ public class InserisciGerarchia implements AzioneUtente {
                 nomeRadiceNuovo=true;
             }
             else
-                controller.comunicaAllaView(MessaggioGenerale.NOME_CATEGORIA_PRESENTE);
+                controller.comunicaAllaView(MessaggioErrore.NOME_CATEGORIA_PRESENTE);
         }while(!nomeRadiceNuovo);
 
         Gerarchia finale= new Gerarchia();
@@ -38,51 +35,49 @@ public class InserisciGerarchia implements AzioneUtente {
             String nomePadre;
             Categoria padre = new Categoria("","",null);
             do{
-                nomePadre=Utilita.leggiStringaNonVuota("Inserisci il nome del padre:");
+                nomePadre=controller.richiediStringaView(MessaggioGenerale.NOME_PADRE);
                 if(finale.checkPadreNome(nomePadre)){
                     nomePadreValido=true;
                     padre=finale.findPadre(nomePadre);
                 }
                 else {
-                    System.out.println("Tale padre non esiste, scegli uno dei possibili padri:");
-                    System.out.println(finale.vediPadri());
+                    controller.comunicaAllaView(MessaggioErrore.PADRE_NON_ESISTE);
+                    controller.comunicaListaAllaView(finale.listaNomi(),null);
                 }
-            }while(nomePadreValido==false);
+            }while(!nomePadreValido);
             boolean nomeNuovo=false;
-            String nomeCatgoria;
+            String nomeCategoria;
             do{
-                nomeCatgoria=Utilita.leggiStringaNonVuota("Inserisci il nome della categoria:");
-                if(finale.checkNomeNuovo(nomeCatgoria)){
+                nomeCategoria=controller.richiediStringaView(MessaggioGenerale.INSERISCI_CATEGORIA);
+                if(finale.checkNomeNuovo(nomeCategoria)){
                     nomeNuovo=true;
                 }
                 else{
-                    System.out.println("Nome non valido");
+                    controller.comunicaAllaView(MessaggioErrore.NOME_CATEGORIA_PRESENTE);
                 }
             }while(!nomeNuovo);
 
             int figli=finale.numFigli(padre);
             if(figli==0){
-                System.out.println("Si devono inserire almeno 2 sottocategorie perchè il padre non ne ha nessuna per ora");
-                finale.ramo.put(Categoria.creaCategoria(finale.findPadre(nomePadre).getCampiNativi(),nomeCatgoria),finale.findPadre(nomePadre));
+                controller.comunicaAllaView(MessaggioGenerale.NUMERO_FIGLI);
+                finale.getRamo().put(this.creaCategoria(finale.findPadre(nomePadre).getCampiNativi(),nomeCategoria,controller),finale.findPadre(nomePadre));
                 //System.out.println("inserire la seconda sottocategoria di: "+nomePadre);
-                String nomeCat2=Utilita.leggiStringaNonVuota("Inserire il nome della seconda sottocategoria di "+ nomePadre+": ");
-                finale.ramo.put(Categoria.creaCategoria(finale.findPadre(nomePadre).getCampiNativi(),nomeCat2),finale.findPadre(nomePadre));
+                String nomeCat2=controller.richiediStringaView(MessaggioGenerale.SECONDO_FIGLIO);
+                finale.getRamo().put(this.creaCategoria(finale.findPadre(nomePadre).getCampiNativi(),nomeCat2,controller),finale.findPadre(nomePadre));
             }
             else{
-                finale.ramo.put(Categoria.creaCategoria(finale.findPadre(nomePadre).getCampiNativi(),nomeCatgoria),finale.findPadre(nomePadre));
+                finale.getRamo().put(this.creaCategoria(finale.findPadre(nomePadre).getCampiNativi(),nomeCategoria,controller),finale.findPadre(nomePadre));
             }
 
-
-
-            choiceContinue=Utilita.leggiStringaNonVuota("Inserisci 1 se vuoi inserire un'altra sottocategoria, 0 altrimenti:");
+            choiceContinue=controller.richiediInteroIntervalloView(MessaggioAlternativa.NUOVA_SOTTOCATEGORIA,0,1);
         }
 
-        return finale;
-        }
+        app.getConfigurazione().getSis().getListaGerarchie().add(finale);
 
-
-         */
     }
+
+
+
 
     public String getNomeAzione(){
         return "Inserimento nuova gerarchia";

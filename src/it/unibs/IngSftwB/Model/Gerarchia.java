@@ -321,6 +321,7 @@ public class Gerarchia {
         return s;
     }
 
+
     public Messaggio getGerarchiaDefinition(){
         return new MessaggioGerarchia(this.ramo,this.radice);
     }

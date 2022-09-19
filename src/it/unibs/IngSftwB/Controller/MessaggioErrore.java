@@ -7,6 +7,11 @@ public enum MessaggioErrore implements MessaggioStampabile {
     ERRORE_MASSIMO("Attenzione: e' richiesto un valore minore o uguale a "),
     NO_GERARCHIE("Il sistema non ha alcuna gerarchia"),
     NO_OFFERTE("Non ci sono offerte"),
+    CREDENZIALI_ERRATE("Le credenziali inserite non sono corrette, hai in totale tre tentativi"),
+    ACCESSO_FALLITO("Accesso fallito chiudere il programma"),
+    NOME_CATEGORIA_PRESENTE("Questo nome è già presente"),
+    PADRE_NON_ESISTE("Tale padre non esiste, scegli uno dei possibili padri:"),
+    CATEGORIA_NON_PRESENTE("Categoria non presente"),
     ERRORE_STRINGA_VUOTA("La stringa inserita non può essere vuota");
 
     private String message;
