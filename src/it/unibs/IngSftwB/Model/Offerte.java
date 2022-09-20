@@ -1,5 +1,8 @@
 package it.unibs.IngSftwB.Model;
 
+import it.unibs.IngSftwB.Controller.Messaggio;
+import it.unibs.IngSftwB.Controller.MessaggioOfferte;
+
 import java.util.ArrayList;
 
 /**
@@ -187,6 +190,10 @@ public class Offerte {
      */
     public void togliOfferta(Offerta o){
         this.listaOfferte.remove(o);
+    }
+
+    public Messaggio getOfferteDefinition(){
+        return new MessaggioOfferte(this.listaOfferte);
     }
 }
 

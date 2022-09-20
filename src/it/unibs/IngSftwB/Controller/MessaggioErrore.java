@@ -12,6 +12,17 @@ public enum MessaggioErrore implements MessaggioStampabile {
     NOME_CATEGORIA_PRESENTE("Questo nome è già presente"),
     PADRE_NON_ESISTE("Tale padre non esiste, scegli uno dei possibili padri:"),
     CATEGORIA_NON_PRESENTE("Categoria non presente"),
+    ORARIO_NON_VALIDO("L'orario inserito non è valido"),
+    INTERVALLO_NON_VALIDO("L'intervallo inserito non è valido"),
+    NESSUN_ORARIO("Ci deve essere almeno un intervallo, quindi aggiungine uno"),
+    INTERVALLO_NON_PRESENTE("L'intervallo inserito non è presente"),
+    GIORNO_NON_PRESENTE("Il giorno inserito è inesistente"),
+    GIORNO_GIA_PRESENTE("Questo giorno è già stato inserito"),
+    GIORNO_ERRATO("Il giorno inserito non è presente o il dato inserito non è corretto"),
+    NESSUN_GIORNO("Deve esserci almeno un giorno quindi inserisci un giorno"),
+    LUOGO_NON_PRESENTE("Questo luogo non è tra i luoghi presenti"),
+    NO_OFFERTE_APERTE("Non ci sono offerte aperte relative a questa categoria"),
+    VISUALIZZAZIONE_OFFERTE_FALLITA("Visualizzazione offerte fallita"),
     ERRORE_STRINGA_VUOTA("La stringa inserita non può essere vuota");
 
     private String message;

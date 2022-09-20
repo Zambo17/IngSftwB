@@ -86,6 +86,7 @@ public enum Giorno {
         }
         return null;
     }
+
     public int getNumFromDay(){
         int numOfTheWeek=0;
         switch(this){

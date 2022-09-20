@@ -18,6 +18,18 @@ public enum MessaggioGenerale implements MessaggioStampabile {
     NUMERO_GERARCHIA("Inserisci il numero della gerarchia alla quale appartiene la categoria che vuoi vedere nel dettaglio: "),
     VISUALIZZA_CATEGRORIA("Inserisci il nome della categoria da visualizzare: "),
     PARAMETRI("Questi sono i parametri:\n"),
+    INSERISCI_ORA_INIZIO("Inserisci l'ora dell'inizio dell'intervallo(compresa tra 0 e 24):"),
+    INSERISCI_ORA_FINE("Inserisci l'ora della fine dell'intervallo(compresa tra 0 e 24):"),
+    INSERISCI_MINUTI_INIZIO("Inserisci i minuti dell'inizio dell'intervallo(0 oppure 30):"),
+    INSERISCI_MINUTI_FINE("Inserisci i minuti della fine dell'intervallo(0 oppure 30):"),
+    INSERISCI_GIORNO("Inserisci il nome del giorno in cui vengono effettuati gli scambi:"),
+    RIMUOVI_GIORNO("Inserisci il nome del giorno da rimuovere: "),
+    NUOVO_LUOGO("Inserisci il nuovo luogo: "),
+    RIMUOVI_LUOGO("Inserisci il nome del luogo da togliere"),
+    NESSUN_LUOGO("Deve esserci sempre almeno un luogo, quindi aggiungine uno: "),
+    NUOVA_SCADENZA("Inserisci la nuova scadenza: "),
+    OFFERTE_CATEGORIA("Le offerte di questa categoria sono: "),
+    SCELTA_CATEGORIA("Scegli il numero rispettivo alla categoria radice da cui vuoi partire a cercare la categoria voluta: "),
     INSERISCI_NOME("Inserisci il tuo nome: ");
 
 

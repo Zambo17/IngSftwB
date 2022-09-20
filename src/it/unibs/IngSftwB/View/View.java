@@ -57,6 +57,11 @@ public class View {
         return this.scegli(opzioni, funzione);
     }
 
+    public <T> int scegliIntero(Messaggio messaggio, @NotNull List<T> opzioni, Function<T, String> funzione) {
+        this.notifica(messaggio);
+        return this.scegliIntero(opzioni, funzione);
+    }
+
     public <T> T scegli(@NotNull List<T> opzioni, Function<T, String> funzione) {
         int i = 0;
         for (T o : opzioni)
@@ -66,6 +71,17 @@ public class View {
         LettoreIntero lettoreIntero = new LettoreIntero();
         input = lettoreIntero.leggiIntero(MessaggioGenerale.SELEZIONA_INDICE,0,opzioni.size());
         return opzioni.get(input);
+    }
+
+    public <T> int scegliIntero(@NotNull List<T> opzioni, Function<T, String> funzione) {
+        int i = 1;
+        for (T o : opzioni)
+            this.notifica(i++ + ") " + (funzione == null ? o.toString() : funzione.apply(o)));
+
+        int input = -1;
+        LettoreIntero lettoreIntero = new LettoreIntero();
+        input = lettoreIntero.leggiIntero(MessaggioGenerale.SELEZIONA_INDICE,0,opzioni.size());
+        return input;
     }
 
     public String getCampoDescription(MessaggioCampoNativo msg){
@@ -265,6 +281,10 @@ public class View {
         }
 
         return s.toString();
+    }
+
+    public void stampaOfferteDescription(MessaggioOfferte msg){
+        this.notifica(this.getOfferteDescription(msg));
     }
 
     public String getIncontroDescription(MessaggioIncontro msg){
