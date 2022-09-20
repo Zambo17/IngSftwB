@@ -30,6 +30,7 @@ public enum MessaggioGenerale implements MessaggioStampabile {
     NUOVA_SCADENZA("Inserisci la nuova scadenza: "),
     OFFERTE_CATEGORIA("Le offerte di questa categoria sono: "),
     SCELTA_CATEGORIA("Scegli il numero rispettivo alla categoria radice da cui vuoi partire a cercare la categoria voluta: "),
+    NUMERO_CATEGORIA("Inserisci il numero della categoria, se nessuna ti va bene premi 0 e si annulla l'operazione corrente: "),
     INSERISCI_NOME("Inserisci il tuo nome: ");
 
 

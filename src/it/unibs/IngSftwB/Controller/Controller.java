@@ -103,41 +103,46 @@ public class Controller {
         }
     }
 
-/*
+
     public Categoria[] scegliFoglia() {
+
         Categoria[] questaRadice = new Categoria[2];
+        /*
         int count = 1;
         for (Gerarchia g : this.getApp().getConfigurazione().getSis().getListaGerarchie()) {
             this.comunicaAllaView("\n" + count+")  ");
             System.out.println(g.getRadice().toStringCategoria());
             count++;
         }
+
         int sceltaGer = Utilita.leggiIntero("Scegli il numero rispettivo alla categoria radice da cui vuoi partire a cercare la categoria voluta: ", 0, this.listaGerarchie.size());
 
-        this.getView().scegliIntero(MessaggioGenerale.SCELTA_CATEGORIA,this.getApp().getConfigurazione().getSis().getListaGerarchie(),g -> this.view.stampaCategoriaDescription((MessaggioCategoria) g.getRadice().getCategoriaDefinition()));
+         */
+        int sceltaGer =this.getView().scegliIntero(MessaggioGenerale.SCELTA_CATEGORIA,this.getApp().getConfigurazione().getSis().getListaGerarchie(),e -> this.view.getCategoriaDescription((MessaggioCategoria) e.getRadice().getCategoriaDefinition()));
         boolean fineScelta = false;
-        ArrayList<Categoria> foglie=this.listaGerarchie.get(sceltaGer-1).listaFoglie();
+        ArrayList<Categoria> foglie=this.getApp().getConfigurazione().getSis().getListaGerarchie().get(sceltaGer-1).listaFoglie();
+        /*
         int countF=1;
-        System.out.println();
         for(Categoria f:foglie){
             System.out.print(countF+")  ");
             System.out.println(f.toStringCategoria());
             countF++;
         }
         int sceltaFoglia = Utilita.leggiIntero("Inserisci il numero della categoria, se nessuna ti va bene premi 0 e si annulla l'operazione corrente: ", 0, foglie.size());
+        */
+        int sceltaFoglia =this.getView().scegliIntero(MessaggioGenerale.NUMERO_CATEGORIA,foglie,e -> this.view.getCategoriaDescription((MessaggioCategoria) e.getCategoriaDefinition()));
+
         if(sceltaFoglia!=0){
             questaRadice[0]=foglie.get(sceltaFoglia-1);
-            questaRadice[1]=this.listaGerarchie.get(sceltaGer-1).getRadice();
+            questaRadice[1]=this.getApp().getConfigurazione().getSis().getListaGerarchie().get(sceltaGer-1).getRadice();
         }
         else{
-            System.out.println("Selezione categoria annullata");
-            Categoria fake=null;
+            comunicaAllaView(MessaggioErrore.ANNULLA_SELEZIONE);
             questaRadice[0]=null;
             questaRadice[1]=null;
         }
         return questaRadice;
     }
-*/
 
 }
 

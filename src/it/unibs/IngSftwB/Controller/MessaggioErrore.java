@@ -23,6 +23,7 @@ public enum MessaggioErrore implements MessaggioStampabile {
     LUOGO_NON_PRESENTE("Questo luogo non è tra i luoghi presenti"),
     NO_OFFERTE_APERTE("Non ci sono offerte aperte relative a questa categoria"),
     VISUALIZZAZIONE_OFFERTE_FALLITA("Visualizzazione offerte fallita"),
+    ANNULLA_SELEZIONE("Selezione categoria annullata"),
     ERRORE_STRINGA_VUOTA("La stringa inserita non può essere vuota");
 
     private String message;

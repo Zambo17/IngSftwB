@@ -11,7 +11,7 @@ public class StampaOfferteFoglia implements AzioneUtente {
     public void eseguiAzione(Controller controller, Utente utente) {
         Applicazione app=controller.getApp();
 
-        Categoria[] categoriaFoglia= app.getConfigurazione().getSis().scegliFoglia();
+        Categoria[] categoriaFoglia= controller.scegliFoglia();
         if(categoriaFoglia[0] != null){
             Offerte tosee=app.getOfferte().offerteFoglia(categoriaFoglia[0].getNome(), categoriaFoglia[1].getNome());
             if(tosee.getListaOfferte().size()!=0){
