@@ -80,7 +80,7 @@ public class View {
 
         int input = -1;
         LettoreIntero lettoreIntero = new LettoreIntero();
-        input = lettoreIntero.leggiIntero(MessaggioGenerale.SELEZIONA_INDICE,0,opzioni.size());
+        input = lettoreIntero.leggiIntero(MessaggioGenerale.SELEZIONA_INDICE,1,opzioni.size()+1);
         return input;
     }
 
