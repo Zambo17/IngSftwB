@@ -24,6 +24,7 @@ public enum MessaggioErrore implements MessaggioStampabile {
     NO_OFFERTE_APERTE("Non ci sono offerte aperte relative a questa categoria"),
     VISUALIZZAZIONE_OFFERTE_FALLITA("Visualizzazione offerte fallita"),
     ANNULLA_SELEZIONE("Selezione categoria annullata"),
+    FILE_NON_ESISTENTE("File non esistente o di un formato sbagliato"),
     ERRORE_STRINGA_VUOTA("La stringa inserita non può essere vuota");
 
     private String message;
