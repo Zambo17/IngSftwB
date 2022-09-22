@@ -146,9 +146,9 @@ public class DatiUtenti {
         return corretto;
     }
 
-    public boolean checkConf(String username) {
+    public boolean checkConf(String username,String password) {
         boolean corretto = false;
-        if (Utente.sameUtente(u, CREDENZIALI_PREDEFINITE))
+        if (Utente.sameUtente(CREDENZIALI_PREDEFINITE))
             corretto = true;
         return corretto;
     }
