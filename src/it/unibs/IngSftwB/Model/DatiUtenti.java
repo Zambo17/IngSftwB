@@ -32,6 +32,7 @@ public class DatiUtenti {
      *
      * @return l'utente che ha eseguito correttamente l'accesso, null se l'accesso è fallito
      */
+
     public Utente menuAccesso() {
         boolean successo = false;
         //chiedi se è un nuovo fruitore
@@ -52,7 +53,8 @@ public class DatiUtenti {
             username = Utilita.leggiStringaNonVuota("Benvenuto " + INSERISCI_NOME);
             password = Utilita.leggiStringaNonVuota(INSERISCI_PASSWORD);
         }
-        Utente temp = new Utente(username, password);
+        Utente temp = null;
+                //new Utente(username, password);
         if (this.checkConf(temp)) {
             String newUsername;
             do {
@@ -72,7 +74,8 @@ public class DatiUtenti {
             if (tentativi < 2) {
                 String nameTry = Utilita.leggiStringaNonVuota(INSERISCI_NOME);
                 String passwordTry = Utilita.leggiStringaNonVuota(INSERISCI_PASSWORD);
-                temp = new Utente(nameTry, passwordTry);
+                temp=null;
+                        //new Utente(nameTry, passwordTry);
                 if (this.checkConf(temp)) {
                     String newUsername;
                     do {
@@ -124,9 +127,9 @@ public class DatiUtenti {
     public boolean checkCredenziali(String userName, String password) {
         boolean presente = false;
 
-        Utente temp = new Utente(userName, password);
+        //Utente temp = new Utente(userName, password);
         for (Utente x : this.listaUtenti) {
-            if (Utente.sameUtente(x, temp))
+            if (x.sameUtente(userName, password))
                 presente = true;
         }
 
@@ -146,6 +149,14 @@ public class DatiUtenti {
         return corretto;
     }
 
+    public  boolean checkConf(String username,String password) {
+        boolean corretto = false;
+        if (CREDENZIALI_PREDEFINITE.sameUtente(username,password)) {
+            corretto = true;
+        }
+        return corretto;
+    }
+
     /**
      * Metodo per verificare se uno username è già usato da un altro utente
      *
@@ -156,7 +167,6 @@ public class DatiUtenti {
         boolean presente = false;
         if (CREDENZIALI_PREDEFINITE.getUsername().equals(name)) {
             presente = true;
-            return presente;
         }
         for (Utente x : this.listaUtenti) {
             if (x.getUsername().equals(name)) {

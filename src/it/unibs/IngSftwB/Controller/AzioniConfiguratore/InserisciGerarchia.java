@@ -23,12 +23,13 @@ public class InserisciGerarchia implements AzioneUtente {
         }while(!nomeRadiceNuovo);
 
         Gerarchia finale= new Gerarchia();
-        Categoria r=Categoria.creaCategoria(Categoria.generaCampiIniziali(),nomeRadice);
+        Categoria r=this.creaCategoria(Categoria.generaCampiIniziali(),nomeRadice,controller);
         finale.getRamo().put(r,null); //controllare che funzioni senza problemi
         finale.setRadice(r);
 
         int choiceContinue=controller.richiediInteroIntervalloView(MessaggioAlternativa.NUOVA_SOTTOCATEGORIA,0,1);
         while(choiceContinue==1){
+            controller.comunicaAllaView(MessaggioGenerale.POSSIBILI_PADRI);
             controller.comunicaListaAllaView(finale.listaNomi(),null);
 
             boolean nomePadreValido=false;
@@ -45,24 +46,16 @@ public class InserisciGerarchia implements AzioneUtente {
                     controller.comunicaListaAllaView(finale.listaNomi(),null);
                 }
             }while(!nomePadreValido);
-            boolean nomeNuovo=false;
-            String nomeCategoria;
-            do{
-                nomeCategoria=controller.richiediStringaView(MessaggioGenerale.INSERISCI_CATEGORIA);
-                if(finale.checkNomeNuovo(nomeCategoria)){
-                    nomeNuovo=true;
-                }
-                else{
-                    controller.comunicaAllaView(MessaggioErrore.NOME_CATEGORIA_PRESENTE);
-                }
-            }while(!nomeNuovo);
+
+            String nomeCategoria = controllaNomeCategoria(controller, finale,MessaggioGenerale.INSERISCI_CATEGORIA);
 
             int figli=finale.numFigli(padre);
             if(figli==0){
-                controller.comunicaAllaView(MessaggioGenerale.NUMERO_FIGLI);
+
                 finale.getRamo().put(this.creaCategoria(finale.findPadre(nomePadre).getCampiNativi(),nomeCategoria,controller),finale.findPadre(nomePadre));
                 //System.out.println("inserire la seconda sottocategoria di: "+nomePadre);
-                String nomeCat2=controller.richiediStringaView(MessaggioGenerale.SECONDO_FIGLIO);
+                controller.comunicaAllaView(MessaggioGenerale.NUMERO_FIGLI);
+                String nomeCat2=controllaNomeCategoria(controller, finale,MessaggioGenerale.SECONDO_FIGLIO);
                 finale.getRamo().put(this.creaCategoria(finale.findPadre(nomePadre).getCampiNativi(),nomeCat2,controller),finale.findPadre(nomePadre));
             }
             else{
@@ -76,7 +69,20 @@ public class InserisciGerarchia implements AzioneUtente {
 
     }
 
-
+    private String controllaNomeCategoria(Controller controller, Gerarchia gerarchia,MessaggioStampabile msg) {
+        String nomeCategoria;
+        boolean nomeNuovo =false;
+        do{
+            nomeCategoria= controller.richiediStringaView(msg);
+            if(gerarchia.checkNomeNuovo(nomeCategoria)){
+                nomeNuovo =true;
+            }
+            else{
+                controller.comunicaAllaView(MessaggioErrore.NOME_CATEGORIA_PRESENTE);
+            }
+        }while(!nomeNuovo);
+        return nomeCategoria;
+    }
 
 
     public String getNomeAzione(){

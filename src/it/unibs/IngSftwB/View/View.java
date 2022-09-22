@@ -29,6 +29,7 @@ public class View {
         conversioneMap.put(MessaggioErrore.class, (e) -> ((MessaggioErrore) e).getMessage());
         conversioneMap.put(MessaggioGenerale.class, (e) -> ((MessaggioGenerale) e).getMessage());
         conversioneMap.put(MessaggioAlternativa.class, (e) -> ((MessaggioAlternativa) e).getMessage());
+        conversioneMap.put(MessaggioCustom.class, (e) -> ((MessaggioCustom) e).getMessage());
         //conversioneMap.put(CustomMessage.class, (e) -> ((CustomMessage) e).getMessage());
     }
 

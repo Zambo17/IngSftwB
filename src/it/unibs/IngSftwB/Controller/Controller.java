@@ -1,16 +1,19 @@
 package it.unibs.IngSftwB.Controller;
 
+import it.unibs.IngSftwB.Controller.AzioniConfiguratore.Esci;
 import it.unibs.IngSftwB.Model.*;
 import it.unibs.IngSftwB.View.LettoreIntero;
 import it.unibs.IngSftwB.View.LettoreStringa;
 import it.unibs.IngSftwB.View.View;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 
 public class Controller {
+
 
     private View view;
 
@@ -22,6 +25,11 @@ public class Controller {
 
     public View getView() {
         return view;
+    }
+
+    public Controller(View view, Applicazione app) {
+        this.view = view;
+        this.app = app;
     }
 
     public void comunicaAllaView(Messaggio messaggio){
@@ -45,6 +53,26 @@ public class Controller {
         return (new LettoreIntero().leggiIntero(messaggio,minimo,massimo));
     }
 
+    public void run() throws IOException {
+        //caricare dati da file
+        Utente acceduto = this.accessoCompleto();
+        //controllare se i file sono vuoti e agire di conseguenza
+        if(acceduto==null){
+            return;
+        }
+
+        this.comunicaAllaView(MessaggioGenerale.BENVENUTO);
+        this.eseguiMenuAzioni(acceduto.getMenuUtente(),acceduto);
+    }
+
+    public void eseguiMenuAzioni(List<AzioneUtente> menuUtente, Utente u) throws IOException {
+        AzioneUtente chosen;
+        do {
+            chosen = this.view.scegli(menuUtente, AzioneUtente::getNomeAzione);
+            chosen.eseguiAzione(this, u);
+        } while (!(chosen instanceof Esci));
+    }
+
     public Utente nuovoUtente(boolean conf){
         String username;
         String password;
@@ -63,13 +91,13 @@ public class Controller {
     public Utente accessoStandard(){
         String username=this.richiediStringaView(MessaggioGenerale.INSERISCI_NOME);
         String password=this.richiediStringaView(MessaggioGenerale.INSERISCI_PASSWORD);
-        Utente temp=new Utente(username,password);
-        if(this.getApp().getDatiUtenti().checkConf(temp)){
+        //Utente temp=new Utente(username,password);
+        if(this.getApp().getDatiUtenti().checkConf(username,password)){
             return nuovoUtente(true);
         }
 
         for(Utente utente: this.getApp().getDatiUtenti().getListaUtenti()){
-            if(Utente.sameUtente(utente, temp)){
+            if(utente.sameUtente(username, password)){
                 this.comunicaAllaView(MessaggioGenerale.ACCESSO_CORRETTO);
                 return this.getApp().getDatiUtenti().getUtenteDaCredenziali(username,password);
             }
@@ -77,7 +105,7 @@ public class Controller {
         return null;
     }
 
-    public Utente accessoTentativi(Controller controller){
+    public Utente accessoTentativi(){
         Utente temp;
         for (int i = 0; i < 3; i++) {
             temp = this.accessoStandard();
@@ -85,11 +113,11 @@ public class Controller {
                 return temp;
             }
             else {
-                controller.comunicaAllaView(MessaggioErrore.CREDENZIALI_ERRATE);
+                this.comunicaAllaView(MessaggioErrore.CREDENZIALI_ERRATE);
             }
         }
 
-        controller.comunicaAllaView(MessaggioErrore.ACCESSO_FALLITO);
+        this.comunicaAllaView(MessaggioErrore.ACCESSO_FALLITO);
         return null;
     }
 
@@ -99,7 +127,7 @@ public class Controller {
             return this.nuovoUtente(false);
         }
         else {
-            return this.accessoTentativi(this);
+            return this.accessoTentativi();
         }
     }
 
