@@ -14,6 +14,7 @@ import java.util.function.Function;
 
 public class Controller {
 
+
     private View view;
 
     private Applicazione app;
@@ -24,6 +25,11 @@ public class Controller {
 
     public View getView() {
         return view;
+    }
+
+    public Controller(View view, Applicazione app) {
+        this.view = view;
+        this.app = app;
     }
 
     public void comunicaAllaView(Messaggio messaggio){
@@ -49,12 +55,13 @@ public class Controller {
 
     public void run() throws IOException {
         //caricare dati da file
-        Utente acceduto = this.accessoTentativi();
+        Utente acceduto = this.accessoCompleto();
         //controllare se i file sono vuoti e agire di conseguenza
         if(acceduto==null){
             return;
         }
 
+        this.comunicaAllaView(MessaggioGenerale.BENVENUTO);
         this.eseguiMenuAzioni(acceduto.getMenuUtente(),acceduto);
     }
 
@@ -84,13 +91,13 @@ public class Controller {
     public Utente accessoStandard(){
         String username=this.richiediStringaView(MessaggioGenerale.INSERISCI_NOME);
         String password=this.richiediStringaView(MessaggioGenerale.INSERISCI_PASSWORD);
-        Utente temp=new Utente(username,password);
-        if(this.getApp().getDatiUtenti().checkConf(temp)){
+        //Utente temp=new Utente(username,password);
+        if(this.getApp().getDatiUtenti().checkConf(username,password)){
             return nuovoUtente(true);
         }
 
         for(Utente utente: this.getApp().getDatiUtenti().getListaUtenti()){
-            if(Utente.sameUtente(utente, temp)){
+            if(utente.sameUtente(username, password)){
                 this.comunicaAllaView(MessaggioGenerale.ACCESSO_CORRETTO);
                 return this.getApp().getDatiUtenti().getUtenteDaCredenziali(username,password);
             }

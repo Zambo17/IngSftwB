@@ -34,6 +34,8 @@ public enum MessaggioGenerale implements MessaggioStampabile {
     PERCORSO_FILE("Inserire il percorso del file per esempio: C:\\Users\\apote\\Desktop\\testxml\\testing.xml\nInserisci il nome del file: "),
     ANNULLA_FILE("Caricamento da file annullato"),
     FINE_PROGRAMMA("FINE PROGRAMMA"),
+    BENVENUTO("Benvenuto nel sistema di gestione baratti"),
+    POSSIBILI_PADRI("Questi sono i possibili padri nella gerarchia:"),
     INSERISCI_NOME("Inserisci il tuo nome: ");
 
 

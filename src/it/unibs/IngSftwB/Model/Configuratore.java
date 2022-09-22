@@ -22,7 +22,7 @@ public class Configuratore extends Utente {
 
     }
 
-    protected List<AzioneUtente> getUserMenu() {
+    public List<AzioneUtente> getMenuUtente() {
         List<AzioneUtente> menu = new LinkedList<>();
         menu.add(new InserisciGerarchia());
         menu.add(new VisualizzazioneGerarchie());

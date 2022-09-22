@@ -142,9 +142,11 @@ public class Gerarchia {
      */
     public int numFigli(Categoria padre){
         int figli=0;
-        for(Categoria x:this.ramo.keySet()){
-            if(this.ramo.get(x).getNome().equals(padre.getNome())){
-                figli++;
+        for(Categoria x:this.ramo.keySet()) {
+            if (!x.getNome().equalsIgnoreCase(radice.getNome())) {
+                if (this.ramo.get(x).getNome().equals(padre.getNome())) {
+                    figli++;
+                }
             }
         }
         return figli;

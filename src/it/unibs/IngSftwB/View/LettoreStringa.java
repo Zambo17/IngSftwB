@@ -12,6 +12,7 @@ public class LettoreStringa {
         String lettura = null;
         Scanner lettore = new Scanner(System.in);
         do {
+            StampaMessaggio.printText(messaggio);
             lettura = lettore.nextLine().trim();
             //lettura = lettura.trim();
             if (lettura.length() > 0)

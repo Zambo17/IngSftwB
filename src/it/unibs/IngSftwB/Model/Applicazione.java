@@ -8,6 +8,8 @@ public class Applicazione {
     private Configurazione configurazione;
     private DatiUtenti datiUtenti;
 
+    public Applicazione (){};
+
     public Applicazione(Offerte offerte, ListaScambi listaScambi, Configurazione configurazione, DatiUtenti datiUtenti) {
         this.offerte = offerte;
         this.listaScambi = listaScambi;
