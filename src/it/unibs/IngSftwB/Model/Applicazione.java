@@ -1,7 +1,7 @@
 package it.unibs.IngSftwB.Model;
 
 // temporanea per implementare accesso
-public class Applicazione {
+public class Applicazione implements XmlDatiUtenti,XmlOfferte, XmlScambi, XmlConfigurazione {
 
     private Offerte offerte;
     private ListaScambi listaScambi;
