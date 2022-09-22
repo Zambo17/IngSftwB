@@ -146,6 +146,13 @@ public class DatiUtenti {
         return corretto;
     }
 
+    public boolean checkConf(String username) {
+        boolean corretto = false;
+        if (Utente.sameUtente(u, CREDENZIALI_PREDEFINITE))
+            corretto = true;
+        return corretto;
+    }
+
     /**
      * Metodo per verificare se uno username è già usato da un altro utente
      *

@@ -1,11 +1,16 @@
 package it.unibs.IngSftwB.Model;
 
 
+import it.unibs.IngSftwB.Controller.AzioneUtente;
+import it.unibs.IngSftwB.Controller.Controller;
+
+import java.util.List;
+
 /**
  * Classe per la gestione di un utente
  *  @author Jacopo Tedeschi, Enrico Zambelli
  */
-public class Utente {
+public abstract class Utente {
 
     private String username;
     private String password;
@@ -29,6 +34,14 @@ public class Utente {
     public static boolean sameUtente(Utente u1, Utente u2) {
         boolean equal=false;
         if(u1.username.equals(u2.username) && u1.password.equals(u2.password)) {
+            equal=true;
+        }
+        return equal;
+    }
+
+    public boolean sameUtente(String username,String password) {
+        boolean equal=false;
+        if(this.username.equals(username) && this.password.equals(password)) {
             equal=true;
         }
         return equal;
@@ -64,7 +77,7 @@ public class Utente {
         this.password = password;
     }
 
-
+    public abstract List<AzioneUtente> getMenuUtente();
 }
 
 
