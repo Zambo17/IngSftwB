@@ -17,7 +17,7 @@ import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public interface XmlConfigurazione {
+public abstract class XmlConfigurazione {
 
     public static void salvaSistema(Sistema s, String filename){
         try{

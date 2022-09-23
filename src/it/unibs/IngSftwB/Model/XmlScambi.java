@@ -17,7 +17,7 @@ import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public interface XmlScambi {
+public abstract class XmlScambi {
 
     /**
      * metodo per leggere gli scambi salvati in xml

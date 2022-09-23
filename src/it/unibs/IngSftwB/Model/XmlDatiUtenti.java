@@ -16,7 +16,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 
-public interface XmlDatiUtenti {
+public abstract class XmlDatiUtenti {
     /**
      * metodo per la lettura dei parametri salvati in xml
      * @param filename nome file xml da cui leggere i dati

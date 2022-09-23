@@ -17,7 +17,7 @@ import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public interface XmlOfferte {
+public abstract class XmlOfferte {
     /**
      * metodo le la lettur adelle offerte salvate nel fil xml
      * @param filename nome file xml

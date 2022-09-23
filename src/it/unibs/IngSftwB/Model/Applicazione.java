@@ -1,7 +1,9 @@
 package it.unibs.IngSftwB.Model;
 
+import javax.xml.stream.XMLStreamException;
+
 // temporanea per implementare accesso
-public class Applicazione implements XmlDatiUtenti,XmlOfferte, XmlScambi, XmlConfigurazione {
+public class Applicazione {
 
     private Offerte offerte;
     private ListaScambi listaScambi;
@@ -15,6 +17,23 @@ public class Applicazione implements XmlDatiUtenti,XmlOfferte, XmlScambi, XmlCon
         this.listaScambi = listaScambi;
         this.configurazione = configurazione;
         this.datiUtenti = datiUtenti;
+    }
+    public void caricaDati(String fileScambi, String fileOfferte, String fileUtenti, String fileSistema, String fileParametri) throws XMLStreamException {
+        if(fileScambi!=null){
+            this.listaScambi=XmlScambi.leggiScambi(fileScambi);
+        }
+        if(fileUtenti!=null){
+            this.datiUtenti=XmlDatiUtenti.leggiUtenti(fileUtenti);
+        }
+        if(fileParametri!=null){
+            this.configurazione.setParametri(XmlConfigurazione.leggiParametri(fileParametri));
+        }
+        if(fileSistema!=null){
+            this.configurazione.setSis(XmlConfigurazione.readSis(fileSistema));
+        }
+        if(fileOfferte!=null){
+            this.offerte=XmlOfferte.leggiOfferte(fileOfferte);
+        }
     }
 
     public DatiUtenti getDatiUtenti() {
