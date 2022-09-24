@@ -16,26 +16,26 @@ public class ModificaParametri implements AzioneUtente {
             case 1:
                 choiceP=controller.richiediInteroIntervalloView(MessaggioAlternativa.AGGIUNTA_RIMOZIONE,1,2);
                 if(choiceP==1)
-                    this.addLuogo(controller);
+                    app.getConfigurazione().getParametri().getLuoghi().add(addLuogo(controller,MessaggioGenerale.NUOVO_LUOGO));
                 else
                     this.togliLuogo(controller);
                 break;
             case 2:
                 choiceP=controller.richiediInteroIntervalloView(MessaggioAlternativa.AGGIUNTA_RIMOZIONE,1,2);
                 if(choiceP==1)
-                    app.getConfigurazione().getParametri().getIntervalli().add(this.addIntervallo(controller));
+                    app.getConfigurazione().getParametri().getIntervalli().add(addIntervallo(controller));
                 else
                     this.togliIntervallo(controller);
                 break;
             case 3:
                 choiceP=controller.richiediInteroIntervalloView(MessaggioAlternativa.AGGIUNTA_RIMOZIONE,1,2);
                 if(choiceP==1)
-                    this.addGiorno(controller);
+                    app.getConfigurazione().getParametri().getGiorni().add(addGiorno(controller));
                 else
                     this.togliGiorno(controller);
                 break;
             case 4:
-                app.getConfigurazione().getParametri().addScadenza();
+                app.getConfigurazione().getParametri().setScadenza(addScadenza(controller));
                 break;
         }
     }
@@ -46,7 +46,7 @@ public class ModificaParametri implements AzioneUtente {
         return "Modifica dei parametri";
     }
 
-    public  Intervallo addIntervallo(Controller controller) {
+    public static Intervallo addIntervallo(Controller controller) {
         boolean intervalloValido = false;
         Orario inizio;
         Orario fine;
@@ -78,7 +78,7 @@ public class ModificaParametri implements AzioneUtente {
             orari[0] = inizio;
             orari[1] = fine;
             intervallo = new Intervallo(orari);
-            if (!intervallo.intervalloValido()) {
+            if (!intervallo.intervalloValido() || controller.getApp().getConfigurazione().getParametri().getIntervalli().contains(intervallo)) {
                 System.out.println(MessaggioErrore.INTERVALLO_NON_VALIDO);
 
             } else {
@@ -90,14 +90,14 @@ public class ModificaParametri implements AzioneUtente {
     }
 
     public void togliIntervallo(Controller controller){
-        Intervallo toRemove=this.addIntervallo(controller);
+        Intervallo toRemove=addIntervallo(controller);
         boolean presente=false;
         int countI=0;
         for(Intervallo x: controller.getApp().getConfigurazione().getParametri().getIntervalli()){
             if(!presente){
                 countI++;
             }
-            if(x.compareIntervallo(toRemove)){
+            if(x.equals(toRemove)){
                 presente=true;
             }
 
@@ -106,14 +106,14 @@ public class ModificaParametri implements AzioneUtente {
             controller.getApp().getConfigurazione().getParametri().getIntervalli().remove(countI-1);
             if(controller.getApp().getConfigurazione().getParametri().getIntervalli().size()==0){
                 controller.comunicaAllaView(MessaggioErrore.NESSUN_ORARIO);
-                controller.getApp().getConfigurazione().getParametri().getIntervalli().add(this.addIntervallo(controller));
+                controller.getApp().getConfigurazione().getParametri().getIntervalli().add(addIntervallo(controller));
             }
         }
         else
             controller.comunicaAllaView(MessaggioErrore.INTERVALLO_NON_PRESENTE);
     }
 
-    public void addGiorno(Controller controller) {
+    public static Giorno addGiorno(Controller controller) {
         boolean giornoCorretto = true;
         Giorno g = null;
         do {
@@ -130,7 +130,7 @@ public class ModificaParametri implements AzioneUtente {
             if (g != null && !controller.getApp().getConfigurazione().getParametri().getGiorni().contains(g))
                 giornoCorretto = true;
         } while (!giornoCorretto);
-        controller.getApp().getConfigurazione().getParametri().getGiorni().add(g);
+        return g;
     }
 
     public void togliGiorno(Controller controller){
@@ -151,9 +151,9 @@ public class ModificaParametri implements AzioneUtente {
         }
     }
 
-    public void addLuogo(Controller controller){
-        String luogo=controller.richiediStringaView(MessaggioGenerale.NUOVO_LUOGO);
-        controller.getApp().getConfigurazione().getParametri().getLuoghi().add(luogo);
+    public static String addLuogo(Controller controller,MessaggioGenerale msg){
+        String luogo=controller.richiediStringaView(msg);
+        return luogo;
     }
 
     public void togliLuogo(Controller controller){
@@ -170,8 +170,10 @@ public class ModificaParametri implements AzioneUtente {
         }
     }
 
-    public void addScadenza(Controller controller){
+    public static int addScadenza(Controller controller){
         int scad=controller.richiediInteroIntervalloView(MessaggioGenerale.NUOVA_SCADENZA,1,999999);
-        controller.getApp().getConfigurazione().getParametri().setScadenza(scad);
+       return scad;
     }
+
+
 }

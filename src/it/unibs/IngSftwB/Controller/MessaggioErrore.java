@@ -13,7 +13,7 @@ public enum MessaggioErrore implements MessaggioStampabile {
     PADRE_NON_ESISTE("Tale padre non esiste, scegli uno dei possibili padri:"),
     CATEGORIA_NON_PRESENTE("Categoria non presente"),
     ORARIO_NON_VALIDO("L'orario inserito non è valido"),
-    INTERVALLO_NON_VALIDO("L'intervallo inserito non è valido"),
+    INTERVALLO_NON_VALIDO("L'intervallo inserito non è valido o è già presente"),
     NESSUN_ORARIO("Ci deve essere almeno un intervallo, quindi aggiungine uno"),
     INTERVALLO_NON_PRESENTE("L'intervallo inserito non è presente"),
     GIORNO_NON_PRESENTE("Il giorno inserito è inesistente"),

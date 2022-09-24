@@ -2,7 +2,7 @@ package it.unibs.IngSftwB.Controller;
 
 public enum MessaggioGenerale implements MessaggioStampabile {
 
-    SELEZIONA_INDICE("\nSelezionare un indice."),
+    SELEZIONA_INDICE("\nSeleziona un indice."),
     NUOVO_USERNAME("Inserisci il nome con cui vuoi registrarti:"),
     NUOVA_PASSWORD("Inserisci la tua nuova password:"),
     INSERISCI_PASSWORD("Inserisci la tua password: "),
@@ -36,6 +36,8 @@ public enum MessaggioGenerale implements MessaggioStampabile {
     FINE_PROGRAMMA("FINE PROGRAMMA"),
     BENVENUTO("Benvenuto nel sistema di gestione baratti"),
     POSSIBILI_PADRI("Questi sono i possibili padri nella gerarchia:"),
+    CITTA_SCAMBI("Inserisci il nome della città in cui avvengono gli scambi:"),
+    LUOGO_SCAMBI("Inserisci il nome del luogo in cui vengono effettuati gli scambi:"),
     INSERISCI_NOME("Inserisci il tuo nome: ");
 
 

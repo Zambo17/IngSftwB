@@ -58,7 +58,7 @@ public class Intervallo {
      * @param toCompare l'intervallo con cui confrontare quello invocato
      * @return true se i due intervalli sono uguali, false altrimenti
      */
-    public boolean compareIntervallo(Intervallo toCompare) {
+    public boolean equals(Intervallo toCompare) {
         boolean uguale=false;
         if (this.ore[0].getOra() == toCompare.ore[0].getOra() && this.ore[0].getMinuti() == toCompare.ore[0].getMinuti() &&
                 this.ore[1].getOra()==toCompare.ore[1].getOra() && this.ore[1].getMinuti()==toCompare.ore[1].getMinuti()) {

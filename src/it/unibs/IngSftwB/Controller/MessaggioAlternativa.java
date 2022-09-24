@@ -12,6 +12,10 @@ public enum MessaggioAlternativa implements MessaggioStampabile{
             "2 per modificare gli intervalli\n" +
             "3 per modificare i giorni\n" +
             "4 per cambiare la scadenza: "),
+    PARAMETRI_VUOTI("Non sono presenti parametri\n premere 1 per inserirli tramite l'applicazione\n premere 2 per inserirli tramite file xml"),
+    ALTRO_LUOGO("Inserisci 1 per aggiungere un altro luogo, 0 altrimenti:"),
+    ALTRO_GIORNO("Inserisci 1 per aggiungere un altro giorno, 0 altrimenti:"),
+    ALTRO_INTERVALLO("Inserisci 1 per introdurre un nuovo intervallo, 0 altrimenti:"),
     SCELTA_FILE("Attenzione inserire i dati da file xml può portare a errori consigliamo massima attenzione nella scrittura del file\n premere 1 per inserire le gerarchie\n premere 2 per inserire parametri di configurazione\n premere 0 per non inserire nessun file"),
     DETTAGLIO_CATEGORIA("Inserisci 1 se vuoi visualizzare in dettaglio una categoria, 0 altrimenti:");
 

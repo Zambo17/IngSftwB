@@ -120,8 +120,10 @@ public class View {
         nonVisti.remove(msg.getRadice());
         ArrayList <Categoria> figliAlti=new ArrayList<Categoria>();
         for(Categoria x:msg.getRamo().keySet()){
-            if(msg.getRamo().get(x).getNome().equals(msg.getRadice().getNome())){
-                figliAlti.add(x);
+            if(!x.getNome().equalsIgnoreCase(msg.getRadice().getNome())) {
+                if (msg.getRamo().get(x).getNome().equals(msg.getRadice().getNome())) {
+                    figliAlti.add(x);
+                }
             }
         }
 
@@ -142,9 +144,11 @@ public class View {
             for(Categoria x: figliAlti){
                 s.append("\n");
                 ArrayList <Categoria> figlietti=new ArrayList<Categoria>();//aggiungi un invio qui
-                for(Categoria y: msg.getRamo().keySet()){
-                    if(msg.getRamo().get(y).getNome().equals(x.getNome())){
-                        figlietti.add(y);
+                for(Categoria y: msg.getRamo().keySet()) {
+                    if (!y.getNome().equalsIgnoreCase(msg.getRadice().getNome())) {
+                        if (msg.getRamo().get(y).getNome().equals(x.getNome())) {
+                            figlietti.add(y);
+                        }
                     }
                 }
                 if(!figlietti.isEmpty()){

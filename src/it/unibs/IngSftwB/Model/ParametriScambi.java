@@ -2,7 +2,6 @@ package it.unibs.IngSftwB.Model;
 
 
 import it.unibs.IngSftwB.Controller.Messaggio;
-import it.unibs.IngSftwB.Controller.MessaggioCategoria;
 import it.unibs.IngSftwB.Controller.MessaggioParametri;
 
 import java.util.ArrayList;
@@ -224,6 +223,10 @@ public class ParametriScambi {
 
     }
 
+    public void addIntervallo(Intervallo i) {
+        this.intervalli.add(i);
+    }
+
     public String vediIntervalli(){
         StringBuffer sb=new StringBuffer();
         int count=0;
@@ -252,7 +255,7 @@ public class ParametriScambi {
             if(!presente){
                 countI++;
             }
-            if(x.compareIntervallo(toRemove)){
+            if(x.equals(toRemove)){
                 presente=true;
             }
 
@@ -299,6 +302,10 @@ public class ParametriScambi {
             if (g != null && !giorni.contains(g))
                 giornoCorretto = true;
         } while (!giornoCorretto);
+        this.giorni.add(g);
+    }
+
+    public void addGiorno(Giorno g) {
         this.giorni.add(g);
     }
 

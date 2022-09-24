@@ -1,12 +1,15 @@
 package it.unibs.IngSftwB.Controller;
 
 import it.unibs.IngSftwB.Controller.AzioniConfiguratore.Esci;
+import it.unibs.IngSftwB.Controller.AzioniConfiguratore.ModificaParametri;
 import it.unibs.IngSftwB.Model.*;
 import it.unibs.IngSftwB.View.LettoreIntero;
 import it.unibs.IngSftwB.View.LettoreStringa;
 import it.unibs.IngSftwB.View.View;
+import it.unibs.IngSftwB.xmlUtilities.XmlReader;
 import org.jetbrains.annotations.NotNull;
 
+import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -53,12 +56,16 @@ public class Controller {
         return (new LettoreIntero().leggiIntero(messaggio,minimo,massimo));
     }
 
-    public void run() throws IOException {
+    public void run() throws IOException, XMLStreamException {
         //caricare dati da file
         Utente acceduto = this.accessoCompleto();
         //controllare se i file sono vuoti e agire di conseguenza
         if(acceduto==null){
             return;
+        }
+
+        if(this.getApp().getConfigurazione().getParametri()==null){
+            this.primoAccessoConfiguratore();
         }
 
         this.comunicaAllaView(MessaggioGenerale.BENVENUTO);
@@ -170,6 +177,24 @@ public class Controller {
             questaRadice[1]=null;
         }
         return questaRadice;
+    }
+
+
+    public void primoAccessoConfiguratore() throws XMLStreamException {
+        int sceltaPar=this.richiediInteroIntervalloView(MessaggioAlternativa.PARAMETRI_VUOTI,1,2);
+        if(sceltaPar==2){
+            String nomefilePar=this.richiediStringaView(MessaggioGenerale.PERCORSO_FILE);
+            if(ControlloFile.fileExists(nomefilePar) && ControlloFile.isXmlFile(nomefilePar)){
+                this.getApp().getConfigurazione().setParametri(XmlReader.leggiParametri(nomefilePar));
+            }
+            else{
+                System.out.println("File non esistente o di un formato sbagliato");
+                InserimentoParametri.inserimentoParametri(this);
+            }
+        }
+        else{
+            InserimentoParametri.inserimentoParametri(this);
+        }
     }
 
 }
