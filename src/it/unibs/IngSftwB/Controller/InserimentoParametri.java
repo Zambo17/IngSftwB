@@ -28,7 +28,7 @@ public class InserimentoParametri {
         ArrayList<Intervallo> intervalli = new ArrayList<>();
         scelta = 1;
         while (scelta != 0) {
-            controller.getApp().getConfigurazione().getParametri().addIntervallo(ModificaParametri.addIntervallo(controller));
+            controller.getApp().getConfigurazione().getParametri().addIntervallo(ModificaParametri.addIntervallo(controller,intervalli));
             scelta = controller.richiediInteroIntervalloView(MessaggioAlternativa.ALTRO_INTERVALLO,0,1);
         }
 

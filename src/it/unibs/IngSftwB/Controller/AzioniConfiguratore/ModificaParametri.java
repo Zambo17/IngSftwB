@@ -3,6 +3,8 @@ package it.unibs.IngSftwB.Controller.AzioniConfiguratore;
 import it.unibs.IngSftwB.Controller.*;
 import it.unibs.IngSftwB.Model.*;
 
+import java.util.ArrayList;
+
 public class ModificaParametri implements AzioneUtente {
     @Override
     public void eseguiAzione(Controller controller, Utente utente) {
@@ -23,7 +25,7 @@ public class ModificaParametri implements AzioneUtente {
             case 2:
                 choiceP=controller.richiediInteroIntervalloView(MessaggioAlternativa.AGGIUNTA_RIMOZIONE,1,2);
                 if(choiceP==1)
-                    app.getConfigurazione().getParametri().getIntervalli().add(addIntervallo(controller));
+                    app.getConfigurazione().getParametri().getIntervalli().add(addIntervallo(controller,controller.getApp().getConfigurazione().getParametri().getIntervalli()));
                 else
                     this.togliIntervallo(controller);
                 break;
@@ -46,7 +48,7 @@ public class ModificaParametri implements AzioneUtente {
         return "Modifica dei parametri";
     }
 
-    public static Intervallo addIntervallo(Controller controller) {
+    public static Intervallo addIntervallo(Controller controller, ArrayList<Intervallo> lista) {
         boolean intervalloValido = false;
         Orario inizio;
         Orario fine;
@@ -78,7 +80,7 @@ public class ModificaParametri implements AzioneUtente {
             orari[0] = inizio;
             orari[1] = fine;
             intervallo = new Intervallo(orari);
-            if (!intervallo.intervalloValido() || controller.getApp().getConfigurazione().getParametri().getIntervalli().contains(intervallo)) {
+            if (!intervallo.intervalloValido() || lista.contains(intervallo)) {
                 System.out.println(MessaggioErrore.INTERVALLO_NON_VALIDO);
 
             } else {
