@@ -25,8 +25,8 @@ public enum MessaggioGenerale implements MessaggioStampabile {
     INSERISCI_GIORNO("Inserisci il nome del giorno in cui vengono effettuati gli scambi:"),
     RIMUOVI_GIORNO("Inserisci il nome del giorno da rimuovere: "),
     NUOVO_LUOGO("Inserisci il nuovo luogo: "),
-    RIMUOVI_LUOGO("Inserisci il nome del luogo da togliere"),
-    NESSUN_LUOGO("Deve esserci sempre almeno un luogo, quindi aggiungine uno: "),
+    RIMUOVI_LUOGO("Inserisci il nome del luogo da togliere:"),
+    NESSUN_LUOGO("Il sistema non può avere zero luoghi, quindi aggiungine uno: "),
     NUOVA_SCADENZA("Inserisci la nuova scadenza: "),
     OFFERTE_CATEGORIA("Le offerte di questa categoria sono: "),
     SCELTA_CATEGORIA("Scegli il numero rispettivo alla categoria radice da cui vuoi partire a cercare la categoria voluta: "),
@@ -38,6 +38,16 @@ public enum MessaggioGenerale implements MessaggioStampabile {
     POSSIBILI_PADRI("Questi sono i possibili padri nella gerarchia:"),
     CITTA_SCAMBI("Inserisci il nome della città in cui avvengono gli scambi:"),
     LUOGO_SCAMBI("Inserisci il nome del luogo in cui vengono effettuati gli scambi:"),
+    INIZIO_MENU("Queste sono le possibili operazioni:"),
+    INSERISCI_SCADENZA("Inserisci il numero di giorni disponibili per accettare un'offerta:"),
+    FINE_RIMOZIONE("Rimozione eseguita correttamente"),
+    NUM_GER("Inserisci il numero della gerarchia dove si trova la categoria scelta:"),
+    NOME_FOGLIA("Inserisci il nome della categoria dove vuoi pubblicare il tuo articolo: "),
+    COMPILAZIONE_CAMPO("Inserisci la descrizione relativa al campo "),
+    DUE_PUNTI(":"),
+    COMP_CAMPO("Se vuoi inserire una descrizione al campo"),
+    RESTO_COMP("inserisci 1 altrimenti 0:"),
+    FINE_COMPILAZIONI("Fine compilazione campi"),
     INSERISCI_NOME("Inserisci il tuo nome: ");
 
 

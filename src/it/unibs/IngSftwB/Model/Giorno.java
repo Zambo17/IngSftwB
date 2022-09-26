@@ -7,9 +7,9 @@ package it.unibs.IngSftwB.Model;
 public enum Giorno {
     LUNEDI("Lunedi"),
     MARTEDI("Martedi"),
-    MERCOLEDI("Mercoledi'"),
-    GIOVEDI("Giovedi'"),
-    VENERDI("Venerdi'"),
+    MERCOLEDI("Mercoledi"),
+    GIOVEDI("Giovedi"),
+    VENERDI("Venerdi"),
     SABATO("Sabato"),
     DOMENICA("Domenica");
 

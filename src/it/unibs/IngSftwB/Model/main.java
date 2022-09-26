@@ -112,6 +112,7 @@ public class main {
 
         Configurazione conf=new Configurazione(sistema,param);
 
+        //sistemare il discorso degli orari uguali
 
         View view= new View();
         Applicazione app= new Applicazione(offerte,scambi,conf,x);

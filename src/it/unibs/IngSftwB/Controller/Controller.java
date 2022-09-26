@@ -1,13 +1,13 @@
 package it.unibs.IngSftwB.Controller;
 
 import it.unibs.IngSftwB.Controller.AzioniConfiguratore.Esci;
-import it.unibs.IngSftwB.Controller.AzioniConfiguratore.ModificaParametri;
+import it.unibs.IngSftwB.Controller.AzioniConfiguratore.InserimentoDaFile;
+import it.unibs.IngSftwB.Controller.AzioniConfiguratore.InserisciGerarchia;
 import it.unibs.IngSftwB.Model.*;
 import it.unibs.IngSftwB.View.LettoreIntero;
 import it.unibs.IngSftwB.View.LettoreStringa;
 import it.unibs.IngSftwB.View.View;
 import it.unibs.IngSftwB.xmlUtilities.XmlReader;
-import org.jetbrains.annotations.NotNull;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
@@ -64,17 +64,24 @@ public class Controller {
             return;
         }
 
-        if(this.getApp().getConfigurazione().getParametri()==null){
-            this.primoAccessoConfiguratore();
+        if(this.getApp().getConfigurazione().getParametri()==null && acceduto instanceof Configuratore){
+            this.primoAccessoConfiguratoreParametri();
+        }
+
+        if(this.getApp().getConfigurazione().getSis().getListaGerarchie().size()==0 && acceduto instanceof Configuratore){
+            this.primoAccessoConfiguratoreGerarchia();
         }
 
         this.comunicaAllaView(MessaggioGenerale.BENVENUTO);
         this.eseguiMenuAzioni(acceduto.getMenuUtente(),acceduto);
     }
 
+
+
     public void eseguiMenuAzioni(List<AzioneUtente> menuUtente, Utente u) throws IOException {
         AzioneUtente chosen;
         do {
+            this.comunicaAllaView(MessaggioGenerale.INIZIO_MENU);
             chosen = this.view.scegli(menuUtente, AzioneUtente::getNomeAzione);
             chosen.eseguiAzione(this, u);
         } while (!(chosen instanceof Esci));
@@ -180,7 +187,7 @@ public class Controller {
     }
 
 
-    public void primoAccessoConfiguratore() throws XMLStreamException {
+    public void primoAccessoConfiguratoreParametri() throws XMLStreamException {
         int sceltaPar=this.richiediInteroIntervalloView(MessaggioAlternativa.PARAMETRI_VUOTI,1,2);
         if(sceltaPar==2){
             String nomefilePar=this.richiediStringaView(MessaggioGenerale.PERCORSO_FILE);
@@ -188,12 +195,31 @@ public class Controller {
                 this.getApp().getConfigurazione().setParametri(XmlReader.leggiParametri(nomefilePar));
             }
             else{
-                System.out.println("File non esistente o di un formato sbagliato");
-                InserimentoParametri.inserimentoParametri(this);
+                this.comunicaAllaView(MessaggioErrore.FILE_NON_ESISTENTE);
+                app.getConfigurazione().setParametri(InserimentoParametri.inserimentoParametri(this));
             }
         }
         else{
-            InserimentoParametri.inserimentoParametri(this);
+            app.getConfigurazione().setParametri(InserimentoParametri.inserimentoParametri(this));
+        }
+    }
+
+    private void primoAccessoConfiguratoreGerarchia() throws XMLStreamException {
+        int scelta=this.richiediInteroIntervalloView(MessaggioAlternativa.ZERO_GERARCHIE,1,2);
+        if(scelta==2){
+            String nomeFileGer=this.richiediStringaView(MessaggioGenerale.PERCORSO_FILE);
+            if(ControlloFile.fileExists(nomeFileGer) && ControlloFile.isXmlFile(nomeFileGer)){
+                this.getApp().getConfigurazione().setSis(XmlReader.readSis(nomeFileGer));
+            }
+            else{
+                this.comunicaAllaView(MessaggioErrore.FILE_NON_ESISTENTE);
+                InserisciGerarchia i=new InserisciGerarchia();
+                i.eseguiAzione(this,null);
+            }
+        }
+        else{
+            InserisciGerarchia i=new InserisciGerarchia();
+            i.eseguiAzione(this,null);
         }
     }
 

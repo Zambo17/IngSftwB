@@ -3,6 +3,8 @@ package it.unibs.IngSftwB.Model;
 import it.unibs.IngSftwB.Controller.Messaggio;
 import it.unibs.IngSftwB.Controller.MessaggioIntervallo;
 
+import java.util.Arrays;
+
 /**
  * Classe per la gestione di un'intervallo di orari
  *  @author Jacopo Tedeschi,Enrico Zambelli
@@ -58,6 +60,7 @@ public class Intervallo {
      * @param toCompare l'intervallo con cui confrontare quello invocato
      * @return true se i due intervalli sono uguali, false altrimenti
      */
+
     public boolean equals(Intervallo toCompare) {
         boolean uguale=false;
         if (this.ore[0].getOra() == toCompare.ore[0].getOra() && this.ore[0].getMinuti() == toCompare.ore[0].getMinuti() &&
@@ -65,6 +68,19 @@ public class Intervallo {
             uguale = true;
         }
         return uguale;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Intervallo that = (Intervallo) o;
+        return Arrays.equals(ore, that.ore);
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(ore);
     }
 
     public String toStringIntervallo(){

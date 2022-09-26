@@ -14,7 +14,7 @@ public enum MessaggioErrore implements MessaggioStampabile {
     CATEGORIA_NON_PRESENTE("Categoria non presente"),
     ORARIO_NON_VALIDO("L'orario inserito non è valido"),
     INTERVALLO_NON_VALIDO("L'intervallo inserito non è valido o è già presente"),
-    NESSUN_ORARIO("Ci deve essere almeno un intervallo, quindi aggiungine uno"),
+    NESSUN_ORARIO("Ci deve essere almeno un intervallo, quindi aggiungine uno:"),
     INTERVALLO_NON_PRESENTE("L'intervallo inserito non è presente"),
     GIORNO_NON_PRESENTE("Il giorno inserito è inesistente"),
     GIORNO_GIA_PRESENTE("Questo giorno è già stato inserito"),
@@ -25,6 +25,8 @@ public enum MessaggioErrore implements MessaggioStampabile {
     VISUALIZZAZIONE_OFFERTE_FALLITA("Visualizzazione offerte fallita"),
     ANNULLA_SELEZIONE("Selezione categoria annullata"),
     FILE_NON_ESISTENTE("File non esistente o di un formato sbagliato"),
+    PARAMETRI_NON_SETTATI("I parametri di configurazione non sono ancora stati settati"),
+    APP_NON_SETTATA("L'applicazione non è stata settata dal configuratore quindi non puoi pubblicare offerte per ora"),
     ERRORE_STRINGA_VUOTA("La stringa inserita non può essere vuota");
 
     private String message;

@@ -187,6 +187,30 @@ public class Offerta {
         return nomeFruitore;
     }
 
+    public void setNomeCategoria(String nomeCategoria) {
+        this.nomeCategoria = nomeCategoria;
+    }
+
+    public void setNomeRadice(String nomeRadice) {
+        this.nomeRadice = nomeRadice;
+    }
+
+    public void setCompliazioni(HashMap<CampoNativo, String> compliazioni) {
+        this.compliazioni = compliazioni;
+    }
+
+    public void setStatoAttuale(StatoOfferta statoAttuale) {
+        this.statoAttuale = statoAttuale;
+    }
+
+    public void setStatiPassati(ArrayList<StatoOfferta> statiPassati) {
+        this.statiPassati = statiPassati;
+    }
+
+    public void setNomeFruitore(String nomeFruitore) {
+        this.nomeFruitore = nomeFruitore;
+    }
+
     public Messaggio getOffertaDefinition(){
         return new MessaggioOfferta(this.nomeCategoria,this.compliazioni,this.statoAttuale,this.nomeFruitore,this.nomeRadice);
     }

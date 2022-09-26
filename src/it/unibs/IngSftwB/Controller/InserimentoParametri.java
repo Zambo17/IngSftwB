@@ -21,20 +21,20 @@ public class InserimentoParametri {
         ArrayList<Giorno> giorni = new ArrayList<>();
         scelta = 1;
         while (scelta != 0) {
-            controller.getApp().getConfigurazione().getParametri().addGiorno(ModificaParametri.addGiorno(controller));
+           giorni.add(ModificaParametri.addGiorno(controller,giorni));
             scelta = controller.richiediInteroIntervalloView(MessaggioAlternativa.ALTRO_GIORNO, 0, 1);
         }
 
         ArrayList<Intervallo> intervalli = new ArrayList<>();
         scelta = 1;
         while (scelta != 0) {
-            controller.getApp().getConfigurazione().getParametri().addIntervallo(ModificaParametri.addIntervallo(controller,intervalli));
+            intervalli.add(ModificaParametri.addIntervallo(controller,intervalli));
             scelta = controller.richiediInteroIntervalloView(MessaggioAlternativa.ALTRO_INTERVALLO,0,1);
         }
 
-        controller.getApp().getConfigurazione().getParametri().setScadenza(ModificaParametri.addScadenza(controller));
+       int scadenza=(ModificaParametri.addScadenza(controller,MessaggioGenerale.INSERISCI_SCADENZA));
 
-        return new ParametriScambi(piazza,);
+        return new ParametriScambi(piazza,luoghi,giorni,intervalli,scadenza);
     }
 
 }

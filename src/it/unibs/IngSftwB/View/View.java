@@ -194,6 +194,30 @@ public class View {
         this.notifica(this.getSistemaDescription(msg));
     }
 
+    public String getRadiciDescription(MessaggioSistema msg){
+        StringBuffer str=new StringBuffer();
+        if(msg.getListaGerarchie().size()==0){
+            str.append("Siamo spiacenti ma il configuratore non ha settato alcuna gerarchia per ora");
+        }
+        else{
+            if(msg.getListaGerarchie().size()==1){
+                str.append("Esiste una sola gerarchia e questa è la sua radice: \n"+msg.getListaGerarchie().get(0).getRadice().toStringCategoria());
+            }
+            else{
+                str.append("Le radici di ogni gerarchia sono:\n ");
+                int count=0;
+                for(Gerarchia x:msg.getListaGerarchie()){
+                    str.append("1. "+x.getRadice().toStringCategoria()+"\n");
+                }
+            }
+        }
+        return str.toString();
+    }
+
+    public void stampaRadiciDescription(MessaggioSistema msg){
+        this.notifica(this.getRadiciDescription(msg));
+    }
+
     public String getOrarioDescription(MessaggioOrario msg){
         StringBuilder str = new StringBuilder();
         if(msg.getOra() <10){
