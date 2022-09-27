@@ -2,6 +2,9 @@ package it.unibs.IngSftwB.Model;
 
 import it.unibs.IngSftwB.Controller.AzioneUtente;
 import it.unibs.IngSftwB.Controller.AzioniConfiguratore.*;
+import it.unibs.IngSftwB.Controller.AzioniFruitore.CreaOfferta;
+import it.unibs.IngSftwB.Controller.AzioniFruitore.ModificaOfferta;
+import it.unibs.IngSftwB.Controller.AzioniFruitore.VisualizzaOfferteFruitore;
 import it.unibs.IngSftwB.Controller.AzioniFruitore.VisualizzaParametriRadici;
 
 import java.util.LinkedList;
@@ -26,6 +29,10 @@ public class Fruitore extends Utente{
     public List<AzioneUtente> getMenuUtente() {
         List<AzioneUtente> menu = new LinkedList<>();
         menu.add(new VisualizzaParametriRadici());
+        menu.add(new CreaOfferta());
+        menu.add(new ModificaOfferta());
+        menu.add(new VisualizzaOfferteFruitore());
+        menu.add(new StampaOfferteFoglia());
         menu.add(new Esci());
         return menu;
     }

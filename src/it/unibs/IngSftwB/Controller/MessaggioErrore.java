@@ -6,7 +6,7 @@ public enum MessaggioErrore implements MessaggioStampabile {
     ERRORE_MINIMO("Attenzione: e' richiesto un valore maggiore o uguale a "),
     ERRORE_MASSIMO("Attenzione: e' richiesto un valore minore o uguale a "),
     NO_GERARCHIE("Il sistema non ha alcuna gerarchia"),
-    NO_OFFERTE("Non ci sono offerte"),
+    NO_OFFERTE("Non hai inserito alcuna offerta"),
     CREDENZIALI_ERRATE("Le credenziali inserite non sono corrette, hai in totale tre tentativi"),
     ACCESSO_FALLITO("Accesso fallito chiudere il programma"),
     NOME_CATEGORIA_PRESENTE("Questo nome è già presente"),
@@ -27,6 +27,9 @@ public enum MessaggioErrore implements MessaggioStampabile {
     FILE_NON_ESISTENTE("File non esistente o di un formato sbagliato"),
     PARAMETRI_NON_SETTATI("I parametri di configurazione non sono ancora stati settati"),
     APP_NON_SETTATA("L'applicazione non è stata settata dal configuratore quindi non puoi pubblicare offerte per ora"),
+    NO_RITIRABILI("Non ci sono offerte ritirabili"),
+    NO_OFFERTE_SCAMBIABILI("Non ci sono offerte con cui poter effettuare uno scambio data l'offerta selezionata"),
+
     ERRORE_STRINGA_VUOTA("La stringa inserita non può essere vuota");
 
     private String message;

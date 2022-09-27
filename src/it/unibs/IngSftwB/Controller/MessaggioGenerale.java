@@ -38,7 +38,7 @@ public enum MessaggioGenerale implements MessaggioStampabile {
     POSSIBILI_PADRI("Questi sono i possibili padri nella gerarchia:"),
     CITTA_SCAMBI("Inserisci il nome della città in cui avvengono gli scambi:"),
     LUOGO_SCAMBI("Inserisci il nome del luogo in cui vengono effettuati gli scambi:"),
-    INIZIO_MENU("Queste sono le possibili operazioni:"),
+    INIZIO_MENU("\n\nQueste sono le possibili operazioni:"),
     INSERISCI_SCADENZA("Inserisci il numero di giorni disponibili per accettare un'offerta:"),
     FINE_RIMOZIONE("Rimozione eseguita correttamente"),
     NUM_GER("Inserisci il numero della gerarchia dove si trova la categoria scelta:"),
@@ -48,6 +48,14 @@ public enum MessaggioGenerale implements MessaggioStampabile {
     COMP_CAMPO("Se vuoi inserire una descrizione al campo"),
     RESTO_COMP("inserisci 1 altrimenti 0:"),
     FINE_COMPILAZIONI("Fine compilazione campi"),
+    OFFERTE("Queste sono le offerte: "),
+    SCELTA_OFFERTA("Scegli il numero relativo all'offerta scelta: "),
+    ELIMINA_OFFERTA("Premi 1 se sei sicuro di cancellare tale offerta altrimenti 0"),
+    OFFERTA_ELIMINATA("Offerta ritirata correttamente"),
+    CREA_SCAMBIO("Creazione di uno scambio\n"),
+    SCELTA_OFFERTA_PROPOSTA("Scegli l'offerta che vuoi scambiare"),
+    SCAMBIO_OFFERTA("Scegli l'offerta con cui vorresti effettuare lo scambio: "),
+    SCAMBIO_CORRETTO("Scambio creato correttamente"),
     INSERISCI_NOME("Inserisci il tuo nome: ");
 
 

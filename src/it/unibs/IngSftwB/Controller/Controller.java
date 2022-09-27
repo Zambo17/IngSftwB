@@ -223,5 +223,12 @@ public class Controller {
         }
     }
 
+    public Offerta scegliOfferta(Offerte offerte){
+       this.comunicaAllaView(MessaggioGenerale.OFFERTE);
+       this.getView().stampaOfferteDescription((MessaggioOfferte) offerte.getOfferteDefinition());
+        int scelta=this.richiediInteroIntervalloView(MessaggioGenerale.SCELTA_OFFERTA,0, offerte.getListaOfferte().size());
+        return offerte.getListaOfferte().get(scelta);
+    }
+
 }
 
