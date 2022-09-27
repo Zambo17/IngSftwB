@@ -1,5 +1,8 @@
 package it.unibs.IngSftwB.Model;
 
+import it.unibs.IngSftwB.Controller.Messaggio;
+import it.unibs.IngSftwB.Controller.MessaggioScambi;
+
 import java.util.ArrayList;
 
 public class ListaScambi {
@@ -9,7 +12,7 @@ public class ListaScambi {
         scambi=_scambi;
     }
 
-    public ListaScambi scambiOfferente(Fruitore f){
+    public ListaScambi scambiOfferente(Utente f){
         ArrayList <Scambio> scambiOfferti=new ArrayList<>();
         for(Scambio s: this.scambi){
             if(s.getOfferente().getNomeFruitore().equals(f.getUsername())){
@@ -18,7 +21,7 @@ public class ListaScambi {
         }
         return new ListaScambi(scambiOfferti);
     }
-    public ListaScambi scambiRicevente(Fruitore f){
+    public ListaScambi scambiRicevente(Utente f){
         ArrayList <Scambio> scambiRicevuti=new ArrayList<>();
         for(Scambio s: this.scambi){
             if(s.getRicevente().getNomeFruitore().equals(f.getUsername())){
@@ -83,5 +86,9 @@ public class ListaScambi {
     public void aggiornaScambio(Scambio sca, int index){
         this.scambi.remove(index);
         this.scambi.add(sca);
+    }
+
+    public Messaggio getScambiDefinition(){
+        return new MessaggioScambi(scambi);
     }
 }

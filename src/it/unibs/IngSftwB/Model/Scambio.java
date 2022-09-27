@@ -1,5 +1,8 @@
 package it.unibs.IngSftwB.Model;
 
+import it.unibs.IngSftwB.Controller.Messaggio;
+import it.unibs.IngSftwB.Controller.MessaggioScambio;
+
 import java.util.Calendar;
 
 public class Scambio {
@@ -76,7 +79,7 @@ public class Scambio {
         }
         return stato;
     }
-    public void gestisciScambio(Fruitore f, ParametriScambi ps){
+    public void gestisciScambio(Utente f, ParametriScambi ps){
         switch (this.statoScambio()){
             case 0:
                 if(f.getUsername().equals(offerente.getNomeFruitore())){
@@ -169,5 +172,13 @@ public class Scambio {
         sb.append("\n\tOfferta con cui si vorrebbe effettuare lo scambio:\n");
         sb.append(ricevente.toStringOffertaConAutore());
         return sb.toString();
+    }
+
+    public Messaggio getScambioDefinition(){
+        return new MessaggioScambio(offerente,ricevente,ultimaProposta,tempo);
+    }
+
+    public void setTempo(long tempo) {
+        this.tempo = tempo;
     }
 }

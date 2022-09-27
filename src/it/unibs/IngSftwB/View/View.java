@@ -245,6 +245,27 @@ public class View {
         return sb.toString();
     }
 
+    public String getIntervalliDescription(MessaggioParametri msg){
+        StringBuffer sb=new StringBuffer();
+        int count=0;
+        if(msg.getIntervalli().size()==1){
+            sb.append("L'intervallo è: \n");
+        }
+        else
+            sb.append("Gli intervalli sono: \n");
+        for(Intervallo i: msg.getIntervalli()){
+            sb.append(this.getIntervalloDescription((MessaggioIntervallo) i.getIntervalloDefinition())+"\t");
+            count++;
+            if(count%6==0);
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
+
+    public void stampaIntervalliDescription(MessaggioParametri msg){
+        this.notifica(this.getIntervalliDescription(msg));
+    }
+
 
     public String getParametriDescription(MessaggioParametri msg){
         StringBuffer stb = new StringBuffer();
@@ -295,6 +316,10 @@ public class View {
         return stb.toString();
     }
 
+    public void stampaOffertaDescription(MessaggioOfferta msg){
+        this.notifica(this.getOffertaDescription((msg)));
+    }
+
     public String getOfferteDescription(MessaggioOfferte msg){
         StringBuffer s=new StringBuffer();
         int count=0;
@@ -329,6 +354,38 @@ public class View {
         sb.append("\n\tOfferta con cui si vorrebbe effettuare lo scambio:\n");
         sb.append(this.getOffertaAutoreDescription((MessaggioOfferta) msg.getRicevente().getOffertaDefinition()));
         return sb.toString();
+    }
+
+
+    public void stampaScambioDescription(MessaggioScambio msg){
+        this.notifica(this.getScambioDescription(msg));
+    }
+
+    public String getScambiDescription(MessaggioScambi msg){
+        StringBuffer sb=new StringBuffer();
+        int count=1;
+        sb.append("Questi sono gli scambi che ti sono stati proposti:\n");
+        for(Scambio s: msg.getScambi()){
+            sb.append("\t");
+            sb.append(count+") ");
+            sb.append(this.getScambioDescription((MessaggioScambio) s.getScambioDefinition())+"\n");
+            count++;
+        }
+        return sb.toString();
+    }
+
+    public void stampaScambiDescription(MessaggioScambi msg){
+        this.notifica(this.getScambiDescription(msg));
+    }
+
+    public String getPropostaDescription(MessaggioProposta msg){
+        StringBuffer sb=new StringBuffer();
+        sb.append("\nIl luogo proposto è: "+ msg.getLuogo()+ " alle ore: "+this.getOrarioDescription((MessaggioOrario) msg.getOra().getOrarioDefinition())+"\nIn data: "+ msg.getData());
+        return sb.toString();
+    }
+
+    public void stampaPropostaDescription(MessaggioProposta msg){
+        this.notifica(getPropostaDescription(msg));
     }
 
 

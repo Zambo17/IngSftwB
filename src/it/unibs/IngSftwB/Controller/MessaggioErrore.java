@@ -28,8 +28,12 @@ public enum MessaggioErrore implements MessaggioStampabile {
     PARAMETRI_NON_SETTATI("I parametri di configurazione non sono ancora stati settati"),
     APP_NON_SETTATA("L'applicazione non è stata settata dal configuratore quindi non puoi pubblicare offerte per ora"),
     NO_RITIRABILI("Non ci sono offerte ritirabili"),
+    NO_PROPOSTI("Non hai proposto scambi"),
+    NO_RICEVUTI("Non ti sono stati proposti scambi"),
+    NO_RISPOSTA("L'altro fruitore non ha ancora risposto alla tua proposta di scambio"),
     NO_OFFERTE_SCAMBIABILI("Non ci sono offerte con cui poter effettuare uno scambio data l'offerta selezionata"),
-
+    GIORNO_ERRATO_NUOVI("Il giorno inserito non fa parte dei giorni disponibili, i giorni disponibili sono: \n"),
+    ORARIO_NON_PRESENTE("L'orario inserito non rientra in un intervallo"),
     ERRORE_STRINGA_VUOTA("La stringa inserita non può essere vuota");
 
     private String message;

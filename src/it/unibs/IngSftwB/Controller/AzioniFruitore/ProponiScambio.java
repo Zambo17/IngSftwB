@@ -23,14 +23,15 @@ public class ProponiScambio implements AzioneUtente {
     }
 
     public static Scambio creaScambio(Controller controller, Utente f){
-        controller.comunicaAllaView(MessaggioGenerale.CREA_SCAMBIO);
-        controller.comunicaAllaView(MessaggioGenerale.SCELTA_OFFERTA_PROPOSTA);
+
         Offerte offerteFruitore=new Offerte(controller.getApp().getOfferte().getOfferteFromFruitore(f.getUsername()));
         offerteFruitore.togliRitirate();
         Offerta daScambiare=null;
         Offerta vorrei=null;
         Scambio toRet=null;
         if(offerteFruitore.getListaOfferte().size()>0){
+            controller.comunicaAllaView(MessaggioGenerale.CREA_SCAMBIO);
+            controller.comunicaAllaView(MessaggioGenerale.SCELTA_OFFERTA_PROPOSTA);
             daScambiare=controller.scegliOfferta(offerteFruitore);
             Offerte possibiliScambi=controller.getApp().getOfferte().offerteScambiabili(daScambiare);
             if(possibiliScambi.getListaOfferte().size()>0){
@@ -43,14 +44,14 @@ public class ProponiScambio implements AzioneUtente {
                 PropostaIncontro p=null;
                 long timeNow= Calendar.getInstance().getTimeInMillis();
                 toRet=new Scambio(daScambiare,vorrei,p,timeNow);
-                controller.comunicaAllaView(MessaggioGenerale.SCAMBIO_CORRETTO);
+                controller.comunicaAllaView(MessaggioGenerale.SCAMBIO_ESEGUITO_CORRETTO);
             }
             else{
-                System.out.println(MessaggioErrore.NO_OFFERTE_SCAMBIABILI);
+                controller.comunicaAllaView(MessaggioErrore.NO_OFFERTE_SCAMBIABILI);
             }
         }
         else{
-            System.out.println(MessaggioErrore.NO_OFFERTE);
+            controller.comunicaAllaView(MessaggioErrore.NO_OFFERTE);
         }
         return toRet;
     }

@@ -1,5 +1,8 @@
 package it.unibs.IngSftwB.Model;
 
+import it.unibs.IngSftwB.Controller.Messaggio;
+import it.unibs.IngSftwB.Controller.MessaggioProposta;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -98,5 +101,9 @@ public class PropostaIncontro {
 
     public String getData() {
         return data;
+    }
+
+    public Messaggio getPropostaDefinition(){
+        return new MessaggioProposta(nomeFruitore,luogo,ora,data,tempo);
     }
 }

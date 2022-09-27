@@ -19,6 +19,9 @@ public enum MessaggioAlternativa implements MessaggioStampabile{
     ALTRO_GIORNO("Inserisci 1 per aggiungere un altro giorno, 0 altrimenti:"),
     ALTRO_INTERVALLO("Inserisci 1 per introdurre un nuovo intervallo, 0 altrimenti:"),
     RIPROVA_OFFERTA("La categoria inserita non esiste o non è una foglia, se vuoi riprovare premi 1 altrimenti 0:"),
+    SCELTA_SCAMBI("Inserisci 1 se vuoi vedere gli scambi che hai proposto\n          0 se vuoi vedere quelli che ti sono stati proposti: "),
+    SCELTA_RISPOSTA("Inserisci 1 se vuoi rispondere a questa offerta, 0 altrimenti"),
+    SCELTA_PROPOSTA("Se vuoi accettare questo incontro premi 1, se vuoi proporne un altro premi 2, se vuoi non rispondere premi 0"),
     SCELTA_FILE("Attenzione inserire i dati da file xml può portare a errori consigliamo massima attenzione nella scrittura del file\n premere 1 per inserire le gerarchie\n premere 2 per inserire parametri di configurazione\n premere 0 per non inserire nessun file"),
     DETTAGLIO_CATEGORIA("Inserisci 1 se vuoi visualizzare in dettaglio una categoria, 0 altrimenti:");
 
