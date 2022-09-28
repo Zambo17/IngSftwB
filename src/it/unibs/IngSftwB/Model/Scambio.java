@@ -134,7 +134,7 @@ public class Scambio {
     public boolean scambioScaduto(ParametriScambi ps, Offerte offerte){
         boolean scaduto=false;
         long tempoOra=Calendar.getInstance().getTimeInMillis();
-        long differenza=Utilita.compareIstants(this.tempo,tempoOra);
+        long differenza=compareIstants(this.tempo,tempoOra);
         if(differenza>ps.getScadenza()){
             scaduto=true;
             this.ricevente.cambiaStato(StatoOfferta.APERTA);
@@ -180,5 +180,15 @@ public class Scambio {
 
     public void setTempo(long tempo) {
         this.tempo = tempo;
+    }
+
+    /**
+     * metodo che restituisce la differenza tra due istanti in giorni
+     * @param old istante vecchio
+     * @param nuovo instante nuovo
+     * @return nuovo-old
+     */
+    public static long compareIstants(long old, long nuovo){
+        return  ((nuovo/(1000*60*60*24))-(old/(1000*60*60*24)));
     }
 }

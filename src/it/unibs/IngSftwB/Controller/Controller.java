@@ -64,6 +64,13 @@ public class Controller {
             return;
         }
 
+        this.controlliIniziali(acceduto);
+
+        this.comunicaAllaView(MessaggioGenerale.BENVENUTO);
+        this.eseguiMenuAzioni(acceduto.getMenuUtente(),acceduto);
+    }
+
+    private void controlliIniziali(Utente acceduto) throws XMLStreamException {
         if(this.getApp().getConfigurazione().getParametri()==null && acceduto instanceof Configuratore){
             this.primoAccessoConfiguratoreParametri();
         }
@@ -72,10 +79,11 @@ public class Controller {
             this.primoAccessoConfiguratoreGerarchia();
         }
 
-        this.comunicaAllaView(MessaggioGenerale.BENVENUTO);
-        this.eseguiMenuAzioni(acceduto.getMenuUtente(),acceduto);
+        if(this.getApp().getListaScambi()!=null && this.getApp().getOfferte().getListaOfferte().size()!=0){
+            if(this.getApp().getListaScambi().getScambi().size()>0)
+                this.getApp().getListaScambi().controllaValiditaScambi(this.getApp().getConfigurazione().getParametri(), this.getApp().getOfferte());
+        }
     }
-
 
 
     public void eseguiMenuAzioni(List<AzioneUtente> menuUtente, Utente u) throws IOException {

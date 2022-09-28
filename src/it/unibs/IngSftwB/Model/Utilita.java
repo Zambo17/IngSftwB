@@ -182,15 +182,6 @@ public class Utilita {
         return meseGiorno.toString();
     }
 
-    /**
-     * metodo che restituisce la differenza tra due istanti in giorni
-     * @param old istante vecchio
-     * @param nuovo instante nuovo
-     * @return nuovo-old
-     */
-    public static long compareIstants(long old, long nuovo){
-        return  ((nuovo/(1000*60*60*24))-(old/(1000*60*60*24)));
-    }
 
 
     public static boolean fileExists(String filename){

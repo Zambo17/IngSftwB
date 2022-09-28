@@ -177,4 +177,6 @@ public class ControllaScambi implements AzioneUtente {
         int indexLuogo=controller.richiediInteroIntervalloView(MessaggioGenerale.SCELTA_LUOGO,1,controller.getApp().getConfigurazione().getParametri().getLuoghi().size());
         return controller.getApp().getConfigurazione().getParametri().getLuoghi().get(indexLuogo-1);
     }
+
+
 }
