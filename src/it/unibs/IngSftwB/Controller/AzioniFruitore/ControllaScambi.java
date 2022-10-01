@@ -128,7 +128,7 @@ public class ControllaScambi implements AzioneUtente {
             }
             controller.comunicaAllaView(MessaggioGenerale.A_CAPO);
             dataTemp=InserimentoDate.inserisciData(controller);
-            if(Utilita.checkGiornoSettimana(dataTemp,controller.getApp().getConfigurazione().getParametri().giorniInInteri())){
+            if(InserimentoDate.checkGiornoSettimana(dataTemp,controller.getApp().getConfigurazione().getParametri().giorniInInteri())){
                 giornoCorretto=true;
             }
             if(!giornoCorretto){
