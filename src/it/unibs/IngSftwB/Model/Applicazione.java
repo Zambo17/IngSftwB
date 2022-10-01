@@ -1,5 +1,6 @@
 package it.unibs.IngSftwB.Model;
 
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.stream.XMLStreamException;
 
 // temporanea per implementare accesso
@@ -34,6 +35,14 @@ public class Applicazione {
         if(fileOfferte!=null){
             this.offerte=XmlOfferte.leggiOfferte(fileOfferte);
         }
+    }
+
+    public void salvaDati() throws ParserConfigurationException {
+        XmlOfferte.salvaOfferte(this.offerte, "offerte.xml");
+        XmlConfigurazione.salvaParametri(this.configurazione.getParametri(), "parametriScambio.xml");
+        XmlConfigurazione.salvaSistema(this.configurazione.getSis(), "sistema.xml");
+        XmlDatiUtenti.utentiWrite(this.datiUtenti, "utenti.xml");
+        XmlScambi.scriviScambi(this.listaScambi, "scambi.xml");
     }
 
     public DatiUtenti getDatiUtenti() {

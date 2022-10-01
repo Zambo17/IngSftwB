@@ -9,6 +9,7 @@ import it.unibs.IngSftwB.View.LettoreStringa;
 import it.unibs.IngSftwB.View.View;
 import it.unibs.IngSftwB.xmlUtilities.XmlReader;
 
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -56,7 +57,7 @@ public class Controller {
         return (new LettoreIntero().leggiIntero(messaggio,minimo,massimo));
     }
 
-    public void run() throws IOException, XMLStreamException {
+    public void run() throws IOException, XMLStreamException, ParserConfigurationException {
         //caricare dati da file
         Utente acceduto = this.accessoCompleto();
         //controllare se i file sono vuoti e agire di conseguenza
@@ -68,6 +69,7 @@ public class Controller {
 
         this.comunicaAllaView(MessaggioGenerale.BENVENUTO);
         this.eseguiMenuAzioni(acceduto.getMenuUtente(),acceduto);
+        this.app.salvaDati();
     }
 
     private void controlliIniziali(Utente acceduto) throws XMLStreamException {

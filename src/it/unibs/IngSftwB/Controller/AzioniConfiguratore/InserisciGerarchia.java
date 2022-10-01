@@ -24,7 +24,13 @@ public class InserisciGerarchia implements AzioneUtente {
 
         Gerarchia finale= new Gerarchia();
         Categoria r=this.creaCategoria(Categoria.generaCampiIniziali(),nomeRadice,controller);
-        finale.getRamo().put(r,null); //controllare che funzioni senza problemi
+        CampoNativo uno=new CampoNativo("stato di conservazione",true);
+        CampoNativo due=new CampoNativo("descrizione libera",false);
+        ArrayList <CampoNativo> campiIniziali=new ArrayList<>();
+        campiIniziali.add(uno);
+        campiIniziali.add(due);
+        Categoria fantoccio=new Categoria("inesistente","", campiIniziali);
+        finale.getRamo().put(r,fantoccio); //controllare che funzioni senza problemi
         finale.setRadice(r);
 
         int choiceContinue=controller.richiediInteroIntervalloView(MessaggioAlternativa.NUOVA_SOTTOCATEGORIA,0,1);
