@@ -59,12 +59,12 @@ public class Controller {
 
     public void run() throws IOException, XMLStreamException, ParserConfigurationException {
         //caricare dati da file
+        this.app.caricaDati("scambi.xml","offerte.xml","utenti.xml","sistema.xml","parametriScambio.xml");
         Utente acceduto = this.accessoCompleto();
         //controllare se i file sono vuoti e agire di conseguenza
         if(acceduto==null){
             return;
         }
-
         this.controlliIniziali(acceduto);
 
         this.comunicaAllaView(MessaggioGenerale.BENVENUTO);
