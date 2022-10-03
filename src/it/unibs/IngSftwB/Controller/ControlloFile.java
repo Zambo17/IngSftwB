@@ -2,7 +2,7 @@ package it.unibs.IngSftwB.Controller;
 
 import java.io.File;
 
-public class ControlloFile {
+public abstract class ControlloFile {
 
     public static boolean fileExists(String filename){
         boolean esiste=false;

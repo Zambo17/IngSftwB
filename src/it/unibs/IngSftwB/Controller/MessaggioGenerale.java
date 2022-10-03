@@ -32,6 +32,7 @@ public enum MessaggioGenerale implements MessaggioStampabile {
     SCELTA_CATEGORIA("Scegli il numero rispettivo alla categoria radice da cui vuoi partire a cercare la categoria voluta: "),
     NUMERO_CATEGORIA("Inserisci il numero della categoria, se nessuna ti va bene premi 0 e si annulla l'operazione corrente: "),
     PERCORSO_FILE("Inserire il percorso del file per esempio: C:\\Users\\apote\\Desktop\\testxml\\testing.xml\nInserisci il nome del file: "),
+    FILE_CORRETTO("Le informazioni sono state caricate correttamente"),
     ANNULLA_FILE("Caricamento da file annullato"),
     FINE_PROGRAMMA("FINE PROGRAMMA"),
     BENVENUTO("Benvenuto nel sistema di gestione baratti"),

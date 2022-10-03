@@ -2,6 +2,7 @@ package it.unibs.IngSftwB.Controller.AzioniConfiguratore;
 
 import it.unibs.IngSftwB.Controller.*;
 import it.unibs.IngSftwB.Model.Utente;
+import it.unibs.IngSftwB.Model.XmlConfigurazione;
 import it.unibs.IngSftwB.xmlUtilities.XmlReader;
 
 import javax.xml.stream.XMLStreamException;
@@ -13,10 +14,10 @@ public class InserimentoDaFile implements AzioneUtente {
         try{
             switch(sceltaXml){
                 case 1:
-                    inserisciParametriDaFile(controller);
+                    inserisciGerarchieDaFile(controller);
                     break;
                 case 2:
-                    inserisciGerarchieDaFile(controller);
+                    inserisciParametriDaFile(controller);
                     break;
                 case 0:
                     System.out.println(MessaggioGenerale.ANNULLA_FILE);
@@ -29,9 +30,9 @@ public class InserimentoDaFile implements AzioneUtente {
     }
 
     public void inserisciGerarchieDaFile(Controller controller) throws XMLStreamException {
-        String nomefilePar= controller.richiediStringaView(MessaggioGenerale.PERCORSO_FILE);
-        if(ControlloFile.fileExists(nomefilePar) && ControlloFile.isXmlFile(nomefilePar)){
-                controller.getApp().getConfigurazione().setParametri(XmlReader.leggiParametri(nomefilePar));
+        String nomefileSis= controller.richiediStringaView(MessaggioGenerale.PERCORSO_FILE);
+        if(ControlloFile.fileExists(nomefileSis) && ControlloFile.isXmlFile(nomefileSis)){
+                controller.getApp().getConfigurazione().setSis(XmlConfigurazione.readSis(nomefileSis));
         }
         else{
             controller.comunicaAllaView(MessaggioErrore.FILE_NON_ESISTENTE);
@@ -40,9 +41,11 @@ public class InserimentoDaFile implements AzioneUtente {
     }
 
     public void inserisciParametriDaFile(Controller controller) throws XMLStreamException {
-        String nomeFileSis= controller.richiediStringaView(MessaggioGenerale.PERCORSO_FILE);
-        if(ControlloFile.fileExists(nomeFileSis) && ControlloFile.isXmlFile(nomeFileSis)){
-            controller.getApp().getConfigurazione().setSis(XmlReader.readSis(nomeFileSis));
+        String nomeFilePar= controller.richiediStringaView(MessaggioGenerale.PERCORSO_FILE);
+        if(ControlloFile.fileExists(nomeFilePar) && ControlloFile.isXmlFile(nomeFilePar)){
+            controller.getApp().getConfigurazione().setParametri(XmlConfigurazione.leggiParametri(nomeFilePar));
+            controller.comunicaAllaView(MessaggioGenerale.FILE_CORRETTO);
+
         }
         else{
             controller.comunicaAllaView(MessaggioErrore.FILE_NON_ESISTENTE);

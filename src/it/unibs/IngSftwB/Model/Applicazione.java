@@ -1,5 +1,7 @@
 package it.unibs.IngSftwB.Model;
 
+import it.unibs.IngSftwB.Controller.ControlloFile;
+
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.stream.XMLStreamException;
 
@@ -20,19 +22,19 @@ public class Applicazione {
         this.datiUtenti = datiUtenti;
     }
     public void caricaDati(String fileScambi, String fileOfferte, String fileUtenti, String fileSistema, String fileParametri) throws XMLStreamException {
-        if(fileScambi!=null){
+        if(ControlloFile.fileExists(fileScambi)){
             this.listaScambi=XmlScambi.leggiScambi(fileScambi);
         }
-        if(fileUtenti!=null){
+        if(ControlloFile.fileExists(fileUtenti)){
             this.datiUtenti=XmlDatiUtenti.leggiUtenti(fileUtenti);
         }
-        if(fileParametri!=null){
+        if(ControlloFile.fileExists(fileParametri)){
             this.configurazione.setParametri(XmlConfigurazione.leggiParametri(fileParametri));
         }
-        if(fileSistema!=null){
+        if(ControlloFile.fileExists(fileSistema)){
             this.configurazione.setSis(XmlConfigurazione.readSis(fileSistema));
         }
-        if(fileOfferte!=null){
+        if(ControlloFile.fileExists(fileOfferte)){
             this.offerte=XmlOfferte.leggiOfferte(fileOfferte);
         }
     }

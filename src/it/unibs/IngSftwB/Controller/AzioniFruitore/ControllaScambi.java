@@ -76,7 +76,7 @@ public class ControllaScambi implements AzioneUtente {
                     controller.getView().stampaOffertaDescription((MessaggioOfferta) scambio.getOfferente().getOffertaDefinition());
                     controller.comunicaAllaView(MessaggioGenerale.TUA_OFFERTA);
                     controller.getView().stampaOffertaDescription((MessaggioOfferta) scambio.getRicevente().getOffertaDefinition());
-                    int rispondi=controller.richiediInteroIntervalloView(MessaggioGenerale.SCELTA_SCAMBIO,0,1);
+                    int rispondi=controller.richiediInteroIntervalloView(MessaggioAlternativa.SCELTA_RISPOSTA,0,1);
                     if(rispondi==1){
                         PropostaIncontro nuovaPropposta=this.creaProposta(utente.getUsername(),controller);
                         scambio.cambiaProposta(nuovaPropposta);
