@@ -58,9 +58,9 @@ public class View {
         return this.scegli(opzioni, funzione);
     }
 
-    public <T> int scegliIntero(Messaggio messaggio, @NotNull List<T> opzioni, Function<T, String> funzione) {
+    public <T> int scegliIntero(Messaggio messaggio, @NotNull List<T> opzioni, Function<T, String> funzione,int limite) {
         this.notifica(messaggio);
-        return this.scegliIntero(opzioni, funzione);
+        return this.scegliIntero(opzioni, funzione,limite);
     }
 
     public <T> T scegli(@NotNull List<T> opzioni, Function<T, String> funzione) {
@@ -74,14 +74,14 @@ public class View {
         return opzioni.get(input);
     }
 
-    public <T> int scegliIntero(@NotNull List<T> opzioni, Function<T, String> funzione) {
+    public <T> int scegliIntero(@NotNull List<T> opzioni, Function<T, String> funzione,int limite) {
         int i = 1;
         for (T o : opzioni)
             this.notifica(i++ + ") " + (funzione == null ? o.toString() : funzione.apply(o)));
 
         int input = -1;
         LettoreIntero lettoreIntero = new LettoreIntero();
-        input = lettoreIntero.leggiIntero(MessaggioGenerale.SELEZIONA_INDICE,1,opzioni.size()+1);
+        input = lettoreIntero.leggiIntero(MessaggioGenerale.SELEZIONA_INDICE,limite,opzioni.size());
         return input;
     }
 

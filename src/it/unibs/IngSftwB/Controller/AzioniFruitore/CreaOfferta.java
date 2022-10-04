@@ -49,8 +49,6 @@ public class CreaOfferta implements AzioneUtente {
             else{
                 int temp=controller.richiediInteroIntervalloView(MessaggioAlternativa.RIPROVA_OFFERTA,0,1);
                 if(temp==0)
-                    continua=false;
-                else
                     return null;
             }
         }while(continua);

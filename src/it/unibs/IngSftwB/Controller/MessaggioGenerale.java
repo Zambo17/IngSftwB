@@ -2,7 +2,7 @@ package it.unibs.IngSftwB.Controller;
 
 public enum MessaggioGenerale implements MessaggioStampabile {
 
-    SELEZIONA_INDICE("\nSeleziona un indice:"),
+    SELEZIONA_INDICE("\nSeleziona l'indice corrispondente all'opzione desiderata:"),
     NUOVO_USERNAME("Inserisci il nome con cui vuoi registrarti:"),
     NUOVA_PASSWORD("Inserisci la tua nuova password:"),
     INSERISCI_PASSWORD("Inserisci la tua password: "),

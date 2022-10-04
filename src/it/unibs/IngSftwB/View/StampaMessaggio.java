@@ -15,7 +15,7 @@ public class StampaMessaggio {
     }
 
     public static void printText( MessaggioStampabile text,String limite) {
-        System.out.println(text.getMessage() + " " + limite + " ");
+        System.out.print(text.getMessage() + " " + limite + " ");
     }
 
 
