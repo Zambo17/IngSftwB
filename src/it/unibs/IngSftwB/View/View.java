@@ -316,6 +316,7 @@ public class View {
         return stb.toString();
     }
 
+
     public void stampaOffertaDescription(MessaggioOfferta msg){
         this.notifica(this.getOffertaDescription((msg)));
     }
@@ -337,8 +338,29 @@ public class View {
         return s.toString();
     }
 
+    public String getOfferteAutoreDescription(MessaggioOfferte msg){
+        StringBuffer s=new StringBuffer();
+        int count=0;
+        if(msg.getListaOfferte().size()==0){
+            s.append(MessaggioErrore.NO_OFFERTE.getMessage());
+        }
+        else{
+            for(Offerta o:msg.getListaOfferte()){
+                s.append("\n"+count +") " );
+                s.append(this.getOffertaAutoreDescription((MessaggioOfferta) o.getOffertaDefinition()));
+                count++;
+            }
+        }
+
+        return s.toString();
+    }
+
     public void stampaOfferteDescription(MessaggioOfferte msg){
         this.notifica(this.getOfferteDescription(msg));
+    }
+
+    public void stampaOfferteAutoreDescription(MessaggioOfferte msg){
+        this.notifica(this.getOfferteAutoreDescription(msg));
     }
 
     public String getIncontroDescription(MessaggioIncontro msg){

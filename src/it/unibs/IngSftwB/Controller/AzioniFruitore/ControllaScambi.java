@@ -134,7 +134,7 @@ public class ControllaScambi implements AzioneUtente {
             if(!giornoCorretto){
                 controller.comunicaAllaView(MessaggioErrore.GIORNO_ERRATO_NUOVI);
                 for(Giorno gg: giorniTemP){
-                    controller.getView().notifica(gg.toString() + "\t");
+                    controller.getView().notifica(gg.getNomeGiorno() + "\t");
                 }
 
             }
