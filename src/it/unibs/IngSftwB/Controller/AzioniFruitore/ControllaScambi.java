@@ -109,6 +109,9 @@ public class ControllaScambi implements AzioneUtente {
                     }
                 }
                 break;
+            case 3:
+                controller.comunicaAllaView(MessaggioGenerale.SCAMBIO_CHIUSO);
+                break;
         }
     }
 

@@ -382,29 +382,68 @@ public abstract class XmlScambi {
                                             if(xmlr.isStartElement()){
                                                 switch (xmlr.getLocalName()){
                                                     case "luogo":
-                                                        xmlr.next();
-                                                        luogo=xmlr.getText();
-                                                        xmlr.next();
+                                                        boolean fineLuogo=false;
+                                                        while(!fineLuogo){
+                                                            if(xmlr.isCharacters()){
+                                                                luogo=xmlr.getText();
+                                                                fineLuogo=true;
+                                                            }
+                                                            if(!fineLuogo){
+                                                                xmlr.next();
+                                                            }
+                                                        }
+
                                                         break;
                                                     case "data":
-                                                        xmlr.next();
-                                                        data=xmlr.getText();
-                                                        xmlr.next();
+                                                        boolean fineData=false;
+                                                        while(!fineData){
+                                                            if(xmlr.isCharacters()){
+                                                                data=xmlr.getText();
+                                                                fineData=true;
+                                                            }
+                                                            if(!fineData){
+                                                                xmlr.next();
+                                                            }
+                                                        }
                                                         break;
                                                     case "nomeF":
-                                                        xmlr.next();
-                                                        nomeFruiPorp=xmlr.getText();
-                                                        xmlr.next();
+                                                        boolean fineNomeFru=false;
+                                                        while(!fineNomeFru){
+                                                            if(xmlr.isCharacters()){
+                                                                nomeFruiPorp=xmlr.getText();
+                                                                fineNomeFru=true;
+                                                            }
+                                                            if(!fineNomeFru){
+                                                                xmlr.next();
+                                                            }
+                                                        }
+
                                                         break;
                                                     case "tempoProposta":
-                                                        xmlr.next();
-                                                        tempoProp=xmlr.getText();
-                                                        xmlr.next();
+                                                        boolean fineTampPro=false;
+                                                        while(!fineTampPro){
+                                                            if(xmlr.isCharacters()){
+                                                                tempoProp=xmlr.getText();
+                                                                fineTampPro=true;
+                                                            }
+                                                            if(!fineTampPro){
+                                                                xmlr.next();
+                                                            }
+                                                        }
+
                                                     case "ora":
-                                                        xmlr.next();
-                                                        ora=xmlr.getText();
-                                                        oraProposta=Orario.getOrarioFromString(ora);
-                                                        xmlr.next();
+                                                        boolean fineOra=false;
+                                                        while(!fineOra){
+                                                            if(xmlr.isCharacters()){
+                                                                ora=xmlr.getText();
+                                                                oraProposta=Orario.getOrarioFromString(ora);
+                                                                fineOra=true;
+                                                            }
+                                                            if(!fineOra){
+                                                                xmlr.next();
+                                                            }
+                                                        }
+
                                                         break;
                                                 }
                                             }

@@ -62,6 +62,7 @@ public enum MessaggioGenerale implements MessaggioStampabile {
     PROPOSTA("Ti è stato proposto di scambiare questa offerta:\n"),
     TUA_OFFERTA("\nCon questa tua offerta: \n"),
     PROPOSTA_INCONTRO("L'ultima proposta di incontro è questa: \n"),
+    SCAMBIO_CHIUSO("Lo scambio è chiuso"),
     SCAMBIO_ESEGUITO_CORRETTO("Lo scambio avverrà come scritto nella proposta che hai accettato: \n"),
     CREA_PROPOSTA("Adesso potrai creare la tua proposta per l'incontro con l'altro fruitore "),
     SCELTA_LUOGO("Inserisci il numero corrispondente al luogo che vuoi scegliere: "),
