@@ -49,6 +49,16 @@ public class Orario {
         if(o1.ora <=this.ora && this.ora <=o2.ora){
             dentro=true;
         }
+        if(this.ora ==o1.ora && this.ora <o2.ora){
+            if(this.minuti>=o1.minuti){
+                dentro=true;
+            }
+        }
+        if(this.ora >o1.ora && this.ora ==o2.ora){
+            if(this.minuti<=o2.minuti){
+                dentro=true;
+            }
+        }
         return dentro;
     }
     /**
