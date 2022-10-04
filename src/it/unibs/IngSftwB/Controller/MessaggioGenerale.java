@@ -2,7 +2,7 @@ package it.unibs.IngSftwB.Controller;
 
 public enum MessaggioGenerale implements MessaggioStampabile {
 
-    SELEZIONA_INDICE("\nSeleziona un indice:"),
+    SELEZIONA_INDICE("\nSeleziona l'indice corrispondente all'opzione desiderata:"),
     NUOVO_USERNAME("Inserisci il nome con cui vuoi registrarti:"),
     NUOVA_PASSWORD("Inserisci la tua nuova password:"),
     INSERISCI_PASSWORD("Inserisci la tua password: "),
@@ -62,8 +62,7 @@ public enum MessaggioGenerale implements MessaggioStampabile {
     PROPOSTA("Ti è stato proposto di scambiare questa offerta:\n"),
     TUA_OFFERTA("\nCon questa tua offerta: \n"),
     PROPOSTA_INCONTRO("L'ultima proposta di incontro è questa: \n"),
-    SCAMBIO_CHIUSO("Lo scambio è chiuso"),
-    SCAMBIO_ESEGUITO_CORRETTO("Lo scambio avverrà come scritto nella proposta che hai accettato: \n"),
+    SCAMBIO_ESEGUITO_CORRETTO("Lo scambio avverrà come scritto nella proposta che hai accettato. \n"),
     CREA_PROPOSTA("Adesso potrai creare la tua proposta per l'incontro con l'altro fruitore "),
     SCELTA_LUOGO("Inserisci il numero corrispondente al luogo che vuoi scegliere: "),
     GIORNI_SCAMBIO("I giorni della settimana in cui è possibile effettuare uno scambio sono: "),
@@ -75,6 +74,7 @@ public enum MessaggioGenerale implements MessaggioStampabile {
     ORA_APPUNTAMENTO("Inserisci l'ora dell'appuntamento (compresa tra 0 e 24):"),
     MINUTI_APPUNTAMENTO("Inserisci i minuti dell'inizio dell'intervallo(0 oppure 30):"),
     PROPORSTA_CORRETTA("Creazione proposta terminata con successo"),
+    CREAZIONE_SCAMBIO_CORRETTA("Proposta creata correttamente."),
     INSERISCI_NOME("Inserisci il tuo nome: ");
 
 

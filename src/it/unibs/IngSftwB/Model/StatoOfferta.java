@@ -5,7 +5,7 @@ package it.unibs.IngSftwB.Model;
  * @ author Jacopo Tedeschi, Enrico Zambelli
  */
 public enum StatoOfferta {
-    RITIRATA("aperta"),
+    RITIRATA("ritirata"),
     ACCOPPIATA("accoppiata"),
     SELEZIONATA("selezionata"),
     INSCAMBIO("in scambio"),

@@ -170,7 +170,7 @@ public class Controller {
         int sceltaGer = Utilita.leggiIntero("Scegli il numero rispettivo alla categoria radice da cui vuoi partire a cercare la categoria voluta: ", 0, this.listaGerarchie.size());
 
          */
-        int sceltaGer =this.getView().scegliIntero(MessaggioGenerale.SCELTA_CATEGORIA,this.getApp().getConfigurazione().getSis().getListaGerarchie(),e -> this.view.getCategoriaDescription((MessaggioCategoria) e.getRadice().getCategoriaDefinition()));
+        int sceltaGer =this.getView().scegliIntero(MessaggioGenerale.SCELTA_CATEGORIA,this.getApp().getConfigurazione().getSis().getListaGerarchie(),e -> this.view.getCategoriaDescription((MessaggioCategoria) e.getRadice().getCategoriaDefinition()),1);
         boolean fineScelta = false;
         ArrayList<Categoria> foglie=this.getApp().getConfigurazione().getSis().getListaGerarchie().get(sceltaGer-1).listaFoglie();
         /*
@@ -182,7 +182,7 @@ public class Controller {
         }
         int sceltaFoglia = Utilita.leggiIntero("Inserisci il numero della categoria, se nessuna ti va bene premi 0 e si annulla l'operazione corrente: ", 0, foglie.size());
         */
-        int sceltaFoglia =this.getView().scegliIntero(MessaggioGenerale.NUMERO_CATEGORIA,foglie,e -> this.view.getCategoriaDescription((MessaggioCategoria) e.getCategoriaDefinition()));
+        int sceltaFoglia =this.getView().scegliIntero(MessaggioGenerale.NUMERO_CATEGORIA,foglie,e -> this.view.getCategoriaDescription((MessaggioCategoria) e.getCategoriaDefinition()),0);
 
         if(sceltaFoglia!=0){
             questaRadice[0]=foglie.get(sceltaFoglia-1);

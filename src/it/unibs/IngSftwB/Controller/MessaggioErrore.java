@@ -22,7 +22,7 @@ public enum MessaggioErrore implements MessaggioStampabile {
     NESSUN_GIORNO("Deve esserci almeno un giorno quindi inserisci un giorno"),
     LUOGO_NON_PRESENTE("Questo luogo non è tra i luoghi presenti"),
     NO_OFFERTE_APERTE("Non ci sono offerte aperte relative a questa categoria"),
-    VISUALIZZAZIONE_OFFERTE_FALLITA("Visualizzazione offerte fallita"),
+    VISUALIZZAZIONE_OFFERTE_FALLITA("Visualizzazione offerte annullata"),
     ANNULLA_SELEZIONE("Selezione categoria annullata"),
     FILE_NON_ESISTENTE("File non esistente o di un formato sbagliato"),
     PARAMETRI_NON_SETTATI("I parametri di configurazione non sono ancora stati settati"),

@@ -176,7 +176,7 @@ public class ModificaParametri implements AzioneUtente {
         if(controller.getApp().getConfigurazione().getParametri().getGiorni().size()==0){
             controller.comunicaAllaView(MessaggioErrore.NESSUN_GIORNO);
             ArrayList<Giorno> lista = new ArrayList<>();
-            this.addGiorno(controller,lista);
+            controller.getApp().getConfigurazione().getParametri().getGiorni().add(addGiorno(controller,lista));
         }
 
         return giornoEsiste;

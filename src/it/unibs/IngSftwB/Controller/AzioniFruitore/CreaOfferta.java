@@ -31,8 +31,8 @@ public class CreaOfferta implements AzioneUtente {
         controller.getView().stampaSistemaDescription((MessaggioSistema) s.getSistemaDefinition());
         boolean continua=true;
         Offerta offerta=new Offerta();
+        int ger= controller.richiediInteroIntervalloView(MessaggioGenerale.NUM_GER,1,s.getListaGerarchie().size());
         do{
-            int ger= controller.richiediInteroIntervalloView(MessaggioGenerale.NUM_GER,1,s.getListaGerarchie().size());
             String n=controller.richiediStringaView(MessaggioGenerale.NOME_FOGLIA);
             Categoria c=s.findCategoria(n,ger);
 
@@ -47,11 +47,7 @@ public class CreaOfferta implements AzioneUtente {
                 continua=false;
             }
             else{
-                int temp=controller.richiediInteroIntervalloView(MessaggioAlternativa.RIPROVA_OFFERTA,0,1);
-                if(temp==0)
-                    continua=false;
-                else
-                    return null;
+                controller.comunicaAllaView(MessaggioAlternativa.RIPROVA_OFFERTA);
             }
         }while(continua);
 

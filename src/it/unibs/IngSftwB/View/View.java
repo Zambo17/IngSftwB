@@ -58,9 +58,9 @@ public class View {
         return this.scegli(opzioni, funzione);
     }
 
-    public <T> int scegliIntero(Messaggio messaggio, @NotNull List<T> opzioni, Function<T, String> funzione) {
+    public <T> int scegliIntero(Messaggio messaggio, @NotNull List<T> opzioni, Function<T, String> funzione,int limite) {
         this.notifica(messaggio);
-        return this.scegliIntero(opzioni, funzione);
+        return this.scegliIntero(opzioni, funzione,limite);
     }
 
     public <T> T scegli(@NotNull List<T> opzioni, Function<T, String> funzione) {
@@ -74,14 +74,14 @@ public class View {
         return opzioni.get(input);
     }
 
-    public <T> int scegliIntero(@NotNull List<T> opzioni, Function<T, String> funzione) {
+    public <T> int scegliIntero(@NotNull List<T> opzioni, Function<T, String> funzione,int limite) {
         int i = 1;
         for (T o : opzioni)
             this.notifica(i++ + ") " + (funzione == null ? o.toString() : funzione.apply(o)));
 
         int input = -1;
         LettoreIntero lettoreIntero = new LettoreIntero();
-        input = lettoreIntero.leggiIntero(MessaggioGenerale.SELEZIONA_INDICE,1,opzioni.size()+1);
+        input = lettoreIntero.leggiIntero(MessaggioGenerale.SELEZIONA_INDICE,limite,opzioni.size());
         return input;
     }
 
@@ -316,6 +316,7 @@ public class View {
         return stb.toString();
     }
 
+
     public void stampaOffertaDescription(MessaggioOfferta msg){
         this.notifica(this.getOffertaDescription((msg)));
     }
@@ -337,8 +338,29 @@ public class View {
         return s.toString();
     }
 
+    public String getOfferteAutoreDescription(MessaggioOfferte msg){
+        StringBuffer s=new StringBuffer();
+        int count=0;
+        if(msg.getListaOfferte().size()==0){
+            s.append(MessaggioErrore.NO_OFFERTE.getMessage());
+        }
+        else{
+            for(Offerta o:msg.getListaOfferte()){
+                s.append("\n"+count +") " );
+                s.append(this.getOffertaAutoreDescription((MessaggioOfferta) o.getOffertaDefinition()));
+                count++;
+            }
+        }
+
+        return s.toString();
+    }
+
     public void stampaOfferteDescription(MessaggioOfferte msg){
         this.notifica(this.getOfferteDescription(msg));
+    }
+
+    public void stampaOfferteAutoreDescription(MessaggioOfferte msg){
+        this.notifica(this.getOfferteAutoreDescription(msg));
     }
 
     public String getIncontroDescription(MessaggioIncontro msg){

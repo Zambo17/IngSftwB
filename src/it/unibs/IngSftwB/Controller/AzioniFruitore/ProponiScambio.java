@@ -44,7 +44,7 @@ public class ProponiScambio implements AzioneUtente {
                 PropostaIncontro p=null;
                 long timeNow= Calendar.getInstance().getTimeInMillis();
                 toRet=new Scambio(daScambiare,vorrei,p,timeNow);
-                controller.comunicaAllaView(MessaggioGenerale.SCAMBIO_ESEGUITO_CORRETTO);
+                controller.comunicaAllaView(MessaggioGenerale.CREAZIONE_SCAMBIO_CORRETTA);
             }
             else{
                 controller.comunicaAllaView(MessaggioErrore.NO_OFFERTE_SCAMBIABILI);
