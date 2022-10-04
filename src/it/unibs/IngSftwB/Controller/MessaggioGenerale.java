@@ -57,6 +57,7 @@ public enum MessaggioGenerale implements MessaggioStampabile {
     SCELTA_OFFERTA_PROPOSTA("Scegli l'offerta che vuoi scambiare"),
     SCAMBIO_OFFERTA("Scegli l'offerta con cui vorresti effettuare lo scambio: "),
     SCAMBIO_CORRETTO("Scambio creato correttamente"),
+    SCAMBIO_CHIUSO("Lo scambio è stato chiuso"),
     SCELTA_SCAMBIO("Inserisci il numero relativo allo scambio di cui sei interessato, " +
             "0 se non sei interessato: "),
     PROPOSTA("Ti è stato proposto di scambiare questa offerta:\n"),
