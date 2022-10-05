@@ -98,10 +98,34 @@ public class OrarioTest {
         assertFalse(orario14.orarioValido());
     }
 
+
+    //casi di test di orari con minuti e ore non validi
+
+    Orario orario21 =new Orario(-1,-1);
+    Orario orario22 =new Orario(-1,60);
+    Orario orario23 =new Orario(25,-1);
+    Orario orario24 =new Orario(25,60);
+
     @Test
-    void oreDieciDentroIntervallo(){
-        assertTrue(orario1.isInsideIntervallo(orario4,orario2));
+    void oreMenuUnaMinutiMenoUnoOrarioNonValido(){
+        assertFalse(orario21.orarioValido());
     }
+
+    @Test
+    void oreMenuUnaMinutiSessantaOrarioNonValido(){
+        assertFalse(orario22.orarioValido());
+    }
+
+    @Test
+    void oreVenticinqueMinutiMenoUnoOrarioNonValido(){
+        assertFalse(orario23.orarioValido());
+    }
+
+    @Test
+    void oreVenticinqueMinutiSessantaOrarioNonValido(){
+        assertFalse(orario21.orarioValido());
+    }
+
 
     //test relativi al fatto se un orario appartiene ad un dato intervallo
 
@@ -124,9 +148,25 @@ public class OrarioTest {
     }
 
     @Test
+    void oreDodiciTrentaDentroIntervallo(){
+        assertTrue(orario18.isInsideIntervallo(orario15,orario16));
+    }
+
+    @Test
+    void oreQuindiciTrentaDentroIntervallo(){
+        assertTrue(orario19.isInsideIntervallo(orario15,orario16));
+    }
+
+    @Test
+    void oreSediciDentroIntervallo(){
+        assertTrue(orario16.isInsideIntervallo(orario15,orario16));
+    }
+
+    @Test
     void oreSediciTrentaFuoriIntervallo(){
         assertFalse(orario20.isInsideIntervallo(orario15,orario16));
     }
+
 
 
 }
