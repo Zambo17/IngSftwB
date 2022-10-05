@@ -46,7 +46,7 @@ public class Orario {
         if(o1.ora ==this.ora && this.ora ==o2.ora){
             dentro=true;
         }
-        if(o1.ora <=this.ora && this.ora <=o2.ora){
+        if(o1.ora <this.ora && this.ora <o2.ora){
             dentro=true;
         }
         if(this.ora ==o1.ora && this.ora <o2.ora){

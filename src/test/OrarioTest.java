@@ -1,0 +1,132 @@
+package test;
+
+import it.unibs.IngSftwB.Model.Orario;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class OrarioTest {
+
+    //casi di test sui minuti, considerando un'ora valida
+    Orario orario1= new Orario(10,00);
+    Orario orario2= new Orario(10,01);
+    Orario orario3= new Orario(9,59);
+    Orario orario4= new Orario(24,00);
+    Orario orario5= new Orario(00,00);
+    Orario orario6= new Orario(10,-1);
+    Orario orario7 = new Orario(10,60);
+    Orario orario8 = new Orario(10,30);
+    Orario orario9 = new Orario(10,31);
+    Orario orario10 = new Orario(10,29);
+
+
+
+    @Test
+    void oreDieciOrarioValido(){
+        assertTrue(orario1.orarioValido());
+    }
+
+    @Test
+    void oreDieciUnoOrarioNonValido(){
+        assertFalse(orario2.orarioValido());
+    }
+
+    @Test
+    void oreNoveCinquantanoveOrarioNonValido(){
+        assertFalse(orario3.orarioValido());
+    }
+
+    @Test
+    void oreVentiQuattroOrarioValido(){
+        assertTrue(orario4.orarioValido());
+    }
+
+    @Test
+    void oreZeroZeroOrarioValido(){
+        assertTrue(orario5.orarioValido());
+    }
+
+    @Test
+    void oreDieciMinutiNegativiOrarioValido(){
+        assertFalse(orario6.orarioValido());
+    }
+
+    @Test
+    void oreDieciMinutiSessantaOrarioNonValido(){
+        assertFalse(orario7.orarioValido());
+    }
+
+    @Test
+    void oreDieciTrentaOrarioValido(){
+        assertTrue(orario8.orarioValido());
+    }
+
+    @Test
+    void oreDieciVentinoveOrarioNonValido(){
+        assertFalse(orario9.orarioValido());
+    }
+
+    @Test
+    void oreDieciTrentunoOrarioNonValido(){
+        assertFalse(orario10.orarioValido());
+    }
+
+    //casi di test delle ore con minuti corretti
+
+    Orario orario11=new Orario(1,00);
+    Orario orario12=new Orario(-1,00);
+    Orario orario13=new Orario(23,00);
+    Orario orario14=new Orario(25,00);
+
+    @Test
+    void oreUnaOrarioValido(){
+        assertTrue(orario11.orarioValido());
+    }
+
+    @Test
+    void oreMenuUnaOrarioNonValido(){
+        assertFalse(orario12.orarioValido());
+    }
+
+    @Test
+    void oreVentitreOrarioValido(){
+        assertTrue(orario13.orarioValido());
+    }
+
+    @Test
+    void oreVenticinqueOrarioNonValido(){
+        assertFalse(orario14.orarioValido());
+    }
+
+    @Test
+    void oreDieciDentroIntervallo(){
+        assertTrue(orario1.isInsideIntervallo(orario4,orario2));
+    }
+
+    //test relativi al fatto se un orario appartiene ad un dato intervallo
+
+    Orario orario15 =new Orario(12,00);
+    Orario orario16 =new Orario(16,00);
+
+    Orario orario17 =new Orario(11,30);
+    Orario orario18 =new Orario(12,30);
+    Orario orario19 =new Orario(15,30);
+    Orario orario20 =new Orario(16,30);
+
+    @Test
+    void oreUndiciTrentaFuoriIntervallo(){
+        assertFalse(orario17.isInsideIntervallo(orario15,orario16));
+    }
+
+    @Test
+    void oreDodiciDentroIntervallo(){
+        assertTrue(orario15.isInsideIntervallo(orario15,orario16));
+    }
+
+    @Test
+    void oreSediciTrentaFuoriIntervallo(){
+        assertFalse(orario20.isInsideIntervallo(orario15,orario16));
+    }
+
+
+}
