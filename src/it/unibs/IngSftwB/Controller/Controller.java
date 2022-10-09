@@ -72,6 +72,15 @@ public class Controller {
         this.app.salvaDati();
     }
 
+    public void eseguiMenuAzioni(List<AzioneUtente> menuUtente, Utente u) throws IOException {
+        AzioneUtente chosen;
+        do {
+            this.comunicaAllaView(MessaggioGenerale.INIZIO_MENU);
+            chosen = this.view.scegli(menuUtente, AzioneUtente::getNomeAzione);
+            chosen.eseguiAzione(this, u);
+        } while (!(chosen instanceof Esci));
+    }
+
     private void controlliIniziali(Utente acceduto) throws XMLStreamException {
         if(this.getApp().getConfigurazione().getParametri()==null && acceduto instanceof Configuratore){
             this.primoAccessoConfiguratoreParametri();
@@ -88,14 +97,7 @@ public class Controller {
     }
 
 
-    public void eseguiMenuAzioni(List<AzioneUtente> menuUtente, Utente u) throws IOException {
-        AzioneUtente chosen;
-        do {
-            this.comunicaAllaView(MessaggioGenerale.INIZIO_MENU);
-            chosen = this.view.scegli(menuUtente, AzioneUtente::getNomeAzione);
-            chosen.eseguiAzione(this, u);
-        } while (!(chosen instanceof Esci));
-    }
+
 
     public Utente nuovoUtente(boolean conf){
         String username;

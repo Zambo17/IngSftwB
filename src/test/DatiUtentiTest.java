@@ -32,6 +32,11 @@ public class DatiUtentiTest {
     }
 
     @Test
+    void controlloCredenzialiPredefiniteErrate(){
+        assertFalse(datiUtenti.checkConf("mariorossi","1234"));
+    }
+
+    @Test
     void controlloNomePresente(){
         datiUtenti.addUtente("mariorossi","1234",false);
         assertTrue(datiUtenti.checkName("mariorossi"));

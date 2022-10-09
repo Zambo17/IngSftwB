@@ -5,7 +5,6 @@ import it.unibs.IngSftwB.Controller.ControlloFile;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.stream.XMLStreamException;
 
-// temporanea per implementare accesso
 public class Applicazione {
 
     private Offerte offerte;

@@ -22,6 +22,7 @@ public class Configuratore extends Utente {
 
     }
 
+    @Override
     public List<AzioneUtente> getMenuUtente() {
         List<AzioneUtente> menu = new LinkedList<>();
         menu.add(new InserisciGerarchia());

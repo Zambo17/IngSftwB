@@ -122,6 +122,6 @@ public class ValiditaOrarioTest {
 
     @Test
     void oreVenticinqueMinutiSessantaOrarioNonValido() {
-        assertFalse(orario21.orarioValido());
+        assertFalse(orario24.orarioValido());
     }
 }

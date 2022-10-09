@@ -20,7 +20,7 @@ import java.util.HashMap;
 public abstract class XmlScambi {
 
     /**
-     * metodo per leggere gli scambi salvati in xml
+     * Metodo per leggere gli scambi salvati in un file xml
      * @param filename nome del file xml
      * @return ListScambi
      * @throws XMLStreamException
@@ -492,6 +492,13 @@ public abstract class XmlScambi {
         ListaScambi scambiToRet=new ListaScambi(scambi);
         return scambiToRet;
     }
+
+
+    /**
+     * Metodo per salvare gli scambi in un file xml
+     * @param listaScambi la lista degli scambi da salvare
+     * @param filename il nome del file
+     */
     public static void scriviScambi(ListaScambi listaScambi,String filename)  {
         try{
             DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
@@ -683,3 +690,7 @@ public abstract class XmlScambi {
     }
 
 }
+
+
+
+

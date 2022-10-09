@@ -19,7 +19,7 @@ import java.util.HashMap;
 
 public abstract class XmlOfferte {
     /**
-     * metodo le la lettur adelle offerte salvate nel fil xml
+     * Metodo le la lettura delle offerte salvate nel file xml
      * @param filename nome file xml
      * @return Offerte contenente le ooferte che erano salvate in filename
      * @throws XMLStreamException
@@ -214,7 +214,7 @@ public abstract class XmlOfferte {
     }
 
     /**
-     * metodo per salvare le offerte in un file xml
+     * Metodo per salvare le offerte in un file xml
      * @param offerte offerte da salvare
      * @param filename nome del file xml in cui salvare
      */
