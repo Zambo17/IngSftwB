@@ -11,19 +11,23 @@ public class StampaOfferteFoglia implements AzioneUtente {
     public void eseguiAzione(Controller controller, Utente utente) {
         Applicazione app=controller.getApp();
 
-        Categoria[] categoriaFoglia= controller.scegliFoglia();
-        if(categoriaFoglia[0] != null){
-            Offerte tosee=app.getOfferte().offerteFoglia(categoriaFoglia[0].getNome(), categoriaFoglia[1].getNome());
-            if(tosee.getListaOfferte().size()!=0){
-                controller.comunicaAllaView(MessaggioGenerale.OFFERTE_CATEGORIA);
-                controller.getView().stampaOfferteAutoreDescription((MessaggioOfferte) tosee.getOfferteDefinition());
-            }
-            else{
-                controller.comunicaAllaView(MessaggioErrore.NO_OFFERTE_APERTE);
+        if (app.getConfigurazione().getSis().getListaGerarchie().size() != 0) {
+
+            Categoria[] categoriaFoglia = controller.scegliFoglia();
+            if (categoriaFoglia[0] != null) {
+                Offerte tosee = app.getOfferte().offerteFoglia(categoriaFoglia[0].getNome(), categoriaFoglia[1].getNome());
+                if (tosee.getListaOfferte().size() != 0) {
+                    controller.comunicaAllaView(MessaggioGenerale.OFFERTE_CATEGORIA);
+                    controller.getView().stampaOfferteAutoreDescription((MessaggioOfferte) tosee.getOfferteDefinition());
+                } else {
+                    controller.comunicaAllaView(MessaggioErrore.NO_OFFERTE_APERTE);
+                }
+            } else {
+                controller.comunicaAllaView(MessaggioErrore.VISUALIZZAZIONE_OFFERTE_FALLITA);
             }
         }
         else{
-            controller.comunicaAllaView(MessaggioErrore.VISUALIZZAZIONE_OFFERTE_FALLITA);
+            controller.comunicaAllaView(MessaggioErrore.APP_NON_SETTATA);
         }
     }
 
