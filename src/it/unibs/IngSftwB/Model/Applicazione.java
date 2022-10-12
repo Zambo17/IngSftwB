@@ -39,11 +39,20 @@ public class Applicazione {
     }
 
     public void salvaDati() throws ParserConfigurationException {
-        XmlOfferte.salvaOfferte(this.offerte, "offerte.xml");
-        XmlConfigurazione.salvaParametri(this.configurazione.getParametri(), "parametriScambio.xml");
-        XmlConfigurazione.salvaSistema(this.configurazione.getSis(), "sistema.xml");
-        XmlDatiUtenti.utentiWrite(this.datiUtenti, "utenti.xml");
-        XmlScambi.scriviScambi(this.listaScambi, "scambi.xml");
+        if(this.offerte.getListaOfferte().size()>0){
+            XmlOfferte.salvaOfferte(this.offerte, "offerte.xml");
+        }
+        if(this.configurazione.getParametri()!=null){
+            XmlConfigurazione.salvaParametri(this.configurazione.getParametri(), "parametriScambio.xml");
+        }
+        if(this.configurazione.getSis().getListaGerarchie().size()>0){
+            XmlConfigurazione.salvaSistema(this.configurazione.getSis(), "sistema.xml");
+        }
+        if(this.datiUtenti.getListaUtenti().size()>0){
+            XmlDatiUtenti.utentiWrite(this.datiUtenti, "utenti.xml");
+        }
+        if(this.listaScambi.getScambi().size()>0)
+            XmlScambi.scriviScambi(this.listaScambi, "scambi.xml");
     }
 
     public DatiUtenti getDatiUtenti() {
