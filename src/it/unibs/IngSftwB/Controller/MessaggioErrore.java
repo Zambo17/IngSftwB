@@ -6,7 +6,7 @@ public enum MessaggioErrore implements MessaggioStampabile {
     ERRORE_MINIMO("Attenzione: e' richiesto un valore maggiore o uguale a "),
     ERRORE_MASSIMO("Attenzione: e' richiesto un valore minore o uguale a "),
     NO_GERARCHIE("Il sistema non ha alcuna gerarchia"),
-    NO_OFFERTE("Non hai inserito alcuna offerta"),
+    NO_OFFERTE("Non ci sono offerte"),
     CREDENZIALI_ERRATE("Le credenziali inserite non sono corrette, hai in totale tre tentativi"),
     ACCESSO_FALLITO("Accesso fallito chiudere il programma"),
     NOME_CATEGORIA_PRESENTE("Questo nome è già presente"),

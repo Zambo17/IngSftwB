@@ -99,6 +99,39 @@ public class Offerta {
     }
 
     /**
+     * Metodo per comparare un offerta con questa offerta
+     * @param toCompare
+     * @return true se l'ooferta toCompare è uguale a questa offerta
+     */
+    public boolean stessaOfferta(Offerta toCompare){
+        boolean idem=false;
+        if (this.getNomeFruitore().equals(toCompare.getNomeFruitore())){
+            if(this.nomeCategoria.equals(toCompare.nomeCategoria)){
+                if(this.nomeRadice.equals(toCompare.nomeRadice)){
+                    boolean compilazioniUguali=true;
+                    for(CampoNativo cn: this.compliazioni.keySet()){
+                        String s1=this.compliazioni.get(cn);
+                        String s2="";
+                        for(CampoNativo ct :toCompare.getCompliazioni().keySet()){
+                            if(cn.getNomeCampo().equals(ct.getNomeCampo())){
+                                s2=toCompare.getCompliazioni().get(ct);
+                            }
+                        }
+                        if(!s1.equals(s2)){
+                            compilazioniUguali=false;
+                            break;
+                        }
+                    }
+                    if(compilazioniUguali){
+                        idem=true;
+                    }
+                }
+            }
+        }
+        return idem;
+    }
+
+    /**
      * Metodo per effettuare il cambio di stato di un'offerta
      */
     public void cambiaStato(StatoOfferta so){
@@ -149,6 +182,7 @@ public class Offerta {
         stb.append("\n\tAutore offerta: " + this.getNomeFruitore()+"\n");
         return stb.toString();
     }
+
 
     /**
      * Metodo get per gli stati passati

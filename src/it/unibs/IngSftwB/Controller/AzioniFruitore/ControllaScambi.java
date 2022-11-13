@@ -80,8 +80,11 @@ public class ControllaScambi implements AzioneUtente {
                     if(rispondi==1){
                         PropostaIncontro nuovaPropposta=this.creaProposta(utente.getUsername(),controller);
                         scambio.cambiaProposta(nuovaPropposta);
+                        controller.getApp().getOfferte().modificaOffertaEsistente(scambio.getRicevente(), StatoOfferta.INSCAMBIO);
                         scambio.getRicevente().cambiaStato(StatoOfferta.INSCAMBIO);
+                        controller.getApp().getOfferte().modificaOffertaEsistente(scambio.getRicevente(), StatoOfferta.INSCAMBIO);
                         scambio.getOfferente().cambiaStato(StatoOfferta.INSCAMBIO);
+
                         scambio.setTempo(nuovaPropposta.getTempo());
                     }
                 }
@@ -98,8 +101,11 @@ public class ControllaScambi implements AzioneUtente {
                         if(scelta==1){
                             controller.comunicaAllaView(MessaggioGenerale.SCAMBIO_ESEGUITO_CORRETTO);
                             controller.getView().stampaPropostaDescription((MessaggioProposta) scambio.getUltimaProposta().getPropostaDefinition());
+                            controller.getApp().getOfferte().modificaOffertaEsistente(scambio.getRicevente(), StatoOfferta.CHIUSA);
                             scambio.getRicevente().cambiaStato(StatoOfferta.CHIUSA);
+                            controller.getApp().getOfferte().modificaOffertaEsistente(scambio.getOfferente(), StatoOfferta.CHIUSA);
                             scambio.getOfferente().cambiaStato(StatoOfferta.CHIUSA);
+
                         }
                         else{
                             if(scelta==2){

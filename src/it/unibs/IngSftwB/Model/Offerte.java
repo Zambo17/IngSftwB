@@ -88,7 +88,13 @@ public class Offerte {
      * @param toChange offerta di cui si vuole cambiare lo stato
      */
     public void modificaOffertaEsistente(Offerta toChange, StatoOfferta so){
-        int indice=this.listaOfferte.indexOf(toChange);
+        int indice=0;
+        for(Offerta of:this.listaOfferte){
+            if(of.stessaOfferta(toChange)){
+                indice=this.listaOfferte.indexOf(of);
+                break;
+            }
+        }
         Offerta temp=this.listaOfferte.get(indice);
         temp.cambiaStato(so);
         this.listaOfferte.remove(indice);

@@ -201,7 +201,7 @@ public class Menu {
                             Scambio scambioScelto=fatti.scegliScambio();
                             int index=listascambi.getScambi().indexOf(scambioScelto);
                             if(scambioScelto!=null){
-                                scambioScelto.gestisciScambio(f,conf.getParametri());
+                                scambioScelto.gestisciScambio(f,conf.getParametri(), offerte);
                                 listascambi.aggiornaScambio(scambioScelto,index);
                             }
                             else
@@ -218,7 +218,7 @@ public class Menu {
                             Scambio scambioScelto=ricevuti.scegliScambio();
                             int index=listascambi.getScambi().indexOf(scambioScelto);
                             if(scambioScelto!=null){
-                                scambioScelto.gestisciScambio(f,conf.getParametri());
+                                scambioScelto.gestisciScambio(f,conf.getParametri(), offerte);
                                 listascambi.aggiornaScambio(scambioScelto,index);
                             }
                             else

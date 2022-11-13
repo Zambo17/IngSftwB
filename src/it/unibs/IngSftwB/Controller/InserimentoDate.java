@@ -16,6 +16,24 @@ public class InserimentoDate {
         c.set(year,mm,day);
         boolean valido=false;
         int i= c.get(Calendar.DAY_OF_WEEK);
+        ArrayList <Integer> mesiCorti=new ArrayList<>();
+        mesiCorti.add(4);
+        mesiCorti.add(6);
+        mesiCorti.add(9);
+        mesiCorti.add(11);
+        int meseCortissimo= 2;
+        if ( mesiCorti.contains(mm)){
+            if( i==7)
+                i=1;
+            else
+                i=i+1;
+        }
+        if( mm==2){
+            if (i<5)
+                i=i+3;
+            else
+                i=i+3-7;
+        }
         if(listaGiorniSettimana.contains(i))
             valido=true;
         return valido;
