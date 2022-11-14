@@ -18,6 +18,7 @@ public class StampaOfferteFoglia implements AzioneUtente {
                 Offerte tosee = app.getOfferte().offerteFoglia(categoriaFoglia[0].getNome(), categoriaFoglia[1].getNome());
                 if (tosee.getListaOfferte().size() != 0) {
                     controller.comunicaAllaView(MessaggioGenerale.OFFERTE_CATEGORIA);
+                    tosee.offerteAperte();
                     controller.getView().stampaOfferteAutoreDescription((MessaggioOfferte) tosee.getOfferteDefinition());
                 } else {
                     controller.comunicaAllaView(MessaggioErrore.NO_OFFERTE_APERTE);

@@ -165,8 +165,10 @@ public class ControllaScambi implements AzioneUtente {
                 }
             } while (!finito);
             for(Intervallo i:controller.getApp().getConfigurazione().getParametri().getIntervalli()){
-                if(inizio.isInsideIntervallo(i.getOre()[0], i.getOre()[1]))
-                    compreso=true;
+                if(inizio.isInsideIntervallo(i.getOre()[0], i.getOre()[1])) {
+                    compreso = true;
+                    break;
+                }
                 else
                     controller.comunicaAllaView(MessaggioErrore.ORARIO_NON_PRESENTE);
             }

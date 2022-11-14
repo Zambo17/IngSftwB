@@ -75,12 +75,11 @@ public class Offerte {
     public void togliRitirate(){
         ArrayList <Offerta> temp=new ArrayList<>();
         for(Offerta o: this.listaOfferte){
-            if(o.getStatoAttuale()==StatoOfferta.APERTA.APERTA){
+            if(o.getStatoAttuale()==StatoOfferta.RITIRATA){
                 temp.add(o);
             }
         }
-        this.listaOfferte.clear();
-        this.listaOfferte.addAll(temp);
+        this.listaOfferte.removeAll(temp);
     }
 
     /**
@@ -109,11 +108,23 @@ public class Offerte {
     public void offerteScambiate(){
         ArrayList <Offerta> temp=new ArrayList<>();
         for(Offerta o:this.listaOfferte){
-            if(o.getStatoAttuale()!=StatoOfferta.CHIUSA && o.getStatoAttuale()!=StatoOfferta.INSCAMBIO ){
+            if(o.getStatoAttuale()==StatoOfferta.CHIUSA || o.getStatoAttuale()==StatoOfferta.INSCAMBIO ){
                 temp.add(o);
             }
         }
-        this.listaOfferte.removeAll(temp);
+        this.listaOfferte.clear();
+        this.listaOfferte.addAll(temp);
+    }
+
+    public void offerteAperte(){
+        ArrayList <Offerta> temp=new ArrayList<>();
+        for(Offerta o:this.listaOfferte){
+            if(o.getStatoAttuale()==StatoOfferta.APERTA){
+                temp.add(o);
+            }
+        }
+        this.listaOfferte.clear();
+        this.listaOfferte.addAll(temp);
     }
 
     /**
@@ -127,7 +138,7 @@ public class Offerte {
         offerteScambiabili.addAll(this.offerteFoglia(daScambiare.getNomeCategoria(),daScambiare.getNomeRadice())
                 .getListaOfferte());
         Offerte of=new Offerte(offerteScambiabili);
-        of.togliRitirate();
+        of.offerteAperte();
         ArrayList <Offerta> papabili=new ArrayList<>();
         for(Offerta offerta: of.getListaOfferte()){
             if(!offerta.getNomeFruitore().equals(daScambiare.getNomeFruitore())){

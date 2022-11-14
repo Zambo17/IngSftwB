@@ -32,24 +32,24 @@ public enum Giorno {
     public static Giorno getGiornoFromString(String gg){
 
         switch(gg){
-            case "lunedi":
+            case "Lunedi":
                 return LUNEDI;
-            case "martedi":
+            case "Martedi":
                 return MARTEDI;
 
-            case "mercoledi":
+            case "Mercoledi":
                 return MERCOLEDI;
 
-            case "giovedi":
+            case "Giovedi":
                 return GIOVEDI;
 
-            case "venerdi":
+            case "Venerdi":
                 return VENERDI;
 
-            case "sabato":
+            case "Sabato":
                 return SABATO;
 
-            case "domenica":
+            case "Domenica":
                 return DOMENICA;
 
         }

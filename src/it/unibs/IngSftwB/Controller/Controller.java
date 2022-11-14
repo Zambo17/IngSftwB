@@ -7,7 +7,6 @@ import it.unibs.IngSftwB.Model.*;
 import it.unibs.IngSftwB.View.LettoreIntero;
 import it.unibs.IngSftwB.View.LettoreStringa;
 import it.unibs.IngSftwB.View.View;
-import it.unibs.IngSftwB.xmlUtilities.XmlReader;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.stream.XMLStreamException;
@@ -204,7 +203,7 @@ public class Controller {
         if(sceltaPar==2){
             String nomefilePar=this.richiediStringaView(MessaggioGenerale.PERCORSO_FILE);
             if(ControlloFile.fileExists(nomefilePar) && ControlloFile.isXmlFile(nomefilePar)){
-                this.getApp().getConfigurazione().setParametri(XmlReader.leggiParametri(nomefilePar));
+                this.getApp().getConfigurazione().setParametri(XmlConfigurazione.leggiParametri(nomefilePar));
             }
             else{
                 this.comunicaAllaView(MessaggioErrore.FILE_NON_ESISTENTE);
@@ -221,7 +220,7 @@ public class Controller {
         if(scelta==2){
             String nomeFileGer=this.richiediStringaView(MessaggioGenerale.PERCORSO_FILE);
             if(ControlloFile.fileExists(nomeFileGer) && ControlloFile.isXmlFile(nomeFileGer)){
-                this.getApp().getConfigurazione().setSis(XmlReader.readSis(nomeFileGer));
+                this.getApp().getConfigurazione().setSis(XmlConfigurazione.readSis(nomeFileGer));
             }
             else{
                 this.comunicaAllaView(MessaggioErrore.FILE_NON_ESISTENTE);

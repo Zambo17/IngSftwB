@@ -3,7 +3,6 @@ package it.unibs.IngSftwB.Controller.AzioniConfiguratore;
 import it.unibs.IngSftwB.Controller.*;
 import it.unibs.IngSftwB.Model.Utente;
 import it.unibs.IngSftwB.Model.XmlConfigurazione;
-import it.unibs.IngSftwB.xmlUtilities.XmlReader;
 
 import javax.xml.stream.XMLStreamException;
 

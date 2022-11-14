@@ -201,13 +201,13 @@ public class View {
         }
         else{
             if(msg.getListaGerarchie().size()==1){
-                str.append("Esiste una sola gerarchia e questa è la sua radice: \n"+msg.getListaGerarchie().get(0).getRadice().toStringCategoria());
+                str.append("Esiste una sola gerarchia e questa è la sua radice: \n"+msg.getListaGerarchie().get(0).getRadice().getCategoriaDefinition());
             }
             else{
                 str.append("Le radici di ogni gerarchia sono:\n ");
                 int count=0;
                 for(Gerarchia x:msg.getListaGerarchie()){
-                    str.append("1. "+x.getRadice().toStringCategoria()+"\n");
+                    str.append("1. "+x.getRadice().getCategoriaDefinition()+"\n");
                 }
             }
         }
@@ -386,7 +386,7 @@ public class View {
     public String getScambiDescription(MessaggioScambi msg){
         StringBuffer sb=new StringBuffer();
         int count=1;
-        sb.append("Questi sono gli scambi che ti sono stati proposti:\n");
+        sb.append("Questi sono gli scambi della categoria selezionata:\n");
         for(Scambio s: msg.getScambi()){
             sb.append("\t");
             sb.append(count+") ");

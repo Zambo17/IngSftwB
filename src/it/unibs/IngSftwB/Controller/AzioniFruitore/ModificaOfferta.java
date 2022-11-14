@@ -12,7 +12,7 @@ public class ModificaOfferta implements AzioneUtente {
         Applicazione app =controller.getApp();
 
         Offerte offerteFruitore= new Offerte(app.getOfferte().getOfferteFromFruitore(utente.getUsername()));
-        offerteFruitore.togliRitirate();
+        offerteFruitore.offerteAperte();
         if(offerteFruitore.getListaOfferte().size()>0){
             Offerta toChange=controller.scegliOfferta(offerteFruitore);
             int sceltaSicura= controller.richiediInteroIntervalloView(MessaggioGenerale.ELIMINA_OFFERTA,0,1);

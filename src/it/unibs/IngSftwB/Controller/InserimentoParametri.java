@@ -4,7 +4,6 @@ import it.unibs.IngSftwB.Controller.AzioniConfiguratore.ModificaParametri;
 import it.unibs.IngSftwB.Model.Giorno;
 import it.unibs.IngSftwB.Model.Intervallo;
 import it.unibs.IngSftwB.Model.ParametriScambi;
-import it.unibs.IngSftwB.Model.Utilita;
 
 import java.util.ArrayList;
 

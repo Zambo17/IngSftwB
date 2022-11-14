@@ -2,7 +2,6 @@ package it.unibs.IngSftwB.Model;
 
 import it.unibs.IngSftwB.Controller.Controller;
 import it.unibs.IngSftwB.View.View;
-import it.unibs.IngSftwB.xmlUtilities.*;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.stream.XMLStreamException;

@@ -25,7 +25,7 @@ public class ProponiScambio implements AzioneUtente {
     public static Scambio creaScambio(Controller controller, Utente f){
 
         Offerte offerteFruitore=new Offerte(controller.getApp().getOfferte().getOfferteFromFruitore(f.getUsername()));
-        offerteFruitore.togliRitirate();
+        offerteFruitore.offerteAperte();
         Offerta daScambiare=null;
         Offerta vorrei=null;
         Scambio toRet=null;
