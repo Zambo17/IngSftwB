@@ -82,7 +82,7 @@ public class ControllaScambi implements AzioneUtente {
                         scambio.cambiaProposta(nuovaPropposta);
                         controller.getApp().getOfferte().modificaOffertaEsistente(scambio.getRicevente(), StatoOfferta.INSCAMBIO);
                         scambio.getRicevente().cambiaStato(StatoOfferta.INSCAMBIO);
-                        controller.getApp().getOfferte().modificaOffertaEsistente(scambio.getRicevente(), StatoOfferta.INSCAMBIO);
+                        controller.getApp().getOfferte().modificaOffertaEsistente(scambio.getOfferente(), StatoOfferta.INSCAMBIO);
                         scambio.getOfferente().cambiaStato(StatoOfferta.INSCAMBIO);
 
                         scambio.setTempo(nuovaPropposta.getTempo());
