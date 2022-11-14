@@ -30,36 +30,7 @@ public class ListaScambi {
         }
         return new ListaScambi(scambiRicevuti);
     }
-    public String vediScambi(){
-        StringBuffer sb=new StringBuffer();
-        int count=1;
-        sb.append("Questi sono gli scambi che ti sono stati proposti\n");
-        for(Scambio s:this.scambi){
-            sb.append("\t");
-            sb.append(count+") ");
-            sb.append(s.vediOfferteScambio()+"\n");
-            count++;
-        }
-        return sb.toString();
-    }
 
-    /**
-     * metodo per scegliere uno scambio da una listascambi
-     * @return lo scambio scelto, null se nessuno scamio è stato scelto
-     */
-    public Scambio scegliScambio(){
-        System.out.println(this.vediScambi());
-        Scambio s=null;
-        if(this.scambi.size()>0){
-            int indice=Utilita.leggiIntero("Inserisci il numero relativo allo scambio di cui sei interessato, " +
-                    "0 se non sei interessato: ",0,this.scambi.size());
-
-            if(indice!=0){
-                s=this.scambi.get(indice-1);
-            }
-        }
-        return s;
-    }
 
     /**
      * Metodo per aggiornare la lista degli scambi in base a quelli scaduti

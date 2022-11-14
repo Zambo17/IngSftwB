@@ -33,26 +33,6 @@ public class Sistema {
     }
 
     /**
-     * Metodo per la visualizzazione di un sistema
-     * @return la stringa corrispondente alla descrizione del sistema
-     */
-    public String toStringSistema(){
-        StringBuffer stb=new StringBuffer();
-        if(listaGerarchie.isEmpty()){
-            stb.append("Il sistema non ha alcuna gerarchia");
-            return stb.toString();
-        }
-        int i=1;
-        for(Gerarchia g : listaGerarchie){
-            stb.append("Gerarchia " + i +":\n");
-            stb.append(g.vediRamo()+"\n");
-            stb.append("\n");
-            i++;
-        }
-        return stb.toString();
-    }
-
-    /**
      * Metodo gt per la lista delle gerarchie
      * @return la lista delle gerarchie del sistema
      */
@@ -87,81 +67,6 @@ public class Sistema {
             }
         }
         return valido;
-    }
-
-    /**
-     * Metodo che restituisce la lista delle radici del sistema
-     * @return la lista delle radici del sistema su cui viene invocato
-     */
-    public ArrayList<Categoria> getListaRadici(){
-        ArrayList<Categoria> radici=new ArrayList<Categoria>();
-        for(Gerarchia g:this.listaGerarchie){
-            radici.add(g.getRadice());
-        }
-        return radici;
-    }
-
-    //Da spostare nella view
-
-    /**
-     * Metodo per la visualizzazione delle radici del sistema
-     * @return la stringa con le informazioni sulle radici del sistema
-     */
-    public String visualizzaRadici(){
-        StringBuffer str=new StringBuffer();
-        if(this.getListaGerarchie().size()==0){
-            str.append("Siamo spiacenti ma il configuratore non ha settato alcuna gerarchia per ora");
-        }
-        else{
-            if(this.getListaGerarchie().size()==1){
-                str.append("Esiste una sola gerarchia e questa è la sua radice: \n"+this.getListaGerarchie().get(0).getRadice().toStringCategoria());
-            }
-            else{
-                str.append("Le radici di ogni gerarchia sono:\n ");
-                int count=0;
-                for(Gerarchia x:this.getListaGerarchie()){
-                    str.append("1. "+x.getRadice().toStringCategoria()+"\n");
-                }
-            }
-        }
-        return str.toString();
-    }
-
-    /**
-     * metodo per sceglie un offerta foglia
-     * @return una array di Categoria contente all'indice 0 la categoria foglia scelta
-     * e all'indice 1 la categoria radice realtiva alla categoria foglia scelta, se la selezione fallisce retunr null ad entrambi gli indici
-     */
-    public Categoria [] scegliFoglia() {
-        Categoria[] questaRadice = new Categoria[2];
-        int count = 1;
-        for (Gerarchia g : this.listaGerarchie) {
-            System.out.print("\n" + count+")  ");
-            System.out.println(g.getRadice().toStringCategoria());
-            count++;
-        }
-        int sceltaGer = Utilita.leggiIntero("Scegli il numero rispettivo alla categoria radice da cui vuoi partire a cercare la categoria voluta: ", 0, this.listaGerarchie.size());
-        boolean fineScelta = false;
-        ArrayList <Categoria> foglie=this.listaGerarchie.get(sceltaGer-1).listaFoglie();
-        int countF=1;
-        System.out.println();
-        for(Categoria f:foglie){
-            System.out.print(countF+")  ");
-            System.out.println(f.toStringCategoria());
-            countF++;
-        }
-        int sceltaFoglia = Utilita.leggiIntero("Inserisci il numero della categoria, se nessuna ti va bene premi 0 e si annulla l'operazione corrente: ", 0, foglie.size());
-        if(sceltaFoglia!=0){
-            questaRadice[0]=foglie.get(sceltaFoglia-1);
-            questaRadice[1]=this.listaGerarchie.get(sceltaGer-1).getRadice();
-        }
-        else{
-            System.out.println("Selezione categoria annullata");
-            Categoria fake=null;
-            questaRadice[0]=null;
-            questaRadice[1]=null;
-        }
-        return questaRadice;
     }
 
     public boolean isFoglia(String nomeCat){

@@ -45,15 +45,8 @@ public class Intervallo {
             valido=true;
         return valido;
     }
-    /**
-     * Metodo che crea un intervallo ricevendo in ingresso gli orari che lo compongono
-     * @param o gli orari che compongono l'intervallo
-     * @return l'intervallo creato
-     */
-    public static Intervallo creaIntervallo (Orario [] o){
-        Intervallo i=new Intervallo(o);
-        return  i;
-    }
+
+
 
     /**
      * Metodo per controllare che due intervalli siano uguali
@@ -83,14 +76,7 @@ public class Intervallo {
         return Arrays.hashCode(ore);
     }
 
-    public String toStringIntervallo(){
-        StringBuffer sb=new StringBuffer();
-        sb.append("dalle ");
-        sb.append(this.ore[0].toStringOrario());
-        sb.append(" alle ");
-        sb.append(this.ore[1].toStringOrario());
-        return sb.toString();
-    }
+
     /**
      * Metodo per settare gli orari di un intervallo
      * @param ore gli orari con cui settare l'intervallo

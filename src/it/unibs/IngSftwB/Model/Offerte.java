@@ -52,38 +52,6 @@ public class Offerte {
     }
 
     /**
-     * metodo che retituisce una stringa con le informazioni di tutte le offerte
-     * @return String con informazioni sulle offerte
-     */
-    public  String toStringOfferte(){
-        StringBuffer s=new StringBuffer();
-        int count=0;
-        if(this.listaOfferte.size()==0){
-            s.append("Non ci sono offerte");
-        }
-        else{
-            for(Offerta o:this.listaOfferte){
-                s.append("\n"+count +") " );
-                s.append(o.toStringOfferta());
-                count++;
-            }
-        }
-
-        return s.toString();
-    }
-
-    /**
-     * metodo per scegliere un offerta
-     * @return Offerta scelta
-     */
-    public Offerta scegliOfferta(){
-        System.out.println("Queste sono le offerte: ");
-        System.out.println(this.toStringOfferte());
-        int scelta=Utilita.leggiIntero("Scegli il numero relativo all'offerta scelta: ",0, this.listaOfferte.size());
-        return this.listaOfferte.get(scelta);
-    }
-
-    /**
      * metodo per cambiare lo stato di una offerta esistente
      * @param toChange offerta di cui si vuole cambiare lo stato
      */
@@ -146,27 +114,6 @@ public class Offerte {
             }
         }
         this.listaOfferte.removeAll(temp);
-    }
-
-    /**
-     * stampa tutte le offerte relative ad una categoria foglia da selezionare
-     * @param conf Configurazione contente il sistema
-     */
-    public void stampaOfferteFoglia(Configurazione conf){
-        Categoria [] categoriaFoglia= conf.getSis().scegliFoglia();
-        if(categoriaFoglia[0] != null){
-            Offerte tosee=this.offerteFoglia(categoriaFoglia[0].getNome(), categoriaFoglia[1].getNome());
-            if(tosee.getListaOfferte().size()!=0){
-                System.out.println("Le offerte di questa categoria sono: ");
-                System.out.println(tosee.toStringOfferte());
-            }
-            else{
-                System.out.println("Non ci sono offerte aperte relative a questa categoria");
-            }
-        }
-        else{
-            System.out.println("Visualizzazione offerte fallita");
-        }
     }
 
     /**

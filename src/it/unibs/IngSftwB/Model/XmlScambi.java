@@ -527,7 +527,7 @@ public abstract class XmlScambi {
 
                 Element statoAttuale= document.createElement("statoAttuale");
                 offerta.appendChild(statoAttuale);
-                statoAttuale.appendChild(document.createTextNode(offerente.getStatoAttuale().toStringStato()));
+                statoAttuale.appendChild(document.createTextNode(offerente.getStatoAttuale().descrizioneStato()));
 
                 Element nomeFruitore=document.createElement("nomeFruitore");
                 offerta.appendChild(nomeFruitore);
@@ -568,7 +568,7 @@ public abstract class XmlScambi {
                 for(StatoOfferta s:offerente.getStatiPassati()){
                     Element st=document.createElement("statoPassato");
                     statiPassati.appendChild(st);
-                    st.appendChild(document.createTextNode(s.toStringStato()));
+                    st.appendChild(document.createTextNode(s.descrizioneStato()));
                 }
                 //offerta ricevente
                 Offerta ricevente=sca.getRicevente();
@@ -585,7 +585,7 @@ public abstract class XmlScambi {
 
                 Element statoAttualeRicevente= document.createElement("statoAttuale");
                 offertaRicevente.appendChild(statoAttualeRicevente);
-                statoAttualeRicevente.appendChild(document.createTextNode(ricevente.getStatoAttuale().toStringStato()));
+                statoAttualeRicevente.appendChild(document.createTextNode(ricevente.getStatoAttuale().descrizioneStato()));
 
                 Element nomeFruitoreRicevente=document.createElement("nomeFruitore");
                 offertaRicevente.appendChild(nomeFruitoreRicevente);
@@ -626,7 +626,7 @@ public abstract class XmlScambi {
                 for(StatoOfferta s:ricevente.getStatiPassati()){
                     Element st=document.createElement("statoPassato");
                     statiPassatiRicevente.appendChild(st);
-                    st.appendChild(document.createTextNode(s.toStringStato()));
+                    st.appendChild(document.createTextNode(s.descrizioneStato()));
                 }
                 Element proposta=document.createElement("proposta");
                 scambio.appendChild(proposta);
@@ -667,7 +667,7 @@ public abstract class XmlScambi {
                     if(sca.getUltimaProposta()==null)
                         oraProposta.appendChild(document.createTextNode(""));
                     else
-                        oraProposta.appendChild(document.createTextNode(sca.getUltimaProposta().getOra().toStringOrario()));
+                        oraProposta.appendChild(document.createTextNode(sca.getUltimaProposta().getOra().descrizioneOrario()));
                 }
 
 

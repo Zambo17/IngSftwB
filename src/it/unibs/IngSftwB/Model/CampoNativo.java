@@ -24,34 +24,6 @@ public class CampoNativo {
         this.obbligatoria=_obbligatoria;
     }
 
-    /**
-     * Metodo per la creazione del campo da parte del configuratore
-     * @param nameToCompare ArrayList contenente i nome dei campi nativi già presenti che non possono essere ripetuti
-     * @return il campo nativo creato
-     */
-    public static CampoNativo creaCampo(ArrayList <String> nameToCompare){
-        String nome=Utilita.leggiStringaNonVuota("Inserisci nome campo: ");
-        boolean diverso=false;
-        while(diverso==false){
-
-            if(!nameToCompare.contains(nome)){
-                diverso=true;
-            }
-            if(diverso==false){
-                nome=Utilita.leggiStringaNonVuota("Il nome inserito non è valido, inserire un nuovo nome:");
-            }
-        }
-        boolean obbligo=false;
-        String choice=Utilita.leggiStringaNonVuota("Inserisci 1 se il campo è obbligatorio, 0 altrimenti:");
-        if(choice.equals("1")){
-            obbligo=true;
-        }
-        if(choice.equals("0")){
-            obbligo=false;
-        }
-        CampoNativo c=new CampoNativo(nome, obbligo);
-        return c;
-    }
 
     /**
      * Metodo per ottenere il nome del campo
@@ -60,22 +32,6 @@ public class CampoNativo {
     public String getNomeCampo() {
         return nomeCampo;
     }
-
-    /**
-     * Metodo per ottenere una stringa per la visualizzazione del campo
-     * @return stringa contenente le informazione del campo
-     */
-    public String toString() {
-        StringBuffer str = new StringBuffer();
-        str.append(nomeCampo);
-        if(obbligatoria){
-            str.append(" compilazione obbligatoria\n");
-        }
-        else
-            str.append(" compilazione facoltativa\n");
-        return str.toString();
-    }
-    //public ArrayList<String> nomiCampi(CampoNativo c)//metodo per ottenre solo la lista di nomi dei campi
 
     /**
      * Metodo per ottenere un boolean che è true se è obbligatorio false altrimenti

@@ -241,7 +241,7 @@ public abstract class XmlOfferte {
 
                 Element statoAttuale= document.createElement("statoAttuale");
                 offerta.appendChild(statoAttuale);
-                statoAttuale.appendChild(document.createTextNode(x.getStatoAttuale().toStringStato()));
+                statoAttuale.appendChild(document.createTextNode(x.getStatoAttuale().descrizioneStato()));
 
                 Element nomeFruitore=document.createElement("nomeFruitore");
                 offerta.appendChild(nomeFruitore);
@@ -282,7 +282,7 @@ public abstract class XmlOfferte {
                 for(StatoOfferta s:x.getStatiPassati()){
                     Element st=document.createElement("statoPassato");
                     statiPassati.appendChild(st);
-                    st.appendChild(document.createTextNode(s.toStringStato()));
+                    st.appendChild(document.createTextNode(s.descrizioneStato()));
                 }
 
             }

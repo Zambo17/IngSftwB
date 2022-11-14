@@ -82,7 +82,7 @@ public class Orario {
      * Metodo che restituisce una stringa corrispondente all'orario
      * @return la stringa dell'orario su cui viene invocato
      */
-    public String toStringOrario(){
+    public String descrizioneOrario(){
         StringBuilder str = new StringBuilder();
         if(this.ora <10){
             str.append("0"+this.ora);

@@ -26,7 +26,7 @@ public enum StatoOfferta {
      * metodo che restituisce la stringa che descrive lo stato
      * @return stringa che descrive lo stato
      */
-    public String toStringStato(){
+    public String descrizioneStato(){
         String s=null;
         switch(this){
             case APERTA:

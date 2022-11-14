@@ -23,38 +23,7 @@ public enum Giorno {
         return this.nomeGiorno;
     }
 
-    /**
-     * Metodo che restituisce la stringa corrispondente al giorno su cui viene invocata
-     * @return la stringa del giorno su cui viene invocata
-     */
-    public String toString(){
-        String day=null;
-        switch(this){
-            case LUNEDI :
-                day="lunedi";
-                break;
-            case MARTEDI:
-                day="martedi";
-                break;
-            case MERCOLEDI:
-                day="mercoledi";
-                break;
-            case GIOVEDI:
-                day="giovedi";
-                break;
-            case VENERDI:
-                day="venerdi";
-                break;
-            case SABATO:
-                day="sabato";
-                break;
-            case DOMENICA:
-                day="domenica";
-                break;
 
-        }
-        return day;
-    }
     /**
      * Metodo che restituisce il giorno corrispondente alla stringa in ingresso
      * @param gg la stringa di cui restituire il giorno corrispondente

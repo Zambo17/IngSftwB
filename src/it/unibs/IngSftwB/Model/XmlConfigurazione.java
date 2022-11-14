@@ -509,7 +509,7 @@ public abstract class XmlConfigurazione {
 
             for(Giorno g:p.getGiorni()){
                 Element giorno=document.createElement("giorno");
-                giorno.appendChild(document.createTextNode(g.toString()));
+                giorno.appendChild(document.createTextNode(g.getNomeGiorno()));
                 giorni.appendChild(giorno);
             }
 
@@ -520,10 +520,10 @@ public abstract class XmlConfigurazione {
                 intervalli.appendChild(intervallo);
 
                 Element orarioIniziale=document.createElement("orarioIniziale");
-                orarioIniziale.appendChild(document.createTextNode(x.getOre()[0].toStringOrario()));
+                orarioIniziale.appendChild(document.createTextNode(x.getOre()[0].descrizioneOrario()));
                 intervallo.appendChild(orarioIniziale);
                 Element orarioFinale=document.createElement("orarioFinale");
-                orarioFinale.appendChild(document.createTextNode(x.getOre()[1].toStringOrario()));
+                orarioFinale.appendChild(document.createTextNode(x.getOre()[1].descrizioneOrario()));
                 intervallo.appendChild(orarioFinale);
             }
 
