@@ -40,9 +40,13 @@ public class ListaScambi {
     public void controllaValiditaScambi(ParametriScambi ps,Offerte offerte){
         ArrayList <Scambio> temp=new ArrayList<>();
         for(Scambio s:this.scambi){
-            if(!s.scambioScaduto(ps,offerte) && s.getOfferente().getStatoAttuale()!=StatoOfferta.CHIUSA){
+            if(s.getOfferente().getStatoAttuale()==StatoOfferta.CHIUSA){
                 temp.add(s);
             }
+            else if(!s.scambioScaduto(ps,offerte)){
+                temp.add(s);
+            }
+
         }
         this.scambi= temp;
     }

@@ -14,7 +14,7 @@ public class ControllaScambi implements AzioneUtente {
         if(sceltaFattiRicevuti==1){
             ListaScambi fatti=app.getListaScambi().scambiOfferente(utente);
             if(fatti.getScambi().size()>0){
-                Scambio scambioScelto=this.scegliScambio(controller);
+                Scambio scambioScelto=this.scegliScambio(controller, fatti);
                 int index=app.getListaScambi().getScambi().indexOf(scambioScelto);
                 if(scambioScelto!=null){
                     this.gestisciScambio(utente,controller,scambioScelto);
@@ -31,7 +31,7 @@ public class ControllaScambi implements AzioneUtente {
         else{ //if per quando non ce ne sono
             ListaScambi ricevuti=app.getListaScambi().scambiRicevente(utente);
             if(ricevuti.getScambi().size()>0){
-                Scambio scambioScelto=this.scegliScambio(controller);
+                Scambio scambioScelto=this.scegliScambio(controller, ricevuti);
                 int index=app.getListaScambi().getScambi().indexOf(scambioScelto);
                 if(scambioScelto!=null){
                     this.gestisciScambio(utente,controller,scambioScelto);
@@ -52,14 +52,14 @@ public class ControllaScambi implements AzioneUtente {
         return "Controllare gli scambi";
     }
 
-    public Scambio scegliScambio(Controller controller){
-        controller.getView().stampaScambiDescription((MessaggioScambi) controller.getApp().getListaScambi().getScambiDefinition());
+    public Scambio scegliScambio(Controller controller,ListaScambi listaScambi){
+        controller.getView().stampaScambiDescription((MessaggioScambi) listaScambi.getScambiDefinition());
         Scambio s=null;
-        if(controller.getApp().getListaScambi().getScambi().size()>0){
-            int indice=controller.richiediInteroIntervalloView(MessaggioGenerale.SCELTA_SCAMBIO,0,controller.getApp().getListaScambi().getScambi().size());
+        if(listaScambi.getScambi().size()>0){
+            int indice=controller.richiediInteroIntervalloView(MessaggioGenerale.SCELTA_SCAMBIO,0,listaScambi.getScambi().size());
 
             if(indice!=0){
-                s=controller.getApp().getListaScambi().getScambi().get(indice-1);
+                s=listaScambi.getScambi().get(indice-1);
             }
         }
         return s;
