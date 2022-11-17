@@ -204,10 +204,12 @@ public class View {
                 str.append("Esiste una sola gerarchia e questa è la sua radice: \n"+msg.getListaGerarchie().get(0).getRadice().getCategoriaDefinition());
             }
             else{
-                str.append("Le radici di ogni gerarchia sono:\n ");
-                int count=0;
+                str.append("Le radici di ogni gerarchia sono:\n");
+                int count=1;
                 for(Gerarchia x:msg.getListaGerarchie()){
-                    str.append("1. "+x.getRadice().getCategoriaDefinition()+"\n");
+                    str.append("Radice " + count +":\n");
+                    str.append(getCategoriaDescription((MessaggioCategoria) x.getRadice().getCategoriaDefinition())+"\n");
+                    count++;
                 }
             }
         }
