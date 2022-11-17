@@ -13,7 +13,7 @@ public enum MessaggioAlternativa implements MessaggioStampabile{
             "3 per modificare i giorni\n" +
             "4 per cambiare la scadenza \n" +
             "5 per annullare la modifica dei parametri :"),
-    ZERO_GERARCHIE("Non è presente alcune gerarchia\n premere 1 per inserirla tramite l'applicazione\n premere 2 per inserirla tramite file xml"),
+    ZERO_GERARCHIE("Non è presente alcuna gerarchia\n premere 1 per inserirla tramite l'applicazione\n premere 2 per inserirla tramite file xml"),
     PARAMETRI_VUOTI("I parametri di sistema non sono ancora stati configurati\n premere 1 per inserirli tramite l'applicazione\n premere 2 per inserirli tramite file xml"),
     ALTRO_LUOGO("Inserisci 1 per aggiungere un altro luogo, 0 altrimenti:"),
     ALTRO_GIORNO("Inserisci 1 per aggiungere un altro giorno, 0 altrimenti:"),

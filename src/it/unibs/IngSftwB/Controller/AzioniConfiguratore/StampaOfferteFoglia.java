@@ -28,7 +28,7 @@ public class StampaOfferteFoglia implements AzioneUtente {
             }
         }
         else{
-            controller.comunicaAllaView(MessaggioErrore.APP_NON_SETTATA);
+            controller.comunicaAllaView(MessaggioErrore.NO_OFFERTE);
         }
     }
 

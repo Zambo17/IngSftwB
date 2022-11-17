@@ -207,13 +207,23 @@ public class Controller {
         int sceltaPar=this.richiediInteroIntervalloView(MessaggioAlternativa.PARAMETRI_VUOTI,1,2);
         if(sceltaPar==2){
             String nomefilePar=this.richiediStringaView(MessaggioGenerale.PERCORSO_FILE);
+            boolean fileCorretto=true;
             if(ControlloFile.fileExists(nomefilePar) && ControlloFile.isXmlFile(nomefilePar)){
-                this.getApp().getConfigurazione().setParametri(XmlConfigurazione.leggiParametri(nomefilePar));
+                try{
+                    this.getApp().getConfigurazione().setParametri(XmlConfigurazione.leggiParametri(nomefilePar));
+                }catch(Exception e) {
+                    fileCorretto = false;
+                }
             }
             else{
+                fileCorretto=false;
+            }
+            if(!fileCorretto){
                 this.comunicaAllaView(MessaggioErrore.FILE_NON_ESISTENTE);
                 app.getConfigurazione().setParametri(InserimentoParametri.inserimentoParametri(this));
             }
+            else
+                this.comunicaAllaView(MessaggioGenerale.FILE_CORRETTO);
         }
         else{
             app.getConfigurazione().setParametri(InserimentoParametri.inserimentoParametri(this));
@@ -224,13 +234,25 @@ public class Controller {
         int scelta=this.richiediInteroIntervalloView(MessaggioAlternativa.ZERO_GERARCHIE,1,2);
         if(scelta==2){
             String nomeFileGer=this.richiediStringaView(MessaggioGenerale.PERCORSO_FILE);
+            boolean fileCorretto=true;
             if(ControlloFile.fileExists(nomeFileGer) && ControlloFile.isXmlFile(nomeFileGer)){
-                this.getApp().getConfigurazione().setSis(XmlConfigurazione.readSis(nomeFileGer));
+                try{
+                    this.getApp().getConfigurazione().setSis(XmlConfigurazione.readSis(nomeFileGer));
+                }catch(Exception e){
+                    fileCorretto=false;
+                }
             }
             else{
+                fileCorretto=false;
+
+            }
+            if(!fileCorretto){
                 this.comunicaAllaView(MessaggioErrore.FILE_NON_ESISTENTE);
                 InserisciGerarchia i=new InserisciGerarchia();
                 i.eseguiAzione(this,null);
+            }
+            else{
+                this.comunicaAllaView(MessaggioGenerale.FILE_CORRETTO);
             }
         }
         else{

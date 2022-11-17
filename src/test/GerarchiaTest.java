@@ -3,9 +3,7 @@ package test;
 import it.unibs.IngSftwB.Model.Categoria;
 import it.unibs.IngSftwB.Model.Gerarchia;
 import org.junit.Test;
-
 import java.util.HashMap;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class GerarchiaTest {
@@ -15,35 +13,35 @@ public class GerarchiaTest {
     Gerarchia gerarchia=new Gerarchia(ramo,radice);
 
     @Test
-    void controlloNomeGiaPresente(){
+    public void controlloNomeGiaPresente(){
         Categoria figlio=new Categoria("figlio","",null);
         ramo.put(figlio,radice);
         assertFalse(gerarchia.checkNomeNuovo("figlio"));
     }
 
     @Test
-    void controlloNomeNonPresente(){
+    public void controlloNomeNonPresente(){
         Categoria figlio=new Categoria("figlio","",null);
         ramo.put(figlio,radice);
         assertTrue(gerarchia.checkNomeNuovo("nuova"));
     }
 
     @Test
-    void controlloNomePadrePresente(){
+    public void controlloNomePadrePresente(){
         Categoria figlio=new Categoria("figlio","",null);
         ramo.put(figlio,radice);
         assertTrue(gerarchia.checkPadreNome("figlio"));
     }
 
     @Test
-    void controlloNomePadreNonPresente(){
+    public void controlloNomePadreNonPresente(){
         Categoria figlio=new Categoria("figlio","",null);
         ramo.put(figlio,radice);
         assertFalse(gerarchia.checkPadreNome("nuova"));
     }
 
     @Test
-    void controlloDueFigli(){
+    public void controlloDueFigli(){
         Categoria figlio1=new Categoria("figlio1","",null);
         Categoria figlio2=new Categoria("figlio2","",null);
         ramo.put(figlio1,radice);
@@ -52,12 +50,12 @@ public class GerarchiaTest {
     }
 
     @Test
-    void controlloZeroFigli(){
+    public void controlloZeroFigli(){
         assertEquals(gerarchia.numFigli(radice),0);
     }
 
     @Test
-    void controlloUnFiglioDiFiglio(){
+    public void controlloUnFiglioDiFiglio(){
         Categoria figlio1=new Categoria("figlio1","",null);
         Categoria figlio2=new Categoria("figlio2","",null);
         ramo.put(figlio1,radice);
@@ -66,7 +64,7 @@ public class GerarchiaTest {
     }
 
     @Test
-    void controlloGerarchiaConTreFoglie(){
+    public void controlloGerarchiaConTreFoglie(){
         Categoria figlio1=new Categoria("figlio1","",null);
         Categoria figlio2=new Categoria("figlio2","",null);
         ramo.put(figlio1,radice);
@@ -79,7 +77,7 @@ public class GerarchiaTest {
     }
 
     @Test
-    void controlloGerarchiaSoloRadice(){
+    public void controlloGerarchiaSoloRadice(){
         assertEquals(gerarchia.listaFoglie().size(),0);
     }
 
