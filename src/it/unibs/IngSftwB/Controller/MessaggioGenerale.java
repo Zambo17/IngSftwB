@@ -1,7 +1,7 @@
 package it.unibs.IngSftwB.Controller;
 
 public enum MessaggioGenerale implements MessaggioStampabile {
-
+    SUCCESSO_FILE("I dati del file sono stati inseriti correttamente"),
     SELEZIONA_INDICE("\nSeleziona l'indice corrispondente all'opzione desiderata:"),
     NUOVO_USERNAME("Inserisci il nome con cui vuoi registrarti:"),
     NUOVA_PASSWORD("Inserisci la tua nuova password:"),

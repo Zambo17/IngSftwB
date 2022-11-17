@@ -10,6 +10,7 @@ public class InserimentoDaFile implements AzioneUtente {
     @Override
     public void eseguiAzione(Controller controller, Utente utente) {
         int sceltaXml= controller.richiediInteroIntervalloView(MessaggioAlternativa.SCELTA_FILE,0,2);
+        boolean successo=true;
         try{
             switch(sceltaXml){
                 case 1:
@@ -22,9 +23,12 @@ public class InserimentoDaFile implements AzioneUtente {
                     System.out.println(MessaggioGenerale.ANNULLA_FILE);
                     break;
             }
-        } catch (XMLStreamException e){
-            e.printStackTrace();
+        } catch (Exception e){
+            controller.comunicaAllaView(MessaggioErrore.ERRORE_FILE);
+            successo=false;
         }
+        if(successo)
+            controller.comunicaAllaView(MessaggioGenerale.FILE_CORRETTO);
 
     }
 
@@ -43,7 +47,7 @@ public class InserimentoDaFile implements AzioneUtente {
         String nomeFilePar= controller.richiediStringaView(MessaggioGenerale.PERCORSO_FILE);
         if(ControlloFile.fileExists(nomeFilePar) && ControlloFile.isXmlFile(nomeFilePar)){
             controller.getApp().getConfigurazione().setParametri(XmlConfigurazione.leggiParametri(nomeFilePar));
-            controller.comunicaAllaView(MessaggioGenerale.FILE_CORRETTO);
+
 
         }
         else{
